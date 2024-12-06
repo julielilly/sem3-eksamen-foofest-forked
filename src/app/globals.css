@@ -3,19 +3,46 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #e5e1d6;
+  --foreground: #1f1a07;
+  --blue-light: #1f7985;
+  --blue-dark: #1f2c3c;
+  --green: #42765c;
+  --red: #ba1e2d;
+  --yellow: #a79649;
+  --white: #fffcf9;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #e5e1d6;
+    --background: #1f1a07;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100svh;
+}
+
+@layer components {
+  /* set up pre styling of different texts and so on here */
+  .text {
+    @apply;
+  }
+
+  /* // will change this to make it match the new design  */
+  .btn {
+    @apply py-2xs px-xs w-fit h-fit rounded-md hover:bg-black hover:text-white drop-shadow-lg active:bg-dark active:text-white text-white text-nowrap cursor-pointer
+    dark:text-[--foreground];
+  }
+
+  /* // will change this to make it match the new design  */
+  .icons {
+    @apply rounded-md w-fit p-3xs size-m cursor-pointer drop-shadow-lg hover:scale-105 transition duration-75;
+  }
 }
