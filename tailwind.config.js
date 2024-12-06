@@ -20,11 +20,15 @@ module.exports = {
       },
       fontSize: {
         normal: "var(--text)",
-        emphasize: "var(--emphasize)",
-        "sub-subtitle": "var(--sub-subtitle)",
-        subtitle: "var(--subtitle)",
+        "step-1": "var(--step-1)",
+        "step-2": "var(--step-2)",
+        "step-3": "var(--step-3)",
         title: "var(--title)",
         "big-title": "var(--big-title)",
+      },
+      fontFamily: {
+        skranji: ["Skranji", "sans-serif"],
+        "hind-madurai": ["Hind_madurai", "sans-serif"],
       },
       spacing: {
         "3xs": "var(--space-3xs)",

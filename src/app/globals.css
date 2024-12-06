@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  /***************  colours  */
   --background: #e5e1d6;
   --foreground: #1f1a07;
   --blue-light: #1f7985;
@@ -11,6 +12,43 @@
   --red: #ba1e2d;
   --yellow: #a79649;
   --white: #fffcf9;
+
+  /***************  Spacing  ***************/
+  /* Space 3xs-2xs: 5px → 10px */
+  --space-3xs: clamp(0.3125rem, 0.2038rem + 0.5435vw, 0.625rem);
+  /* Space 2xs-xs: 9px → 15px */
+  --space-2xs: clamp(0.5625rem, 0.4321rem + 0.6522vw, 0.9375rem);
+  /* Space xs-s: 14px → 20px */
+  --space-xs: clamp(0.875rem, 0.7446rem + 0.6522vw, 1.25rem);
+  /* Space s-m: 18px → 30px */
+  --space-s: clamp(1.125rem, 0.8641rem + 1.3043vw, 1.875rem);
+  /* Space m-l: 27px → 40px */
+  --space-m: clamp(1.6875rem, 1.4049rem + 1.413vw, 2.5rem);
+  /* Space l-xl: 36px → 60px */
+  --space-l: clamp(2.25rem, 1.7283rem + 2.6087vw, 3.75rem);
+  /* Space xl-2xl: 54px → 80px */
+  --space-xl: clamp(3.375rem, 2.8098rem + 2.8261vw, 5rem);
+  /* Space 2xl-3xl: 72px → 120px */
+  --space-2xl: clamp(4.5rem, 3.4565rem + 5.2174vw, 7.5rem);
+
+  /************** Fonts  **************/
+  /* All ordinary texts, paragraphs, descriptions: 16px → 18px */
+  --text: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+
+  /* 18px → 20px */
+  --step-1: clamp(1.25rem, 1.0761rem + 0.8696vw, 1.75rem);
+
+  /* h3, h4, etc: 20px → 28px  */
+  --step-2: clamp(1.728rem, 1.5072rem + 1.1042vw, 2.1973rem);
+
+  /* sub headers, h2, etc: 24px → 32px */
+  --step-3: clamp(1.5rem, 1.3261rem + 0.8696vw, 2rem);
+
+  /* Ordinary title, h1: 32px → 42px */
+  --title: clamp(2rem, 1.7826rem + 1.087vw, 2.625rem);
+
+  /* Special occasions, hero title and top bands: 40px → 80px */
+  --big-title: clamp(2.5rem, 1.6304rem + 4.3478vw, 5rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,9 +65,24 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   height: 100svh;
+
+  max-width: 1240px;
+  margin-inline: auto;
+
+  > * {
+    padding: 0 2em;
+  }
 }
 
 @layer components {
+  .halfround-left {
+    @apply bg-foreground w-fit text-background py-2xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap;
+  }
+
+  .halfround-right {
+    @apply bg-foreground w-fit text-background py-2xs pl-s pr-l rounded-r-full  border-2 border-foreground text-nowrap text-normal;
+  }
+
   /* set up pre styling of different texts and so on here */
   .text {
     @apply;

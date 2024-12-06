@@ -1,5 +1,5 @@
 const ButtonSharpEdge = () => {
-  return <div>Sharp edged button</div>;
+  return <div className="halfround-">Sharp edged button</div>;
 };
 
 export default ButtonSharpEdge;

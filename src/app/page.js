@@ -4,7 +4,7 @@ import ButtonSharpEdge from "@/components/ButtonSharpEdge";
 export default function Home() {
   return (
     <div>
-      I'm in the main.
+      <p className="font-skranji  text-title">I'm in the main.</p>
       <div>
         <ButtonRounded />
         <ButtonSharpEdge />

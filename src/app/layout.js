@@ -1,4 +1,5 @@
 import "./globals.css";
+import { skranji, hind_madurai } from "./fonts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
