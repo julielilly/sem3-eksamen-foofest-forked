@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <p className="font-skranji  text-title">I'm in the main.</p>
-      <div>
+      <div className="grid gap-2">
         <ButtonRounded />
         <ButtonSharpEdge />
       </div>

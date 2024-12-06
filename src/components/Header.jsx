@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <header className="bg-foreground text-background">
-      This is the header
+      <p>This is a header</p>
     </header>
   );
 };
