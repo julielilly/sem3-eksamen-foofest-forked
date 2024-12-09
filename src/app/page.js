@@ -7,8 +7,8 @@ export default function Home() {
     <div>
       <p className="font-skranji  text-title">I'm in the main.</p>
       <div className="grid gap-2">
-        <ButtonRounded />
-        <ButtonSharpEdge />
+        <ButtonRounded>Buy tickets!""!!</ButtonRounded>
+        <ButtonSharpEdge theme="black">hej</ButtonSharpEdge>
       </div>
       <EXAMPLEFullComp />
     </div>

@@ -130,7 +130,7 @@ body {
   }
 
   .sharp {
-    @apply bg-white w-fit px-2xs py-3xs shadow-[6px_5px_0px_1px_var(--blue-light)];
+    @apply bg-white w-fit px-xs py-3xs cursor-pointer shadow-[6px_5px_0px_1px_var(--blue-light)];
   }
 
   /* set up pre styling of different texts and so on here */
