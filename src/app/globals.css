@@ -122,11 +122,11 @@ body {
 
 @layer components {
   .halfround-left {
-    @apply bg-foreground w-fit text-background py-2xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap;
+    @apply bg-foreground  text-background py-2xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap;
   }
 
   .halfround-right {
-    @apply bg-foreground w-fit text-background py-2xs pl-s pr-l rounded-r-full  border-2 border-foreground text-nowrap text-normal;
+    @apply bg-foreground  text-background py-2xs pl-s pr-l rounded-r-full  border-2 border-foreground text-nowrap text-normal;
   }
 
   .sharp {
