@@ -1,7 +1,11 @@
 import LineUpCardCTA from "@/components/LineUpCardCTA";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
 
-const page = () => {
+import { getSubs } from "@/lib/api";
+
+async function page() {
+  const lineUp = await getSubs();
+
   return (
     <div>
       <h1 className="halfround-right text-title my-10"> Line up</h1>
@@ -24,31 +28,9 @@ const page = () => {
           scr={""}
           id={1}
         ></LineUpCardCTA>
-
-        <LineUpCardCTA
-          artistName={"artist WOO"}
-          dayOfPlaying={"wednesday"}
-          scene={"midgard"}
-          scr={""}
-          id={1}
-        ></LineUpCardCTA>
-        <LineUpCardCTA
-          artistName={"artist WOO"}
-          dayOfPlaying={"wednesday"}
-          scene={"midgard"}
-          scr={""}
-          id={1}
-        ></LineUpCardCTA>
-        <LineUpCardCTA
-          artistName={"artist WOO"}
-          dayOfPlaying={"wednesday"}
-          scene={"midgard"}
-          scr={""}
-          id={1}
-        ></LineUpCardCTA>
       </ul>
     </div>
   );
-};
+}
 
 export default page;

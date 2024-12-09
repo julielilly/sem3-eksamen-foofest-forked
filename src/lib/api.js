@@ -9,15 +9,15 @@ const headerList = {
 // OBS JEG HAR BARE LIGE UDKOMMENTERET, DET JEG IKKE SELV HAR BRUGT, MEN SOM VI EVT SKAL BRUGE ANDRE STEDER
 
 // // GET
-// export async function getSubs() {
-//   const response = await fetch(url, {
-//     method: "GET",
-//     headers: headerList,
-//   });
+export async function getSubs() {
+  const response = await fetch(url, {
+    method: "GET",
+    headers: headerList,
+  });
 
-//   const data = await response.json();
-//   return data;
-// }
+  const data = await response.json();
+  return data;
+}
 
 // // GET by ID
 // export async function getSubById(id) {
@@ -61,7 +61,9 @@ export async function reserveSpot(reservationData) {
   if (data.message === "Reserved") {
     return data; // Return the response data with the "Reserved" message
   } else {
-    throw new Error(data.message || "Unknown error occurred during reservation");
+    throw new Error(
+      data.message || "Unknown error occurred during reservation"
+    );
   }
 }
 
