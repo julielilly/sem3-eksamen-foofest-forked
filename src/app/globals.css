@@ -77,25 +77,19 @@ body {
     grid-column: full;
     display: grid;
     grid: auto/subgrid;
-
-    /* > * {
-      grid-column: main; */
-
-    /* + * {
-      padding: 0 var(--space-s);
-    } */
-    /* } */
   }
-  main > * {
+  main > *,
+  footer > *,
+  header > * {
     grid-column: full;
     display: grid;
     grid-template-columns: subgrid;
     height: fit-content;
   }
 
-  header > *:not(.col-full),
+  header > * > *:not(.col-full),
   main > * > *:not(.col-full),
-  footer > *:not(.col-full) {
+  footer > * > *:not(.col-full) {
     grid-column: main;
   }
 

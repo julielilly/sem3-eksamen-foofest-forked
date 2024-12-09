@@ -1,7 +1,9 @@
 const Footer = () => {
   return (
     <footer className="bg-foreground text-background">
-      <p>This is the footer</p>
+      <div>
+        <p>This is the footer</p>
+      </div>
     </footer>
   );
 };
