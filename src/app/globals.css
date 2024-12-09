@@ -59,15 +59,47 @@
 } */
 
 body {
+  --full: 1fr;
+  --content: min(1240px, 100% - 2em * 2);
   color: var(--foreground);
   background: var(--background);
 
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: 1fr;
-  height: 100svh;
+  grid-template-columns:
+    [full-start] var(--full) [main] var(--content) var(--full)
+    [full-end];
 
-  > * {
+  height: 100svh;
+  header,
+  main,
+  footer {
+    grid-column: full;
+    display: grid;
+    grid: auto/subgrid;
+
+    /* > * {
+      grid-column: main; */
+
+    /* + * {
+      padding: 0 var(--space-s);
+    } */
+    /* } */
+  }
+  main > * {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: subgrid;
+    height: fit-content;
+  }
+
+  header > *:not(.col-full),
+  main > * > *:not(.col-full),
+  footer > *:not(.col-full) {
+    grid-column: main;
+  }
+
+  /* > * {
     padding: 0 var(--space-s);
   }
 
@@ -85,7 +117,7 @@ body {
     max-width: 1240px;
     width: 100%;
     margin: 0 auto;
-  }
+  } */
 }
 
 @layer components {
@@ -102,7 +134,16 @@ body {
   }
 
   /* set up pre styling of different texts and so on here */
-  .text {
-    @apply;
+}
+
+@layer utilities {
+  .col-full {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  .col-main {
+    grid-column: main;
   }
 }

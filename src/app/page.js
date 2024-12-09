@@ -1,5 +1,6 @@
 import ButtonRounded from "@/components/ButtonRounded";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
+import EXAMPLEFullComp from "@/components/EXAMPLEFullComp";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <ButtonRounded />
         <ButtonSharpEdge />
       </div>
+      <EXAMPLEFullComp />
     </div>
   );
 }
