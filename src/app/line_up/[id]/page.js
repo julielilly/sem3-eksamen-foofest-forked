@@ -4,11 +4,12 @@ import ButtonSharpEdge from "@/components/ButtonSharpEdge";
 import waveImage from "../../assets/wave.svg";
 
 const page = ({ params }) => {
-  // const { id } = params;
+  const { id } = params;
 
   return (
     <div>
-      <header className="relative w-[100%] overflow-hidden">
+      <h1>{id}</h1>
+      <section className="relative w-[100%] overflow-hidden ">
         <Image
           src={"/favicon.ico"}
           alt={"image of something"}
@@ -45,10 +46,10 @@ const page = ({ params }) => {
           width={600}
           className="absolute bottom-0 left-[1200px] "
         ></Image>
-      </header>
+      </section>
 
       <section className="mx-[0px] lg:mx-[200px]  [&>*]:my-8 mb-[100px]">
-        <h1 className="halfround-right font-bold text-title capitalize  ">
+        <h1 className="halfround-right font-bold text-title capitalize my-10">
           Artist WOOO
         </h1>
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
