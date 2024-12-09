@@ -1,13 +1,14 @@
 import { CiCalendar } from "react-icons/ci";
 import Image from "next/image";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
+import waveImage from "../../assets/wave.svg";
 
 const page = ({ params }) => {
   // const { id } = params;
 
   return (
     <div>
-      <header>
+      <header className="relative w-[100%] overflow-hidden">
         <Image
           src={"/favicon.ico"}
           alt={"image of something"}
@@ -17,10 +18,32 @@ const page = ({ params }) => {
         ></Image>
 
         <Image
-          src={"/wave.png"}
+          src={waveImage}
           alt={"image of something"}
-          height={300}
-          width={300}
+          height={100}
+          width={600}
+          className="absolute bottom-0 left-[-600px] "
+        ></Image>
+        <Image
+          src={waveImage}
+          alt={"image of something"}
+          height={100}
+          width={600}
+          className="absolute bottom-0 left-[0px] "
+        ></Image>
+        <Image
+          src={waveImage}
+          alt={"image of something"}
+          height={100}
+          width={600}
+          className="absolute bottom-0 left-[600px] "
+        ></Image>
+        <Image
+          src={waveImage}
+          alt={"image of something"}
+          height={100}
+          width={600}
+          className="absolute bottom-0 left-[1200px] "
         ></Image>
       </header>
 
