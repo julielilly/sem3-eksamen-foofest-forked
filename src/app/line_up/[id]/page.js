@@ -19,6 +19,13 @@ const page = ({ params }) => {
           className="w-[100%] h-[50px] bg-rose-300 object-contain"
         />
       </header>
+
+      <h1>Artist WOOO</h1>
+
+      <div className="absolute top-1 left-0 font-bold text-text backdrop: border-l-0 text-text bg-background text-foreground w-fit py-1xs pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">
+        <p>scene</p>
+        <h2>Midgard</h2>
+      </div>
     </div>
   );
 };
