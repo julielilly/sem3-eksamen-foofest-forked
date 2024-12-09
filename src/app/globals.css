@@ -51,12 +51,12 @@
   --big-title: clamp(2.5rem, 1.6304rem + 4.3478vw, 5rem);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground: #e5e1d6;
     --background: #1f1a07;
   }
-}
+} */
 
 body {
   color: var(--foreground);
