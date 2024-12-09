@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /***************  colours  */
+  /***************  Colours  ************/
   --background: #e5e1d6;
   --foreground: #1f1a07;
   --blue-light: #1f7985;
@@ -77,41 +77,27 @@ body {
     grid-column: full;
     display: grid;
     grid: auto/subgrid;
+
+    /* > * {
+      grid-column: main; */
+
+    /* + * {
+      padding: 0 var(--space-s);
+    } */
+    /* } */
   }
-  main > *,
-  footer > *,
-  header > * {
+  main > * {
     grid-column: full;
     display: grid;
     grid-template-columns: subgrid;
     height: fit-content;
   }
 
-  header > * > *:not(.col-full),
+  header > *:not(.col-full),
   main > * > *:not(.col-full),
-  footer > * > *:not(.col-full) {
+  footer > *:not(.col-full) {
     grid-column: main;
   }
-
-  /* > * {
-    padding: 0 var(--space-s);
-  }
-
-  header,
-  footer {
-    width: 100%;
-    margin: 0 auto;
-    > * {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-  }
-
-  main {
-    max-width: 1240px;
-    width: 100%;
-    margin: 0 auto;
-  } */
 }
 
 @layer components {
@@ -126,8 +112,6 @@ body {
   .sharp {
     @apply bg-white w-fit px-xs py-3xs cursor-pointer shadow-[6px_5px_0px_1px_var(--blue-light)];
   }
-
-  /* set up pre styling of different texts and so on here */
 }
 
 @layer utilities {
@@ -139,5 +123,13 @@ body {
 
   .col-main {
     grid-column: main;
+  }
+
+  .ticket-clip {
+    clip-path: path(
+      "M0.5 0.5H65.478L65.5042 1.97326C65.7563 16.114 77.2987 27.5 91.5 27.5C105.701 27.5 117.244 16.114 117.496 1.97326L117.522 0.5H312.478L312.504 1.97326C312.756 16.114 324.299 27.5 338.5 27.5C352.701 27.5 364.244 16.114 364.496 1.97326L364.522 0.5H406.5V215.5H364.469L364.496 213.973C364.497 213.892 364.498 213.811 364.499 213.729C364.5 213.653 364.5 213.577 364.5 213.5C364.5 199.141 352.859 187.5 338.5 187.5C324.141 187.5 312.5 199.141 312.5 213.5C312.5 213.658 312.501 213.816 312.504 213.973L312.531 215.5H108.469L108.496 213.973C108.499 213.816 108.5 213.658 108.5 213.5C108.5 199.141 96.8594 187.5 82.5 187.5C68.1406 187.5 56.5 199.141 56.5 213.5C56.5 213.658 56.5014 213.816 56.5042 213.973L56.5314 215.5H0.5V0.5ZM3.5 3.5V212.5H53.5169C54.044 196.947 66.8184 184.5 82.5 184.5C98.1816 184.5 110.956 196.947 111.483 212.5H309.517C310.044 196.947 322.818 184.5 338.5 184.5C354.182 184.5 366.956 196.947 367.483 212.5H403.5V3.5H367.432C366.404 18.5836 353.844 30.5 338.5 30.5C323.156 30.5 310.596 18.5836 309.568 3.5H120.432C119.404 18.5836 106.844 30.5 91.5 30.5C76.156 30.5 63.5955 18.5836 62.5679 3.5H3.5Z"
+    );
+    background-color: var(--foreground);
+    aspect-ratio: 407/216;
   }
 }

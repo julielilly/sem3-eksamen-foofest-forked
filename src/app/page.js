@@ -1,6 +1,7 @@
 import ButtonRounded from "@/components/ButtonRounded";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
 import EXAMPLEFullComp from "@/components/EXAMPLEFullComp";
+import FormChooseTicket from "@/components/FormChooseTicket";
 import FormReceipt from "@/components/FormReceipt";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       </div>
       <EXAMPLEFullComp />
       <FormReceipt />
+      <FormChooseTicket />
     </div>
   );
 }
