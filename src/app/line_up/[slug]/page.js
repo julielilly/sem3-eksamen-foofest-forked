@@ -3,15 +3,20 @@ import Image from "next/image";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
 import waveImage from "../../assets/wave.svg";
 
-const page = ({ params }) => {
-  const { id } = params;
+import { getSingleBand } from "@/lib/api";
+
+const page = async ({ params }) => {
+  const { slug } = params;
+  const band = await getSingleBand(slug);
+
+  console.log(band);
 
   return (
     <div>
-      <h1>{id}</h1>
+      <h1></h1>
       <section className="relative w-[100%] overflow-hidden ">
         <Image
-          src={"/favicon.ico"}
+          src={""}
           alt={"image of something"}
           height={300}
           width={200}
@@ -50,7 +55,7 @@ const page = ({ params }) => {
 
       <section className="mx-[0px] lg:mx-[200px]  [&>*]:my-8 mb-[100px]">
         <h1 className="halfround-right font-bold text-title capitalize my-10">
-          Artist WOOO
+          hello
         </h1>
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="font-bold text-text  bg-background text-foreground  py-1xs pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">

@@ -1,12 +1,12 @@
 import LineUpCardCTA from "@/components/LineUpCardCTA";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
 
-import { getSubs } from "@/lib/api";
+import { getBands } from "@/lib/api";
 
 async function page() {
-  // const lineUp = await getSubs();
+  const bands = await getBands();
 
-  // console.log(lineUp);
+  console.log(bands[22]);
 
   return (
     <div>
@@ -23,13 +23,16 @@ async function page() {
       </section>
 
       <ul className="grid md:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]  place-content-center md:gap-4 gap-10 ">
-        <LineUpCardCTA
-          artistName={"artist WOO"}
-          dayOfPlaying={"wednesday"}
-          scene={"midgard"}
-          scr={""}
-          id={1}
-        ></LineUpCardCTA>
+        {bands.map((band, i) => (
+          <LineUpCardCTA
+            id={i}
+            artistName={band.name}
+            dayOfPlaying={"wednesday"}
+            scene={"midgard"}
+            src={band.logo}
+            slug={band.slug}
+          ></LineUpCardCTA>
+        ))}
       </ul>
     </div>
   );
