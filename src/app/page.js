@@ -1,7 +1,6 @@
 import ButtonRounded from "@/components/ButtonRounded";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
 import EXAMPLEFullComp from "@/components/EXAMPLEFullComp";
-import FormReceipt from "@/components/FormReceipt";
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
         <ButtonSharpEdge theme="black">hej</ButtonSharpEdge>
       </div>
       <EXAMPLEFullComp />
-      <FormReceipt />
     </div>
   );
 }

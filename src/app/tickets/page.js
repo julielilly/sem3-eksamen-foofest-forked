@@ -189,7 +189,6 @@ const Page = () => {
                   <input type="number" value={ticketData.participants[index]?.number || ""} onChange={(e) => handleParticipantChange(index, "number", e.target.value)} />
                 </div>
               ))}
-              {/* <button type="submit">Proceed to Payment</button> */}
             </form>
           )}
 
