@@ -27,8 +27,9 @@ module.exports = {
         "big-title": "var(--big-title)",
       },
       fontFamily: {
-        skranji: ["Skranji", "sans-serif"],
-        "hind-madurai": ["Hind_madurai", "sans-serif"],
+        "germania-one": ["var(--font-germania-one)", "monospace"],
+        "caesar-dressing": ["var(--font-caesar-dressing)", "monospace"],
+        "hind-madurai": ["var(--font-hind-madurai)", "monospace"],
       },
       spacing: {
         "3xs": "var(--space-3xs)",
