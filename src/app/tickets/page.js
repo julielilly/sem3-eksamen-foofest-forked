@@ -127,11 +127,13 @@ const Page = () => {
             {step === 4 && `Payment`}
             {step === 5 && `Confirmation`}
           </h1>
+
+          {/* Show timer */}
           {(step === 3 || step === 4) && <div>{formatTime(timer)}</div>}
         </div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="grid grid-cols-2 ">
         <div>
           {/* Step 1: Ticket selection */}
           {step === 1 && (
@@ -144,9 +146,6 @@ const Page = () => {
               </button>
               <div>
                 Total Tickets: <span>{ticketData.general_tickets + ticketData.vip_tickets}</span>
-                <button className="border" onClick={() => setStep(step + 1)}>
-                  Choose Camping Area
-                </button>
               </div>
             </div>
           )}
@@ -167,16 +166,17 @@ const Page = () => {
                 <p>2-person tents: {ticketData.two_person_tents}</p>
                 <p>3-person tents: {ticketData.three_person_tents}</p>
               </div>
-              <button onClick={handleReservation}>Reserve Tickets</button>
             </div>
           )}
 
           {/* Step 3: Participant details */}
           {step === 3 && (
             <form
+              id="details_form"
               onSubmit={(e) => {
                 e.preventDefault();
                 setStep(step + 1);
+                console.log(e);
               }}>
               {Array.from({ length: numberOfParticipants }, (_, index) => (
                 <div key={index}>
@@ -189,22 +189,18 @@ const Page = () => {
                   <input type="number" value={ticketData.participants[index]?.number || ""} onChange={(e) => handleParticipantChange(index, "number", e.target.value)} />
                 </div>
               ))}
-              <button type="submit">Proceed to Payment</button>
+              {/* <button type="submit">Proceed to Payment</button> */}
             </form>
           )}
 
           {/* Step 4: Payment submission */}
-          {step === 4 && (
-            <form onSubmit={handleSubmitPayment}>
-              <button type="submit">Complete Payment</button>
-            </form>
-          )}
+          {step === 4 && <form id="payment_form" onSubmit={handleSubmitPayment}></form>}
 
           {/* Step 5: Order confirmation */}
           {step === 5 && <div>Order confirmed!</div>}
         </div>
 
-        {(step === 1 || step === 2 || step === 3 || step === 4) && <FormReceipt setStep={setStep} step={step} />}
+        {(step === 1 || step === 2 || step === 3 || step === 4) && <FormReceipt setStep={setStep} step={step} handleReservation={handleReservation} ticketData={ticketData} setTicketData={setTicketData} />}
       </div>
     </div>
   );
