@@ -1,26 +1,40 @@
 import { CiCalendar } from "react-icons/ci";
+import { FaArrowLeft } from "react-icons/fa";
 import Image from "next/image";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
 import waveImage from "../../assets/wave.svg";
+import Link from "next/link";
 
 import { getSingleBand } from "@/lib/api";
+import LineUpHeader from "@/components/LineUpHeader";
 
 const page = async ({ params }) => {
   const { slug } = params;
+
   const band = await getSingleBand(slug);
 
   console.log(band);
 
   return (
     <div>
-      <h1></h1>
-      <section className="relative w-[100%] overflow-hidden ">
+      <section className="relative w-[100%] overflow-hidden">
+        <Link
+          href={"/line_up"}
+          className="grid place-content-center bg-background border-2 border-foreground rounded-full w-[40px] h-[40px] hover:w-[50px] hover:h-[50px] transition-all absolute top-1/2 transform -translate-y-1/2 left-5  "
+        >
+          <FaArrowLeft />
+        </Link>
+
+        <h2 className="absolute top-10 font-bold text-title  bg-background text-foreground  py-1xs pr-s pl-l rounded-r-full border-l-0  border-2 border-foreground text-nowrap">
+          {band.genre}
+        </h2>
+
         <Image
-          src={""}
-          alt={"image of something"}
+          src={band.logo.startsWith("https:") ? band.logo : `/${band.logo}`}
+          alt={`image of ${band.name}`}
           height={300}
-          width={200}
-          className="w-[100%] h-[500px] object-cover object-top"
+          width={600}
+          className="w-[100%] h-[500px] object-cover object-center"
         ></Image>
 
         <Image
@@ -55,34 +69,45 @@ const page = async ({ params }) => {
 
       <section className="mx-[0px] lg:mx-[200px]  [&>*]:my-8 mb-[100px]">
         <h1 className="halfround-right font-bold text-title capitalize my-10">
-          hello
+          {band.name}
         </h1>
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="font-bold text-text  bg-background text-foreground  py-1xs pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">
-            <p>Scene</p>
-            <h2>Midgard</h2>
-          </div>
-          <div className="flex justify-between items-center bg-background text-foreground  py-1xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap">
-            <div className="font-bold text-text">
-              <p>Scene</p>
-              <h2>Midgard</h2>
-            </div>
+
+        <section className="flex flex-wrap gap-4">
+          <LineUpHeader
+            edge={"right"}
+            title={"Scene"}
+            header={"midgard"}
+          ></LineUpHeader>
+
+          <LineUpHeader
+            edge={"left"}
+            title={"Day of playing"}
+            header={"Wednesday"}
+          >
             <CiCalendar className="text-title" />
-          </div>
+          </LineUpHeader>
         </section>
-        <span>PICTURE BY "some name"</span>
-        <p className="text-text font-bold">
-          artist WOOO består af medlemerne [members] . . .
-        </p>
-        <p>
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-          dolorem ipsum quia dolor 
-        </p>
+
+        <span className="text-[--blue-light]">
+          {band.logoCredits ? `PICTURE BY: ${band.logoCredits}` : " "}
+        </span>
+
+        <div className="max-w-[65ch]">
+          <p className="text-text font-bold flex gap-2">
+            {band.name} is a band with the memebers:
+          </p>
+          {band.members.map((memeber, i) => (
+            <p
+              key={i}
+              className="after:content-[','] last:after:content-['.'] "
+            >
+              {memeber}
+            </p>
+          ))}
+        </div>
+
+        <p>{band.bio}</p>
+
         <div className="mx-[auto] w-fit">
           <ButtonSharpEdge theme={"black"}>Buy Tickets</ButtonSharpEdge>
         </div>
