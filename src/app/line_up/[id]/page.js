@@ -54,12 +54,12 @@ const page = ({ params }) => {
         </h1>
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="font-bold text-text  bg-background text-foreground  py-1xs pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">
-            <p>scene</p>
+            <p>Scene</p>
             <h2>Midgard</h2>
           </div>
           <div className="flex justify-between items-center bg-background text-foreground  py-1xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap">
             <div className="font-bold text-text">
-              <p>scene</p>
+              <p>Scene</p>
               <h2>Midgard</h2>
             </div>
             <CiCalendar className="text-title" />
@@ -79,7 +79,7 @@ const page = ({ params }) => {
           dolorem ipsum quia dolor 
         </p>
         <div className="mx-[auto] w-fit">
-          <ButtonSharpEdge></ButtonSharpEdge>
+          <ButtonSharpEdge theme={"black"}>Buy Tickets</ButtonSharpEdge>
         </div>
       </section>
     </div>
