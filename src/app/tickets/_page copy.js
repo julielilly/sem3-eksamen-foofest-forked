@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { getAvailableSpots, reserveSpot, fullfullReservation } from "@/lib/api";
 import FormReceipt from "@/components/FormReceipt";
-import FormTicketFlow from "@/components/FormTicketFlow";
 
 const Page = () => {
   const [step, setStep] = useState(1);
@@ -119,7 +118,7 @@ const Page = () => {
 
   // Format time for countdown display
   const formatTime = (time) => {
-    const minutes = Math.floor(time / 600);
+    const minutes = Math.floor(time / 60000);
     const seconds = Math.floor((time % 60000) / 1000);
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
@@ -141,18 +140,136 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="flex justify-between gap-xs ">
-        <FormTicketFlow
-          step={step}
-          setStep={setStep}
-          ticketData={ticketData}
-          setTicketData={setTicketData}
-          campingAreas={campingAreas}
-          numberOfParticipants={numberOfParticipants}
-          handleReservation={handleReservation}
-          handleSubmitPayment={handleSubmitPayment}
-          handleParticipantChange={handleParticipantChange}
-        />
+      <div className="grid grid-cols-2 ">
+        <div>
+          {/* Step 1: Ticket selection */}
+          {step === 1 && (
+            <div>
+              <button
+                className="border"
+                onClick={() =>
+                  setTicketData({
+                    ...ticketData,
+                    general_tickets: ticketData.general_tickets + 1,
+                  })
+                }
+              >
+                Buy General Ticket
+              </button>
+              <button
+                className="border"
+                onClick={() =>
+                  setTicketData({
+                    ...ticketData,
+                    vip_tickets: ticketData.vip_tickets + 1,
+                  })
+                }
+              >
+                Buy VIP Ticket
+              </button>
+              <div>
+                Total Tickets:{" "}
+                <span>
+                  {ticketData.general_tickets + ticketData.vip_tickets}
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Step 2: Camping area selection */}
+          {step === 2 && (
+            <div>
+              {campingAreas.map((area) => (
+                <button
+                  key={area.area}
+                  onClick={() =>
+                    setTicketData({ ...ticketData, camping_area: area.area })
+                  }
+                >
+                  {area.area}
+                  <div>Available spots: {area.available}</div>
+                </button>
+              ))}
+              <div>Selected area: {ticketData.camping_area}</div>
+              <button
+                onClick={() =>
+                  setTicketData({
+                    ...ticketData,
+                    two_person_tents: ticketData.two_person_tents + 1,
+                  })
+                }
+              >
+                Add 2-person Tent
+              </button>
+              <button
+                onClick={() =>
+                  setTicketData({
+                    ...ticketData,
+                    three_person_tents: ticketData.three_person_tents + 1,
+                  })
+                }
+              >
+                Add 3-person Tent
+              </button>
+              <div>
+                <p>2-person tents: {ticketData.two_person_tents}</p>
+                <p>3-person tents: {ticketData.three_person_tents}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Step 3: Participant details */}
+          {step === 3 && (
+            <form
+              id="details_form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setStep(step + 1);
+                console.log(e);
+              }}
+            >
+              {Array.from({ length: numberOfParticipants }, (_, index) => (
+                <div key={index}>
+                  <h3>
+                    {index === 0 ? "Buyer Details" : `Guest ${index} Details`}
+                  </h3>
+                  <label>Name:</label>
+                  <input
+                    value={ticketData.participants[index]?.name || ""}
+                    onChange={(e) =>
+                      handleParticipantChange(index, "name", e.target.value)
+                    }
+                  />
+                  <label>Email:</label>
+                  <input
+                    type="email"
+                    value={ticketData.participants[index]?.email || ""}
+                    onChange={(e) =>
+                      handleParticipantChange(index, "email", e.target.value)
+                    }
+                  />
+                  <label>Phone Number:</label>
+                  <input
+                    type="number"
+                    value={ticketData.participants[index]?.number || ""}
+                    onChange={(e) =>
+                      handleParticipantChange(index, "number", e.target.value)
+                    }
+                  />
+                </div>
+              ))}
+            </form>
+          )}
+
+          {/* Step 4: Payment submission */}
+          {step === 4 && (
+            <form id="payment_form" onSubmit={handleSubmitPayment}></form>
+          )}
+
+          {/* Step 5: Order confirmation */}
+          {step === 5 && <div>Order confirmed!</div>}
+        </div>
+
         {(step === 1 || step === 2 || step === 3 || step === 4) && (
           <FormReceipt
             setStep={setStep}
