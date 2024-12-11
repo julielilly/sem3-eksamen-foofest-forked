@@ -114,6 +114,36 @@ body {
   } */
 }
 
+@keyframes sail {
+  0% {
+    transform: rotate(10deg);
+  }
+
+  40% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes sailTravle {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(150%);
+  }
+}
+
 @layer components {
   .halfround-left {
     @apply bg-foreground  text-background py-2xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap;

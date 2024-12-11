@@ -109,7 +109,9 @@ const page = async ({ params }) => {
         <p>{band.bio}</p>
 
         <div className="mx-[auto] w-fit">
-          <ButtonSharpEdge theme={"black"}>Buy Tickets</ButtonSharpEdge>
+          <ButtonSharpEdge theme={"black"}>
+            <Link href={`/tickets`}>Buy tickets now!</Link>
+          </ButtonSharpEdge>
         </div>
       </section>
     </div>

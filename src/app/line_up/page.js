@@ -1,5 +1,7 @@
 import LineUpCardCTA from "@/components/LineUpCardCTA";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
+import Image from "next/image";
+import BoatImg from "../assets/boat.svg";
 
 import { getBands } from "@/lib/api";
 
@@ -9,7 +11,7 @@ async function page() {
   console.log(bands[22]);
 
   return (
-    <div>
+    <div className="overflow-hidden relative">
       <h1 className="halfround-right text-title my-10"> Line up</h1>
 
       <section className="md:flex md:justify-around grid grid-cols-2 last:col-span-2 place-items-center gap-5 bg-[--blue-light] py-10 my-10 px-5">
@@ -34,6 +36,15 @@ async function page() {
           ></LineUpCardCTA>
         ))}
       </ul>
+      <div className=" transform transition animate-[sailTravle_15s_linear_infinite] mb-5">
+        <Image
+          src={BoatImg}
+          alt={"image of something"}
+          height={50}
+          width={50}
+          className="w-fit origin-center transition animate-[sail_5s_linear_infinite] "
+        ></Image>
+      </div>
     </div>
   );
 }
