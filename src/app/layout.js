@@ -28,10 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${germania_one.variable} ${hind_madurai.variable} ${caesar_dressing.variable}`}
-    >
+    <html lang="en" className={`${germania_one.variable} ${hind_madurai.variable} ${caesar_dressing.variable}`}>
       <body>
         <Header />
         <main>{children}</main>

@@ -114,34 +114,9 @@ body {
   } */
 }
 
-@keyframes sail {
-  0% {
-    transform: rotate(10deg);
-  }
-
-  40% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(-10deg);
-  }
-  60% {
-    transform: rotate(-5deg);
-  }
-
-  100% {
-    transform: rotate(10deg);
-  }
-}
-
-@keyframes sailTravle {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(150%);
-  }
+/* Styles applied only when the 'homepage' class is NOT present */
+main > div:not(.homepage) {
+  margin-top: 3.35rem;
 }
 
 @layer components {
@@ -157,7 +132,9 @@ body {
     @apply bg-white w-fit px-xs py-3xs cursor-pointer shadow-[6px_5px_0px_1px_var(--blue-light)];
   }
 
-  /* set up pre styling of different texts and so on here */
+  .menu-labels {
+    @apply border-2 border-white border-r-0 hover:bg-lightblue active:bg-red;
+  }
 }
 
 @layer utilities {
