@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id }) => {
+const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -11,14 +11,14 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id }) => {
   }, []);
 
   return (
-    <Link href={`/line_up/${id}`}>
-      <li className="flex flex-col gap-3 relative w-fit border-2 border-foreground p-5">
+    <Link key={id} href={`/line_up/${slug}`}>
+      <li className="flex flex-col min-w-10 max-w-[300px] gap-3 relative w-fit border-2 border-foreground p-5">
         <span className="absolute top-1 left-0 font-bold text-text backdrop: border-l-0 text-text bg-background text-foreground w-fit py-1xs pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">
           {scene}
         </span>
         <Image
-          src={"/favicon.ico"}
-          alt={"image of something"}
+          src={src.startsWith("https:") ? src : `/${src}`}
+          alt={`image of the band ${artistName}`}
           height={200}
           width={300}
           className="border-2 border-foreground"
@@ -30,8 +30,8 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id }) => {
           <h6
             className={
               isMobile
-                ? "font-bold text-step-1 capitalize"
-                : "halfround-right font-bold text-step-1 capitalize"
+                ? "font-bold text-text capitalize "
+                : "halfround-right font-bold text-text capitalize"
             }
           >
             {artistName}
