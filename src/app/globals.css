@@ -132,7 +132,9 @@ main > div:not(.homepage) {
     @apply bg-white w-fit px-xs py-3xs cursor-pointer shadow-[6px_5px_0px_1px_var(--blue-light)];
   }
 
-  /* set up pre styling of different texts and so on here */
+  .menu-labels {
+    @apply border-2 border-white border-r-0 hover:bg-lightblue active:bg-red;
+  }
 }
 
 @layer utilities {
