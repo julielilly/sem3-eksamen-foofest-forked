@@ -1,14 +1,6 @@
-const FormChooseTicket = () => {
-  // Will try to use the method from this article to create a clip-path of the ticket-pattern I created in Figma
-  // link: https://www.sarasoueidan.com/blog/css-svg-clipping/
-  // converting svg to clip path here: https://yoksel.github.io/relative-clip-path/
+const FormTicketBorder = ({ children }) => {
   return (
     <div>
-      <h3 className="text-step-2 font-germania-one">Title of item</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci dicta
-        pariatur accusantium harum modi minima?
-      </p>
       <div className="_ticket_borders_ grid place-items-center min-w-[90%]">
         <div className="row-start-1 col-span-full">
           <svg
@@ -40,8 +32,9 @@ const FormChooseTicket = () => {
           </svg>
         </div>
       </div>
+      {children}
     </div>
   );
 };
 
-export default FormChooseTicket;
+export default FormTicketBorder;
