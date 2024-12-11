@@ -114,6 +114,11 @@ body {
   } */
 }
 
+/* Styles applied only when the 'homepage' class is NOT present */
+main > div:not(.homepage) {
+  margin-top: 3.35rem;
+}
+
 @layer components {
   .halfround-left {
     @apply bg-foreground  text-background py-2xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap;
