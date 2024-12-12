@@ -5,6 +5,7 @@ import X from "@/app/assets/icons/x.svg";
 import Instagram from "@/app/assets/icons/instagram.svg";
 import Circle from "@/app/assets/circle.svg";
 import Link from "next/link";
+import FooterForm from "./FooterForm";
 
 const Footer = () => {
   return (
@@ -31,8 +32,8 @@ const Footer = () => {
 
           {/* About us */}
           <div className="relative ">
-            <Image src={Circle} alt="circle" width={300} height={300} className="absolute top-[40%] left-1/4 transform -translate-x-1/2 -translate-y-1/2  object-cover mix-blend-difference hidden sm:block" />
-            <Image src={Circle} alt="circle" width={130} height={130} className="absolute -bottom-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2  object-cover mix-blend-difference hidden sm:block" />
+            <Image src={Circle} alt="circle" width={300} height={300} className="absolute top-[35%] left-1/4 transform -translate-x-1/2 -translate-y-1/2  object-cover mix-blend-difference hidden sm:block" />
+            <Image src={Circle} alt="circle" width={130} height={130} className="absolute top-[80%] lg:top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2  object-cover mix-blend-difference hidden sm:block" />
 
             <div className="sm:pl-6 relative z-10 sm:text-foreground">
               <h3 className="text-step-3 font-germania-one pb-s">About us</h3>
@@ -45,9 +46,9 @@ const Footer = () => {
           </div>
 
           {/* stay updated */}
-          <div className="-order-1 sm:col-span-2 lg:col-span-1 lg:order-1">
+          <div className="-order-1 sm:col-span-2 lg:col-span-1 lg:order-1 mb-xs">
             <h3 className="text-step-3 font-germania-one pb-s">Stay updated</h3>
-            <form></form>
+            <FooterForm />
           </div>
         </div>
 
