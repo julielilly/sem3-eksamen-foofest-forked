@@ -215,7 +215,7 @@ const Page = () => {
                 <div key={index}>
                   <h3>{index === 0 ? "Buyer Details" : `Guest ${index} Details`}</h3>
                   <label>Name:</label>
-                  <input type="text" value={ticketData.participants[index]?.name || ""} onChange={(e) => handleParticipantChange(index, "name", e.target.value)} />
+                  <input value={ticketData.participants[index]?.name || ""} onChange={(e) => handleParticipantChange(index, "name", e.target.value)} />
                   <label>Email:</label>
                   <input type="email" value={ticketData.participants[index]?.email || ""} onChange={(e) => handleParticipantChange(index, "email", e.target.value)} />
                   <label>Phone Number:</label>
