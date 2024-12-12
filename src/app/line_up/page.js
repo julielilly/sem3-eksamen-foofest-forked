@@ -12,7 +12,7 @@ async function page() {
 
   return (
     <div className="overflow-hidden relative">
-      <h1 className="halfround-right text-title my-10"> Line up</h1>
+      <h1 className="halfround-right text-title my-10 md:w-1/2"> Line up</h1>
 
       <section className="md:flex md:justify-around grid grid-cols-2 last:col-span-2 place-items-center gap-5 bg-[--blue-light] py-10 my-10 px-5">
         <ButtonSharpEdge theme={"black"}>Monday</ButtonSharpEdge>
