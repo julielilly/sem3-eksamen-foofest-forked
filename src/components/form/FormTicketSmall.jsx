@@ -25,26 +25,26 @@ const FormTicketSmall = ({ quantity, price, theme = "ticket" }) => {
       </svg>
       {theme === "confirmed" ? (
         <div className="grid place-items-center py-m relative w-[80dvw] mob:w-auto">
-          <p className=" text-normal font-hind-madurai">
-            Admits
-            <em className=" text-step-2 font-germania-one not-italic">
+          <div className="flex place-items-center text-normal font-hind-madurai">
+            <p>Admits</p>
+            <em className=" mx-1 text-step-2 font-germania-one not-italic">
               {(quantity = 2)}
             </em>
-            {quantity > 1 ? " people" : " person"}
-          </p>
+            <p> {quantity > 1 ? " people" : " person"}</p>
+          </div>
         </div>
       ) : theme === "ticket" ? (
         <div
           className="grid place-items-center py-m relative w-[80dvw] mob:w-auto
     "
         >
-          <p className=" text-normal font-hind-madurai">
-            Admits
-            <em className=" text-step-2 font-germania-one not-italic">
-              {quantity}
+          <div className="flex place-items-center text-normal font-hind-madurai">
+            <p>Admits</p>
+            <em className=" mx-1 text-step-2 font-germania-one not-italic">
+              {(quantity = 2)}
             </em>
-            {quantity > 1 ? " people" : " person"}
-          </p>
+            <p> {quantity > 1 ? " people" : " person"}</p>
+          </div>
 
           <button className=" bg-black hover:bg-transparent hover:text-black active:bg-lightblue active:text-white border border-black  mob:border-l-0 mob:border-r-0 text-white text-normal py-xs  px-l rounded-full mob:rounded-none mob:px-0 mob:ticket-buy-button text-nowrap  relative -left-[1.2px]  ">
             BUY TICKET
