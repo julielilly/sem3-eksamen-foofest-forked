@@ -42,28 +42,28 @@ const page = async ({ params }) => {
           alt={"image of something"}
           height={100}
           width={600}
-          className="absolute bottom-0 left-[-600px] "
+          className="absolute bottom-0 left-[-600px]  transform transition animate-[wave_10s_infinite]"
         ></Image>
         <Image
           src={waveImage}
           alt={"image of something"}
           height={100}
           width={600}
-          className="absolute bottom-0 left-[0px] "
+          className="absolute bottom-0 left-[0px] transition-all animate-[wave_10s_infinite]"
         ></Image>
         <Image
           src={waveImage}
           alt={"image of something"}
           height={100}
           width={600}
-          className="absolute bottom-0 left-[600px] "
+          className="absolute bottom-0 left-[600px] transition-all animate-[wave_10s_infinite]"
         ></Image>
         <Image
           src={waveImage}
           alt={"image of something"}
           height={100}
           width={600}
-          className="absolute bottom-0 left-[1200px] "
+          className="absolute bottom-0 left-[1200px]  transition-all animate-[wave_10s_infinite]"
         ></Image>
       </section>
 

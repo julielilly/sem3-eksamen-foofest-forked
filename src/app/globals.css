@@ -65,6 +65,21 @@
     transform: translateX(100%);
   }
 }
+
+@keyframes wave {
+  0% {
+    transform: translateX(8%);
+  }
+
+  50% {
+    transform: translateX(-8%);
+  }
+
+  100% {
+    transform: translateX(8%);
+  }
+}
+
 @keyframes sail {
   0% {
     transform: rotate(10deg);
