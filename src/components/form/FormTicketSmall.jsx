@@ -1,4 +1,4 @@
-const FormTicketSmall = () => {
+const FormTicketSmall = ({ quantity, price }) => {
   return (
     <div
       className="_small_ticket_ grid [&>*]:col-start-1
@@ -27,12 +27,12 @@ const FormTicketSmall = () => {
         className="grid place-items-center py-m relative w-[80dvw] mob:w-auto
     "
       >
-        <p className=" text-step-2 font-germania-one">1</p>
+        <p className=" text-step-2 font-germania-one">{quantity}</p>
         <button className=" bg-black hover:bg-transparent hover:text-black active:bg-lightblue active:text-white border border-black  mob:border-l-0 mob:border-r-0 text-white text-normal py-xs  px-l rounded-full mob:rounded-none mob:px-0 mob:ticket-buy-button text-nowrap  relative -left-[1.2px]  ">
           BUY TICKET
         </button>
         <p className="text-normal p-2xs border-t-[1px] text-lightblue font-bold  ">
-          200 kr
+          {price} kr
           <em className=" text-black font-light"> + fees </em>
         </p>
       </div>
