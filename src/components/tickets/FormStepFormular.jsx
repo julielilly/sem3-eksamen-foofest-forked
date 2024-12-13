@@ -1,3 +1,6 @@
+import { useState } from "react";
+import FormPaymentCard from "@/components/form/FormPaymentCard";
+
 const FormStepFormular = ({
   step,
   setSet,
@@ -9,13 +12,25 @@ const FormStepFormular = ({
   handleParticipantChange,
   numberOfParticipants,
 }) => {
+  const [expiry, setExpiry] = useState("");
+
+  const yymmDateInput = (e) => {
+    const value = e.target.value;
+    const yymmDate = value
+      .replace(/[^0-9/]/g, "") // this allows only numbers and "/"
+      .replace(/(\d{2})(\d{2})/, "$1/$2"); // formats the input so it looks like mm/yy. if user writes "1234", this will split it into "12/34".
+
+    setExpiry(yymmDate);
+  };
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
       }}
-      className="border-2 border-foreground bg-white  py-s mx-auto my-l"
+      className="border-2 border-foreground bg-white  py-m mx-auto my-l"
     >
+      {/* step 2  */}
       <fieldset className="_step_2_select_camping_">
         <h2 className="before:w-1/2">Select camping area</h2>
 
@@ -126,38 +141,110 @@ const FormStepFormular = ({
         </div>
       </fieldset>
 
-      <fieldset className="px-m">
+      {/* step 3 */}
+      <fieldset className="_step_3_ px-m">
         <h2 className="font-germania-one text-step-2 text-center before:w-1/2">
           Personal information
         </h2>
 
-        <div className="grid py-s odd:gap-2">
-          <legend className="text-step-1 text-center"></legend>
-          <label htmlFor={`full-name-`}>Full name:</label>
-          <input
-            id={`full-name-`}
-            type="text"
-            className="halfround-right bg-white text-foreground px-2xs"
-          />
+        <div className="_personal_information_ grid py-s ">
+          <label htmlFor={`full-name`}>Full name:</label>
+          <input id={`full-name`} type="text" />
 
-          <label htmlFor={`email-`}>Email:</label>
-          <input
-            id={`email-`}
-            type="email"
-            className="halfround-right bg-white text-foreground px-2xs"
-          />
-          <label id={`number-`}>Phone Number:</label>
-          <input
-            id={`number-`}
-            type="tel"
-            className="halfround-right bg-white text-foreground px-2xs"
-          />
+          <label htmlFor={`email`}>Email:</label>
+          <input id={`email`} type="email" />
+          <label id={`number`}>Phone number:</label>
+          <input id={`number`} type="tel" />
         </div>
       </fieldset>
 
-      <fieldset>Step 4</fieldset>
+      {/* step 4  */}
+      <fieldset className="_step_4_ px-m">
+        <h2 className="font-germania-one text-step-2 text-center before:w-1/2">
+          Payment details
+        </h2>
 
-      <fieldset>Step 5</fieldset>
+        <section className="underline-border pt-2xs grid grid-cols-[1fr,1fr] [&>*]:text-nowrap">
+          <h3 className="col-span-full pb-0">PAYMENT OPTION</h3>
+
+          <div>
+            <input
+              type="radio"
+              id="payment-mobilepay"
+              name="payment"
+              value="mobilepay"
+              className="_payment_option_"
+            />
+            <label htmlFor="payment-mobilepay" className="_payment_option_">
+              Mobilepay
+            </label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              id="payment-card"
+              name="payment"
+              value="card"
+              className="_payment_option_"
+              defaultChecked
+            />
+            <label htmlFor="payment-card" className="_payment_option_">
+              Card payment
+            </label>
+          </div>
+        </section>
+
+        <div className="_payment_layout_ ">
+          {/* mobilepay payment details */}
+          <div id="mobilepay-details ">
+            <label htmlFor="mobilepay-number">MobilePay Number:</label>
+            <input type="tel" id="mobilepay-number" name="mobilepay-number" />
+          </div>
+
+          {/* card payment details */}
+          <div id="card-payment-details grid grid-cols-[1fr]">
+            <FormPaymentCard />
+
+            <label htmlFor="card-number">Card Number:</label>
+            <input
+              type="text"
+              inputMode="numeric"
+              id="card-number"
+              name="card-number"
+            />
+
+            <label htmlFor="card-name">Cardholder Name:</label>
+            <input type="text" id="card-name" name="card-name" />
+
+            <section className="grid grid-cols-2 ">
+              <label htmlFor="card-expiry" className="row-start-1 ">
+                Expiry Date:
+              </label>
+              <input
+                type="text"
+                inputMode="numeric"
+                id="card-expiry"
+                name="card-expiry"
+                maxLength="5"
+                className="_uniform_input_ border-2 border-black border-r-0 bg-transparent row-start-2 px-xs"
+                onInput={yymmDateInput}
+                value={expiry}
+                placeholder="MM/YY"
+              />
+
+              <label htmlFor="card-cvc">Security code:</label>
+              <input
+                type="text"
+                inputMode="numeric"
+                id="card-cvc"
+                name="card-cvc"
+                maxLength="3"
+              />
+            </section>
+          </div>
+        </div>
+      </fieldset>
     </form>
   );
 };

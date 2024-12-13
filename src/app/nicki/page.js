@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getAvailableSpots, reserveSpot, fullfullReservation } from "@/lib/api";
 import FormReceipt from "@/components/tickets/FormReceipt";
 
-import FormStepFormular from "@/components/form/FormStepFormular";
+import FormStepFormular from "@/components/tickets/FormStepFormular";
 import FormStepOne from "@/components/tickets/FormStepOne";
 
 const Page = () => {

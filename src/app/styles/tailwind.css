@@ -12,7 +12,24 @@
   }
 
   fieldset h3 {
-    @apply text-step-1 py-xs;
+    @apply text-step-1 py-xs text-center;
+  }
+
+  fieldset input:not(._payment_option_):not(._uniform_input_) {
+    @apply halfround-right bg-white text-foreground px-2xs w-full;
+  }
+  label {
+    @apply pt-s tracking-wide;
+  }
+
+  ._step_3_,
+  ._step_4_ {
+    label:not(._payment_option_) {
+      @apply uppercase block;
+    }
+  }
+  ._step_4_ div {
+    @apply my-s;
   }
 }
 
@@ -61,6 +78,10 @@
   }
   .ticket-buy-button {
     width: clamp(6.125rem, 4.3207rem + 9.0217vw, 11.3125rem);
+  }
+
+  .card-width {
+    width: clamp(19.5rem, 16.8043rem + 13.4783vw, 27.25rem);
   }
 }
 
