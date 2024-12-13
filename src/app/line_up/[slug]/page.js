@@ -17,7 +17,7 @@ const page = async ({ params }) => {
 
   return (
     <div>
-      <section className="relative w-[100%] overflow-hidden">
+      <section className="relative w-[100%] overflow-hidden col-full">
         <Link
           href={"/line_up"}
           className="grid place-content-center bg-background border-2 border-foreground rounded-full w-[40px] h-[40px] hover:w-[50px] hover:h-[50px] transition-all absolute top-1/2 transform -translate-y-1/2 left-5  "
@@ -25,7 +25,7 @@ const page = async ({ params }) => {
           <FaArrowLeft />
         </Link>
 
-        <h2 className="absolute top-10 font-bold text-title  bg-background text-foreground  py-1xs pr-s pl-l rounded-r-full border-l-0  border-2 border-foreground text-nowrap">
+        <h2 className="absolute top-20 font-bold text-title  bg-background text-foreground  py-1xs pr-s pl-l rounded-r-full border-l-0  border-2 border-foreground text-nowrap">
           {band.genre}
         </h2>
 
@@ -33,8 +33,8 @@ const page = async ({ params }) => {
           src={band.logo.startsWith("https:") ? band.logo : `/${band.logo}`}
           alt={`image of ${band.name}`}
           height={300}
-          width={600}
-          className="w-[100%] h-[500px] object-cover object-center"
+          width={500}
+          className="w-[100%]  object-cover object-center row-start-1 col-full h-[90svh] min-h-[500px]"
         ></Image>
 
         <Image
