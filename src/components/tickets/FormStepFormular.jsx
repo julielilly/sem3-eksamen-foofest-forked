@@ -1,27 +1,17 @@
-import { useState } from "react";
+import React from "react";
+import { PaymentCardInput } from "@/stores/PaymentCardInput";
 import FormPaymentCard from "@/components/form/FormPaymentCard";
 
-const FormStepFormular = ({
-  step,
-  setSet,
-  ticketData,
-  setTicketData,
-  campingAreas,
-  handleReservation,
-  handleSubmitPayment,
-  handleParticipantChange,
-  numberOfParticipants,
-}) => {
-  const [expiry, setExpiry] = useState("");
-
-  const yymmDateInput = (e) => {
-    const value = e.target.value;
-    const yymmDate = value
-      .replace(/[^0-9/]/g, "") // this allows only numbers and "/"
-      .replace(/(\d{2})(\d{2})/, "$1/$2"); // formats the input so it looks like mm/yy. if user writes "1234", this will split it into "12/34".
-
-    setExpiry(yymmDate);
-  };
+const FormStepFormular = ({ ticketData, setTicketData, campingAreas }) => {
+  const {
+    // keep this, this is for the FormPaymentCard component
+    cardNumber,
+    cardName,
+    expiryDate,
+    setCardNumber,
+    setCardName,
+    setExpiryDate,
+  } = PaymentCardInput();
 
   return (
     <form
@@ -212,10 +202,19 @@ const FormStepFormular = ({
               inputMode="numeric"
               id="card-number"
               name="card-number"
+              value={cardNumber}
+              maxLength={19}
+              onChange={(e) => setCardNumber(e.target.value)}
             />
 
             <label htmlFor="card-name">Cardholder Name:</label>
-            <input type="text" id="card-name" name="card-name" />
+            <input
+              type="text"
+              id="card-name"
+              name="card-name"
+              value={cardName}
+              onChange={(e) => setCardName(e.target.value)}
+            />
 
             <section className="grid grid-cols-2 ">
               <label htmlFor="card-expiry" className="row-start-1 ">
@@ -226,10 +225,10 @@ const FormStepFormular = ({
                 inputMode="numeric"
                 id="card-expiry"
                 name="card-expiry"
-                maxLength="5"
+                maxLength={5}
                 className="_uniform_input_ border-2 border-black border-r-0 bg-transparent row-start-2 px-xs"
-                onInput={yymmDateInput}
-                value={expiry}
+                onChange={(e) => setExpiryDate(e.target.value)}
+                value={expiryDate}
                 placeholder="MM/YY"
               />
 
@@ -240,6 +239,7 @@ const FormStepFormular = ({
                 id="card-cvc"
                 name="card-cvc"
                 maxLength="3"
+                placeholder="***"
               />
             </section>
           </div>
