@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./styles/styles.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { Hind_Madurai, Germania_One, Caesar_Dressing } from "next/font/google";

@@ -1,9 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  /***************  colours  */
+  /***************  Colours  */
   --background: #e5e1d6;
   --foreground: #1f1a07;
   --blue-light: #1f7985;
@@ -59,46 +55,6 @@
     --background: #1f1a07;
   }
 } */
-@keyframes sailTravle {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes wave {
-  0% {
-    transform: translateX(8%);
-  }
-
-  50% {
-    transform: translateX(-8%);
-  }
-
-  100% {
-    transform: translateX(8%);
-  }
-}
-
-@keyframes sail {
-  0% {
-    transform: rotate(10deg);
-  }
-  20% {
-    transform: rotate(5deg);
-  }
-  50% {
-    transform: rotate(-10deg);
-  }
-  80% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(10deg);
-  }
-}
 
 body {
   --full: 1fr;
@@ -134,89 +90,9 @@ body {
   footer > * > *:not(.col-full) {
     grid-column: main;
   }
-
-  /* > * {
-    padding: 0 var(--space-s);
-  }
-
-  header,
-  footer {
-    width: 100%;
-    margin: 0 auto;
-    > * {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-  }
-
-  main {
-    max-width: 1240px;
-    width: 100%;
-    margin: 0 auto;
-  } */
 }
 
 /* Styles applied only when the 'homepage' class is NOT present */
 main > div:not(.homepage) {
   margin-top: 3.35rem;
-}
-
-@layer components {
-  .halfround-left {
-    @apply bg-foreground  text-background py-2xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap;
-  }
-
-  .halfround-right {
-    @apply bg-foreground  text-background py-2xs pl-s pr-l rounded-r-full  border-2 border-foreground text-nowrap text-normal;
-  }
-
-  .sharp {
-    @apply bg-white w-fit px-xs py-3xs cursor-pointer shadow-[6px_5px_0px_1px_var(--blue-light)];
-  }
-
-  .menu-labels {
-    @apply border-2 border-white border-r-0 hover:bg-lightblue active:bg-red;
-  }
-
-  .ticket-width {
-    height: clamp(10.5625rem, 7.3234rem + 16.1957vw, 19.875rem);
-  }
-
-  .ticket-big-rotate {
-    height: clamp(17.5rem, 12.1429rem + 26.7857vw, 25rem);
-  }
-  .ticket-big-text {
-    width: clamp(23rem, 11.6102rem + 23.7288vw, 30rem);
-  }
-
-  .ticket-big-text-rotate {
-    width: clamp(8.75rem, 7.3214rem + 7.1429vw, 10.75rem);
-  }
-
-  .ticket-big-text-rotate-mobile {
-    width: clamp(12.5rem, 9.0658rem + 18.9474vw, 14.75rem);
-  }
-
-  .ticket-small {
-    width: clamp(8.0625rem, 5.6712rem + 11.9565vw, 14.9375rem);
-    height: clamp(10.5625rem, 7.3234rem + 16.1957vw, 19.875rem);
-  }
-  .ticket-small-rotate {
-    height: clamp(17.5rem, 12.1429rem + 26.7857vw, 25rem);
-  }
-  .ticket-buy-button {
-    width: clamp(6.125rem, 4.3207rem + 9.0217vw, 11.3125rem);
-  }
-}
-
-@layer utilities {
-  .col-full {
-    grid-column: full;
-    display: grid;
-    grid-template-columns: subgrid;
-  }
-
-  .col-main {
-    grid-column: main;
-  }
 }
