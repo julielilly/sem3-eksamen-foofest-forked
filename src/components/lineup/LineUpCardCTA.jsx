@@ -12,16 +12,20 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
 
   return (
     <Link key={id} href={`/lineup/${slug}`}>
-      <li className="flex flex-col min-w-10 max-w-[300px] gap-3 relative w-fit border-2 border-foreground p-5">
+      <li className="flex flex-col justify-between gap-3 h-[100%] min-h-[300px] min-w-10 max-w-[300px] relative w-fit border-2 border-foreground p-5">
         <span className="absolute top-1 left-0 font-bold text-text backdrop: border-l-0 text-text bg-background text-foreground w-fit py-1xs pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">
           {scene}
         </span>
         <Image
-          src={src.startsWith("https:") ? src : `/${src}`}
+          src={
+            src.startsWith("https:")
+              ? src
+              : `http://localhost:8080/logos/${src}`
+          }
           alt={`image of the band ${artistName}`}
-          height={200}
-          width={300}
-          className="border-2 border-foreground"
+          height={500}
+          width={500}
+          className="border-2 border-foreground h-[100%] object-cover"
         ></Image>
 
         <div
