@@ -1,6 +1,7 @@
 import React from "react";
 import { PaymentCardInput } from "@/stores/PaymentCardInput";
 import FormPaymentCard from "@/components/form/FormPaymentCard";
+import CheckboxRadio from "../common/CheckboxRadio";
 
 const FormStepFormular = ({ ticketData, setTicketData, campingAreas }) => {
   const {
@@ -123,10 +124,15 @@ const FormStepFormular = ({ ticketData, setTicketData, campingAreas }) => {
               <p>3-person tents: {ticketData.three_person_tents}</p>
             </section>
           </div>
-          <div className="_add_green_camping_">
-            <h3 className="underline-border before:top-0">ADDITIONAL</h3>
-            <input type="checkbox" id="green-camp" />{" "}
-            <label htmlFor="green-camp">Add green camping?</label>
+          <div className="_add_green_camping_ grid place-content-center">
+            <h3 className="underline-border before:top-0  ">ADDITIONAL</h3>
+
+            <div className="flex place-items-center gap-2xs">
+              <input type="checkbox" id="green-camp" className="custom-check" />
+              <label htmlFor="green-camp" className="_option_">
+                Add green camping?
+              </label>
+            </div>
           </div>
         </div>
       </fieldset>
@@ -154,32 +160,32 @@ const FormStepFormular = ({ ticketData, setTicketData, campingAreas }) => {
           Payment details
         </h2>
 
-        <section className="underline-border pt-2xs grid grid-cols-[1fr,1fr] [&>*]:text-nowrap">
+        <section className="underline-border pt-2xs grid grid-cols-[1fr,1fr] [&>*]:text-nowrap place-items-center [&>*]:hover:cursor-pointer">
           <h3 className="col-span-full pb-0">PAYMENT OPTION</h3>
 
-          <div>
+          <div className="flex items-center gap-2xs">
             <input
               type="radio"
               id="payment-mobilepay"
               name="payment"
               value="mobilepay"
-              className="_payment_option_"
+              className="_payment_option_ custom-radio"
             />
-            <label htmlFor="payment-mobilepay" className="_payment_option_">
+            <label htmlFor="payment-mobilepay" className="_option_">
               Mobilepay
             </label>
           </div>
 
-          <div>
+          <div className=" flex items-center gap-2xs">
             <input
               type="radio"
               id="payment-card"
               name="payment"
               value="card"
-              className="_payment_option_"
+              className="_payment_option_ custom-radio"
               defaultChecked
             />
-            <label htmlFor="payment-card" className="_payment_option_">
+            <label htmlFor="payment-card" className="_option_ ">
               Card payment
             </label>
           </div>

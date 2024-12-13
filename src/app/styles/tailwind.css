@@ -15,10 +15,11 @@
     @apply text-step-1 py-xs text-center;
   }
 
-  fieldset input:not(._payment_option_):not(._uniform_input_) {
+  fieldset
+    input:not(._payment_option_):not(._uniform_input_):not([type="checkbox"]) {
     @apply halfround-right bg-white text-foreground px-2xs w-full;
   }
-  label {
+  label:not(._option_) {
     @apply pt-s tracking-wide;
   }
 
@@ -94,5 +95,21 @@
 
   .col-main {
     grid-column: main;
+  }
+
+  .custom-check {
+    @apply appearance-none cursor-pointer p-3  border-2 border-black bg-white checked:bg-black relative   max-w-fit transition-all;
+
+    &::before:checked {
+      @apply p-1 bg-white place-self-center content-[""] absolute top-2 left-2  bottom-2 rounded-sm transition-all;
+    }
+  }
+
+  .custom-radio {
+    @apply appearance-none cursor-pointer p-3 rounded-full border-2 border-black bg-white checked:bg-black relative   max-w-fit transition-all;
+
+    &::before:checked {
+      @apply p-1 bg-white place-self-center content-[""] absolute top-2 left-2  bottom-2 rounded-full transition-all;
+    }
   }
 }
