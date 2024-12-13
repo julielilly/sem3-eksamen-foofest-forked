@@ -28,10 +28,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${germania_one.variable} ${hind_madurai.variable} ${caesar_dressing.variable}`}>
-      <body>
+    <html
+      lang="en"
+      className={`${germania_one.variable} ${hind_madurai.variable} ${caesar_dressing.variable}`}
+    >
+      <body className="overflow-x-hidden">
         <Header />
-        <main>{children}</main>
+        <main className="pb-[250px] ">{children}</main>
         <Footer />
       </body>
     </html>

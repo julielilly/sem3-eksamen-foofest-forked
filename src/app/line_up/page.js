@@ -1,5 +1,7 @@
 import LineUpCardCTA from "@/components/LineUpCardCTA";
 import ButtonSharpEdge from "@/components/ButtonSharpEdge";
+import Image from "next/image";
+import BoatImg from "../assets/boat.svg";
 
 import { getBands } from "@/lib/api";
 
@@ -9,8 +11,8 @@ async function page() {
   console.log(bands[22]);
 
   return (
-    <div>
-      <h1 className="halfround-right text-title my-10"> Line up</h1>
+    <div className="overflow-hidden relative">
+      <h1 className="halfround-right text-title my-10 md:w-1/2"> Line up</h1>
 
       <section className="md:flex md:justify-around grid grid-cols-2 last:col-span-2 place-items-center gap-5 bg-[--blue-light] py-10 my-10 px-5">
         <ButtonSharpEdge theme={"black"}>Monday</ButtonSharpEdge>
