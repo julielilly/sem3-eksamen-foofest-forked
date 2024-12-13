@@ -1,4 +1,4 @@
-const FormTicketBig = ({ theme = "neutral" }) => {
+const FormTicketBig = ({ theme = "general" }) => {
   const themeClasses = {
     general: {
       title: "General Admission",
@@ -10,8 +10,8 @@ const FormTicketBig = ({ theme = "neutral" }) => {
       description:
         "Priority entry, exclusive viewing areas, VIP lounges, and premium amenities.",
     },
-    neutral: {
-      title: "",
+    confirmed: {
+      title: "YOUR ORDER IS CONFIRMED",
       description: "",
     },
   };
@@ -40,19 +40,26 @@ const FormTicketBig = ({ theme = "neutral" }) => {
           d="M35.5 25.5H69.0416L69.1841 25.7592C71.7422 30.4141 76.9598 33.6194 83 33.6194C89.0402 33.6194 94.2578 30.4141 96.8159 25.7592L96.9584 25.5H311.05L311.17 25.8293C313.231 31.5042 319.016 35.6194 325.861 35.6194C332.707 35.6194 338.491 31.5042 340.552 25.8293L340.672 25.5H371.5V190.5H339.841L339.73 190.151C337.841 184.209 331.915 179.84 324.861 179.84C317.807 179.84 311.881 184.209 309.992 190.151L309.882 190.5H98.2275L98.1361 190.116C96.6086 183.688 90.4315 178.84 83 178.84C75.5685 178.84 69.3914 183.688 67.8639 190.116L67.7725 190.5H35.5V25.5ZM36.5 26.5V189.5H66.9879C68.7804 182.782 75.2882 177.84 83 177.84C90.7118 177.84 97.2196 182.782 99.0121 189.5H309.155C311.3 183.297 317.536 178.84 324.861 178.84C332.186 178.84 338.422 183.297 340.567 189.5H370.5V26.5H341.368C339.055 32.4196 332.972 36.6194 325.861 36.6194C318.75 36.6194 312.667 32.4196 310.354 26.5H97.5465C94.7588 31.3429 89.2818 34.6194 83 34.6194C76.7182 34.6194 71.2412 31.3429 68.4535 26.5H36.5Z"
           fill="black"
         />
-        <path
-          d="M36 108L371 108L371 109L36 109L36 108Z"
-          fill="black"
-          className="rotate-90 md:rotate-0 transition-transform origin-center opacity-45"
-        />
+        {/* removes line in ticket if theme is confirmed  */}
+        {theme !== "confirmed" && (
+          <path
+            d="M36 108L371 108L371 109L36 109L36 108Z"
+            fill="black"
+            className="rotate-90 md:rotate-0 transition-transform origin-center opacity-45"
+          />
+        )}
       </svg>
       <div className="_big_ticket_text_ grid grid-rows-[1fr,1fr] h-80  place-self-center place-items-center md:h-auto text-center  ">
         <h3 className=" p-2xs text-title font-germania-one place-content-center max-w-min md:max-w-max">
           {title}
         </h3>
-        <p className="relative py-2xs mob:px-2xs ticket-big-text-rotate-mobile mob:ticket-big-text-rotate md:ticket-big-text place-content-center">
-          {description}
-        </p>
+        {theme !== "confirmed" && (
+          <p className="relative py-2xs mob:px-2xs ticket-big-text-rotate-mobile mob:ticket-big-text-rotate md:ticket-big-text place-content-center">
+            {description}
+          </p>
+        )}
+        {/* add something for confirmed theme */}
+        {theme === "confirmed" && <div className="confirmed-animation">🎉</div>}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import FormReceipt from "@/components/tickets/FormReceipt";
 
 import FormStepFormular from "@/components/tickets/FormStepFormular";
 import FormStepOne from "@/components/tickets/FormStepOne";
+import FormConfirmation from "@/components/tickets/FormConfirmation";
 
 const Page = () => {
   const [step, setStep] = useState(1);
@@ -144,28 +145,23 @@ const Page = () => {
       </div>
 
       <div className="flex justify-between gap-xs ">
-        {/* <FormStepOne/> */}
-
-        <FormStepFormular
-          step={step}
-          setStep={setStep}
-          ticketData={ticketData}
-          setTicketData={setTicketData}
-          campingAreas={campingAreas}
-          numberOfParticipants={numberOfParticipants}
-          handleReservation={handleReservation}
-          handleSubmitPayment={handleSubmitPayment}
-          handleParticipantChange={handleParticipantChange}
-        />
-        {/* {(step === 1 || step === 2 || step === 3 || step === 4) && (
-          <FormReceipt
-            setStep={setStep}
-            step={step}
-            handleReservation={handleReservation}
+        <div className="grid">
+          <FormStepOne />
+          <FormStepFormular
             ticketData={ticketData}
             setTicketData={setTicketData}
+            campingAreas={campingAreas}
           />
-        )} */}
+          <FormConfirmation />
+        </div>
+
+        <FormReceipt
+          setStep={setStep}
+          step={step}
+          handleReservation={handleReservation}
+          ticketData={ticketData}
+          setTicketData={setTicketData}
+        />
       </div>
     </div>
   );

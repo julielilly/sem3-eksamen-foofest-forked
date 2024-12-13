@@ -1,7 +1,7 @@
 import React from "react";
 import { PaymentCardInput } from "@/stores/PaymentCardInput";
 import FormPaymentCard from "@/components/form/FormPaymentCard";
-import CheckboxRadio from "../common/CheckboxRadio";
+import AddToIncrement from "../common/AddToIncrement";
 
 const FormStepFormular = ({ ticketData, setTicketData, campingAreas }) => {
   const {
@@ -95,7 +95,25 @@ const FormStepFormular = ({ ticketData, setTicketData, campingAreas }) => {
                   200kr per tent
                 </p>
               </div>
-              <p>2-person tents: {ticketData.two_person_tents}</p>
+
+              <AddToIncrement
+                count={ticketData.two_person_tents}
+                increment={() =>
+                  setTicketData({
+                    ...ticketData,
+                    two_person_tents: ticketData.two_person_tents + 1,
+                  })
+                }
+                decrement={() =>
+                  setTicketData({
+                    ...ticketData,
+                    two_person_tents: Math.max(
+                      0,
+                      ticketData.two_person_tents - 1
+                    ),
+                  })
+                }
+              />
             </section>
             <section className="flex justify-between items-center">
               <div>
@@ -121,7 +139,25 @@ const FormStepFormular = ({ ticketData, setTicketData, campingAreas }) => {
                   300kr per tent
                 </p>
               </div>
-              <p>3-person tents: {ticketData.three_person_tents}</p>
+
+              <AddToIncrement
+                count={ticketData.three_person_tents}
+                increment={() =>
+                  setTicketData({
+                    ...ticketData,
+                    three_person_tents: ticketData.three_person_tents + 1,
+                  })
+                }
+                decrement={() =>
+                  setTicketData({
+                    ...ticketData,
+                    three_person_tents: Math.max(
+                      0,
+                      ticketData.three_person_tents - 1
+                    ),
+                  })
+                }
+              />
             </section>
           </div>
           <div className="_add_green_camping_ grid place-content-center">
