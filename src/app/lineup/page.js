@@ -24,7 +24,6 @@ async function page() {
         <ButtonSharpEdge theme={"black"}>Sunday</ButtonSharpEdge>
         <ButtonSharpEdge theme={"black"}>Saturday</ButtonSharpEdge>
       </section>
-      <ForsideLineUp></ForsideLineUp>
 
       <ul className="grid md:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]  place-content-center md:gap-4 gap-10 ">
         {bands.map((band, i) => (
