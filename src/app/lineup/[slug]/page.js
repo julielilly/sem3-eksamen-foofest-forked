@@ -30,7 +30,11 @@ const page = async ({ params }) => {
         </h2>
 
         <Image
-          src={band.logo.startsWith("https:") ? band.logo : `/${band.logo}`}
+          src={
+            band.logo.startsWith("https:")
+              ? band.logo
+              : `http://localhost:8080/logos/${band.logo}`
+          }
           alt={`image of ${band.name}`}
           height={300}
           width={500}
