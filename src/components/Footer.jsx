@@ -12,7 +12,7 @@ import BoatImg from "@/app/assets/boat.svg";
 const Footer = () => {
   return (
     <footer className="bg-foreground text-background w-full relative font-hind-madurai ">
-      <div className="bg-slate-400 absolute top-[-25%] w-[100%]  transform transition animate-[sailTravle_20s_linear_infinite] mb-5">
+      <div className=" absolute top-[-25%] w-[100%]  transform transition animate-[sailTravle_20s_linear_infinite] mb-5">
         <Image
           src={BoatImg}
           alt={"image of something"}
