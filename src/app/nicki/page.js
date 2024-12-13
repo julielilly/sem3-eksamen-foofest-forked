@@ -144,7 +144,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="flex justify-between gap-xs ">
+      <div className="flex m-auto items-center md:items-start md:justify-between gap-xs flex-col md:flex-row">
         <div className="grid">
           <FormStepOne />
           <FormStepFormular

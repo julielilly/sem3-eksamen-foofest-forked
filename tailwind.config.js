@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       screens: {
         mob: "480px",
+        xxl: "1173px",
       },
       colors: {
         background: "var(--background)",

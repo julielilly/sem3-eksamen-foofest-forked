@@ -23,7 +23,7 @@ const FormTicketBig = ({ theme = "general" }) => {
             [&>*]:row-start-1  justify-items-center"
     >
       <svg
-        className="_svg_border_  mob:ticket-width rotate-90 md:rotate-0 relative -z-10 transition-transform ticket-big-rotate  my-[16dvh] md:my:0 "
+        className="_svg_border_  mob:ticket-width rotate-90 xxl:rotate-0 relative -z-10 transition-transform ticket-big-rotate  my-[16dvh] md:my:0  "
         viewBox="0 0 407 216"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +45,16 @@ const FormTicketBig = ({ theme = "general" }) => {
           <path
             d="M36 108L371 108L371 109L36 109L36 108Z"
             fill="black"
-            className="rotate-90 md:rotate-0 transition-transform origin-center opacity-45"
+            className="rotate-90 xxl:rotate-0 transition-transform origin-center opacity-45"
           />
         )}
       </svg>
       <div className="_big_ticket_text_ grid grid-rows-[1fr,1fr] h-80  place-self-center place-items-center md:h-auto text-center  ">
-        <h3 className=" p-2xs text-title font-germania-one place-content-center max-w-min md:max-w-max">
+        <h3 className=" p-2xs text-title font-germania-one place-content-center max-w-min xxl:max-w-max">
           {title}
         </h3>
         {theme !== "confirmed" && (
-          <p className="relative py-2xs mob:px-2xs ticket-big-text-rotate-mobile mob:ticket-big-text-rotate md:ticket-big-text place-content-center">
+          <p className="relative py-2xs mob:px-2xs ticket-big-text-rotate-mobile mob:ticket-big-text-rotate xxl:ticket-big-text place-content-center">
             {description}
           </p>
         )}

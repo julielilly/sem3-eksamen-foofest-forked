@@ -63,7 +63,7 @@
   }
 
   .ticket-big-text-rotate {
-    width: clamp(8.75rem, 7.3214rem + 7.1429vw, 10.75rem);
+    width: clamp(8.5rem, 6.5774rem + 9.6131vw, 13.625rem);
   }
 
   .ticket-big-text-rotate-mobile {
