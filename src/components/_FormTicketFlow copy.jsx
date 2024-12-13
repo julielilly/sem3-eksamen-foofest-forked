@@ -1,5 +1,4 @@
 import FormStepOne from "./FormStepOne";
-import FormTicketBorder from "./form/FormTicketBig";
 
 const FormTicketFlow = ({
   step,
@@ -17,13 +16,17 @@ const FormTicketFlow = ({
       onSubmit={(e) => {
         e.preventDefault();
       }}
+      className="  [&>*]:py-s "
     >
       {step === 1 && (
-        <FormStepOne
-          title="hej"
-          description="lkjeflksd sdkfndslfjds kfjnjdjf fjf fj"
-          price="200"
-        />
+        <>
+          <FormStepOne
+            title="he jswfhkjdshfj"
+            description="description here LORWM IPsum sljalfkhsakdjgfhke fkhewbfkhelfkjn kjh"
+            price="200"
+          />
+          <FormStepOne />
+        </>
       )}
 
       {step === 2 && (
@@ -145,7 +148,7 @@ const FormTicketFlow = ({
               <label id={`number-${index}`}>Phone Number:</label>
               <input
                 id={`number-${index}`}
-                type="number"
+                type="tel"
                 className="halfround-right bg-white text-foreground px-2xs"
                 value={ticketData.participants[index]?.number || ""}
                 onChange={(e) =>

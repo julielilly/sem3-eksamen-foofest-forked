@@ -1,7 +1,13 @@
-const FormCampingAreas = () => {
+const FormStepFormular = () => {
   return (
-    <div>
-      <form className="border-2 border-foreground bg-white  py-s ">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+      className="  [&>*]:py-s "
+    >
+      <fieldset className="border-2 border-foreground bg-white  py-s ">
+        Step 2
         <h2 className="font-germania-one text-title px-m ">
           Select camping area
         </h2>
@@ -31,7 +37,10 @@ const FormCampingAreas = () => {
                 className={buttonClasses}
                 key={area.area}
                 onClick={() =>
-                  setTicketData({ ...ticketData, camping_area: area.area })
+                  setTicketData({
+                    ...ticketData,
+                    camping_area: area.area,
+                  })
                 }
               >
                 {area.area}
@@ -82,9 +91,58 @@ const FormCampingAreas = () => {
             <p>3-person tents: {ticketData.three_person_tents}</p>
           </div>
         </div>
-      </form>
-    </div>
+      </fieldset>
+
+      {step === 3 && (
+        <fieldset className="px-m">
+          <h2 className="font-germania-one text-step-2 text-center">
+            Personal information
+          </h2>
+          {Array.from({ length: numberOfParticipants }, (_, index) => (
+            <div key={index} className="grid">
+              <legend className="text-step-1 text-center">
+                {index === 0 ? "Buyer Details" : `Guest ${index} Details`}
+              </legend>
+              <label htmlFor={`full-name-${index}`}>Full name:</label>
+              <input
+                id={`full-name-${index}`}
+                type="text"
+                className="halfround-right bg-white text-foreground px-2xs"
+                value={ticketData.participants[index]?.name || ""}
+                onChange={(e) =>
+                  handleParticipantChange(index, "name", e.target.value)
+                }
+              />
+              <label htmlFor={`email-${index}`}>Email:</label>
+              <input
+                id={`email-${index}`}
+                type="email"
+                className="halfround-right bg-white text-foreground px-2xs"
+                value={ticketData.participants[index]?.email || ""}
+                onChange={(e) =>
+                  handleParticipantChange(index, "email", e.target.value)
+                }
+              />
+              <label id={`number-${index}`}>Phone Number:</label>
+              <input
+                id={`number-${index}`}
+                type="tel"
+                className="halfround-right bg-white text-foreground px-2xs"
+                value={ticketData.participants[index]?.number || ""}
+                onChange={(e) =>
+                  handleParticipantChange(index, "number", e.target.value)
+                }
+              />
+            </div>
+          ))}
+        </fieldset>
+      )}
+
+      {step === 4 && <fieldset>Step 4</fieldset>}
+
+      {step === 5 && <fieldset>Step 5</fieldset>}
+    </form>
   );
 };
 
-export default FormCampingAreas;
+export default FormStepFormular;

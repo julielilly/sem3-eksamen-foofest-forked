@@ -11,7 +11,7 @@
   --green: #42765c;
   --red: #ba1e2d;
   --yellow: #a79649;
-  --white: #fffcf9;
+  --white: #fffdf2;
 
   /***************  Spacing  ***************/
   /* Space 3xs-2xs: 5px → 10px */
@@ -146,5 +146,25 @@ main > div:not(.homepage) {
 
   .col-main {
     grid-column: main;
+  }
+
+  .ticket-width {
+    height: clamp(10.5625rem, 7.3234rem + 16.1957vw, 19.875rem);
+  }
+
+  .ticket-big-rotate {
+    height: clamp(17.5rem, 12.1429rem + 26.7857vw, 25rem);
+  }
+
+  .ticket-small {
+    width: clamp(8.0625rem, 5.6712rem + 11.9565vw, 14.9375rem);
+    height: clamp(10.5625rem, 7.3234rem + 16.1957vw, 19.875rem);
+  }
+
+  .ticket-small-rotate {
+    height: clamp(17.5rem, 12.1429rem + 26.7857vw, 25rem);
+  }
+  .ticket-buy-button {
+    width: clamp(6.125rem, 4.3207rem + 9.0217vw, 11.3125rem);
   }
 }
