@@ -36,15 +36,6 @@ async function page() {
           ></LineUpCardCTA>
         ))}
       </ul>
-      <div className=" transform transition animate-[sailTravle_15s_linear_infinite] mb-5">
-        <Image
-          src={BoatImg}
-          alt={"image of something"}
-          height={50}
-          width={50}
-          className="w-fit origin-center transition animate-[sail_5s_linear_infinite] "
-        ></Image>
-      </div>
     </div>
   );
 }

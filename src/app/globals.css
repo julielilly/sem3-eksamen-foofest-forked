@@ -57,6 +57,31 @@
     --background: #1f1a07;
   }
 } */
+@keyframes sailTravle {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes sail {
+  0% {
+    transform: rotate(10deg);
+  }
+  20% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
 
 body {
   --full: 1fr;
