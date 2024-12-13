@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  fieldset > h2 {
+    @apply font-germania-one text-title pt-xs pb-2xs text-center underline-border;
+  }
+
+  .underline-border {
+    @apply relative before:absolute before:bottom-0 before:w-full before:h-[2px]  before:bg-black before:left-1/2 before:transform before:-translate-x-1/2;
+  }
+
+  fieldset h3 {
+    @apply text-step-1 py-xs;
+  }
+}
+
 @layer components {
   .halfround-left {
     @apply bg-foreground  text-background py-2xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap;

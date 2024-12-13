@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import { getAvailableSpots, reserveSpot, fullfullReservation } from "@/lib/api";
 import FormReceipt from "@/components/tickets/FormReceipt";
-import FormTicketFlow from "@/components/form/FormTicketFlow";
+
+import FormStepFormular from "@/components/form/FormStepFormular";
+import FormStepOne from "@/components/tickets/FormStepOne";
 
 const Page = () => {
   const [step, setStep] = useState(1);
@@ -142,7 +144,9 @@ const Page = () => {
       </div>
 
       <div className="flex justify-between gap-xs ">
-        <FormTicketFlow
+        {/* <FormStepOne/> */}
+
+        <FormStepFormular
           step={step}
           setStep={setStep}
           ticketData={ticketData}

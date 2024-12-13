@@ -28,7 +28,8 @@
   --space-2xl: clamp(4.5rem, 3.4565rem + 5.2174vw, 7.5rem);
 
   /************** Fonts  **************/
-  --text-xs: clamp(0.875rem, 0.8315rem + 0.2174vw, 1rem);
+  /* 14px → 18px */
+  --text-xs: clamp(0.9375rem, 0.8723rem + 0.3261vw, 1.125rem);
 
   /* All ordinary texts, paragraphs, descriptions: 16px → 18px */
   --text: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
