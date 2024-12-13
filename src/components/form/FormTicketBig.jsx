@@ -1,4 +1,22 @@
-const FormTicketBig = () => {
+const FormTicketBig = ({ theme = "neutral" }) => {
+  const themeClasses = {
+    general: {
+      title: "General Admission",
+      description:
+        "Full access to all stages, general camping, and festival activities.",
+    },
+    vip: {
+      title: "VIP",
+      description:
+        "Priority entry, exclusive viewing areas, VIP lounges, and premium amenities.",
+    },
+    neutral: {
+      title: "",
+      description: "",
+    },
+  };
+  const { title, description } = themeClasses[theme] || themeClasses.neutral;
+
   return (
     <div
       className="_big_ticket_ grid [&>*]:col-start-1
@@ -30,10 +48,10 @@ const FormTicketBig = () => {
       </svg>
       <div className="_big_ticket_text_ grid grid-rows-[1fr,1fr] h-80  place-self-center place-items-center md:h-auto text-center  ">
         <h3 className=" p-2xs text-title font-germania-one place-content-center max-w-min md:max-w-max">
-          general admission
+          {title}
         </h3>
         <p className="relative py-2xs mob:px-2xs ticket-big-text-rotate-mobile mob:ticket-big-text-rotate md:ticket-big-text place-content-center">
-          Full access to all stages, general camping, and festival activities.
+          {description}
         </p>
       </div>
     </div>
