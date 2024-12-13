@@ -1,4 +1,4 @@
-import FormTicketBorder from "./FormTicketBorder";
+import FormStepOne from "../tickets/FormStepOne";
 
 const FormTicketFlow = ({
   step,
@@ -16,55 +16,17 @@ const FormTicketFlow = ({
       onSubmit={(e) => {
         e.preventDefault();
       }}
-      className="[&>*]:border-2 [&>*]:border-foreground [&>*]:bg-white  [&>*]:py-s "
+      className="  [&>*]:py-s "
     >
       {step === 1 && (
-        <fieldset>
-          <div
-            className="grid [&>*]:col-start-1
-              grid-row-[1fr,1fr] place-items-center"
-            aria-label="Select a general ticket"
-          >
-            <FormTicketBorder />
-            <button
-              className="border-2 border-black p-2 font-germania-one"
-              onClick={() =>
-                setTicketData({
-                  ...ticketData,
-                  general_tickets: ticketData.general_tickets + 1,
-                })
-              }
-            >
-              General Admission
-            </button>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Necessitatibus, laboriosam. Aspernatur asperiores iste amet.
-            </p>
-          </div>
-
-          <div
-            className="grid place-items-center"
-            aria-label="Select a VIP admission ticket"
-          >
-            <FormTicketBorder />
-            <button
-              className="border-2 border-black p-2 font-germania-one"
-              onClick={() =>
-                setTicketData({
-                  ...ticketData,
-                  vip_tickets: ticketData.vip_tickets + 1,
-                })
-              }
-            >
-              VIP
-            </button>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Necessitatibus, laboriosam. Aspernatur asperiores iste amet.
-            </p>
-          </div>
-        </fieldset>
+        <>
+          <FormStepOne
+            title="he jswfhkjdshfj"
+            description="description here LORWM IPsum sljalfkhsakdjgfhke fkhewbfkhelfkjn kjh"
+            price="200"
+          />
+          <FormStepOne />
+        </>
       )}
 
       {step === 2 && (
@@ -186,7 +148,7 @@ const FormTicketFlow = ({
               <label id={`number-${index}`}>Phone Number:</label>
               <input
                 id={`number-${index}`}
-                type="number"
+                type="tel"
                 className="halfround-right bg-white text-foreground px-2xs"
                 value={ticketData.participants[index]?.number || ""}
                 onChange={(e) =>

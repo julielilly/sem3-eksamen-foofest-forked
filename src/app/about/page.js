@@ -1,4 +1,4 @@
-import AccordienWrapper from "@/components/AccordienWrapper";
+import AccordienWrapper from "@/components/common/AccordienWrapper";
 
 const Page = () => {
   return (

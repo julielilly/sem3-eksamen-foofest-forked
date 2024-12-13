@@ -5,7 +5,7 @@ import X from "@/app/assets/icons/x.svg";
 import Instagram from "@/app/assets/icons/instagram.svg";
 import Circle from "@/app/assets/circle.svg";
 import Link from "next/link";
-import FooterForm from "./FooterForm";
+import FooterForm from "../form/FooterForm";
 
 import BoatImg from "@/app/assets/boat.svg";
 

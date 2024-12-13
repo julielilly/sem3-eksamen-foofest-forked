@@ -1,0 +1,44 @@
+/* boat animation  */
+
+@keyframes sailTravle {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* wave animation */
+@keyframes wave {
+  0% {
+    transform: translateX(8%);
+  }
+
+  50% {
+    transform: translateX(-8%);
+  }
+
+  100% {
+    transform: translateX(8%);
+  }
+}
+
+/* sail animation */
+@keyframes sail {
+  0% {
+    transform: rotate(10deg);
+  }
+  20% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}

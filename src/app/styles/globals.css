@@ -1,9 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  /***************  colours  */
+  /***************  Colours  */
   --background: #e5e1d6;
   --foreground: #1f1a07;
   --blue-light: #1f7985;
@@ -11,7 +7,7 @@
   --green: #42765c;
   --red: #ba1e2d;
   --yellow: #a79649;
-  --white: #fffcf9;
+  --white: #fffdf2;
 
   /***************  Spacing  ***************/
   /* Space 3xs-2xs: 5px → 10px */
@@ -32,6 +28,8 @@
   --space-2xl: clamp(4.5rem, 3.4565rem + 5.2174vw, 7.5rem);
 
   /************** Fonts  **************/
+  --text-xs: clamp(0.875rem, 0.8315rem + 0.2174vw, 1rem);
+
   /* All ordinary texts, paragraphs, descriptions: 16px → 18px */
   --text: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
 
@@ -57,46 +55,6 @@
     --background: #1f1a07;
   }
 } */
-@keyframes sailTravle {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes wave {
-  0% {
-    transform: translateX(8%);
-  }
-
-  50% {
-    transform: translateX(-8%);
-  }
-
-  100% {
-    transform: translateX(8%);
-  }
-}
-
-@keyframes sail {
-  0% {
-    transform: rotate(10deg);
-  }
-  20% {
-    transform: rotate(5deg);
-  }
-  50% {
-    transform: rotate(-10deg);
-  }
-  80% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(10deg);
-  }
-}
 
 body {
   --full: 1fr;
@@ -132,59 +90,9 @@ body {
   footer > * > *:not(.col-full) {
     grid-column: main;
   }
-
-  /* > * {
-    padding: 0 var(--space-s);
-  }
-
-  header,
-  footer {
-    width: 100%;
-    margin: 0 auto;
-    > * {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-  }
-
-  main {
-    max-width: 1240px;
-    width: 100%;
-    margin: 0 auto;
-  } */
 }
 
 /* Styles applied only when the 'homepage' class is NOT present */
 main > div:not(.homepage) {
   margin-top: 3.35rem;
-}
-
-@layer components {
-  .halfround-left {
-    @apply bg-foreground  text-background py-2xs pr-s pl-l rounded-l-full  border-2 border-foreground text-nowrap;
-  }
-
-  .halfround-right {
-    @apply bg-foreground  text-background py-2xs pl-s pr-l rounded-r-full  border-2 border-foreground text-nowrap text-normal;
-  }
-
-  .sharp {
-    @apply bg-white w-fit px-xs py-3xs cursor-pointer shadow-[6px_5px_0px_1px_var(--blue-light)];
-  }
-
-  .menu-labels {
-    @apply border-2 border-white border-r-0 hover:bg-lightblue active:bg-red;
-  }
-}
-
-@layer utilities {
-  .col-full {
-    grid-column: full;
-    display: grid;
-    grid-template-columns: subgrid;
-  }
-
-  .col-main {
-    grid-column: main;
-  }
 }

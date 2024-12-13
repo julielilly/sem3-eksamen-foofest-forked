@@ -153,7 +153,7 @@ const Page = () => {
           handleSubmitPayment={handleSubmitPayment}
           handleParticipantChange={handleParticipantChange}
         />
-        {/* {(step === 1 || step === 2 || step === 3 || step === 4) && (
+        {(step === 1 || step === 2 || step === 3 || step === 4) && (
           <FormReceipt
             setStep={setStep}
             step={step}
@@ -161,7 +161,7 @@ const Page = () => {
             ticketData={ticketData}
             setTicketData={setTicketData}
           />
-        )} */}
+        )}
       </div>
     </div>
   );

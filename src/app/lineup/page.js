@@ -1,5 +1,5 @@
-import LineUpCardCTA from "@/components/LineUpCardCTA";
-import ButtonSharpEdge from "@/components/ButtonSharpEdge";
+import LineUpCardCTA from "@/components/lineup/LineUpCardCTA";
+import ButtonSharpEdge from "@/components/common/ButtonSharpEdge";
 import Image from "next/image";
 import BoatImg from "../assets/boat.svg";
 import ForsideLineUp from "@/components/ForsideLineUp";

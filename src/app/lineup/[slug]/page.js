@@ -1,12 +1,12 @@
 import { CiCalendar } from "react-icons/ci";
 import { FaArrowLeft } from "react-icons/fa";
 import Image from "next/image";
-import ButtonSharpEdge from "@/components/ButtonSharpEdge";
+import ButtonSharpEdge from "@/components/common/ButtonSharpEdge";
 import waveImage from "../../assets/wave.svg";
 import Link from "next/link";
 
 import { getSingleBand } from "@/lib/api";
-import LineUpHeader from "@/components/LineUpHeader";
+import LineUpHeader from "@/components/lineup/LineUpHeader";
 
 const page = async ({ params }) => {
   const { slug } = params;
