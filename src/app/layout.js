@@ -1,6 +1,6 @@
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
 import { Hind_Madurai, Germania_One, Caesar_Dressing } from "next/font/google";
 
 const germania_one = Germania_One({

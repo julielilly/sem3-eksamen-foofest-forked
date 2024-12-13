@@ -1,4 +1,4 @@
-import FormStepOne from "./FormStepOne";
+import FormStepOne from "../tickets/FormStepOne";
 
 const FormTicketFlow = ({
   step,

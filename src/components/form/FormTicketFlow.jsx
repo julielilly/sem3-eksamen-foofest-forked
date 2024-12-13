@@ -1,5 +1,5 @@
-import FormStepOne from "./FormStepOne";
-import FormTicketBorder from "./form/FormTicketBig";
+import FormStepOne from "../tickets/FormStepOne";
+import FormTicketBorder from "./FormTicketBig";
 
 const FormTicketFlow = ({
   step,

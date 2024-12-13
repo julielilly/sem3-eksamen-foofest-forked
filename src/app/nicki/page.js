@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { getAvailableSpots, reserveSpot, fullfullReservation } from "@/lib/api";
-import FormReceipt from "@/components/FormReceipt";
-import FormTicketFlow from "@/components/FormTicketFlow";
+import FormReceipt from "@/components/tickets/FormReceipt";
+import FormTicketFlow from "@/components/form/FormTicketFlow";
 
 const Page = () => {
   const [step, setStep] = useState(1);

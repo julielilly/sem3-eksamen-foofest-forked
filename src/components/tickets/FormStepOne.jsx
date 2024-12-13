@@ -1,5 +1,5 @@
-import FormTicketBorder from "./form/FormTicketBig";
-import FormTicketSmallBorder from "./form/FormTicketSmall";
+import FormTicketBorder from "../form/FormTicketBig";
+import FormTicketSmallBorder from "../form/FormTicketSmall";
 
 const FormStepOne = () => {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonRounded from "./ButtonRounded";
+import ButtonRounded from "@/components/common/ButtonRounded";
 
 const FormReceiptCTA = ({ setStep, step, handleReservation }) => {
   return (
