@@ -1,11 +1,11 @@
 const FormTicketSmall = () => {
   return (
     <div
-      className=" grid [&>*]:col-start-1
+      className="_small_ticket_ grid [&>*]:col-start-1
            place-items-center [&>*]:row-start-1  "
     >
       <svg
-        className="mob:ticket-small ticket-small-rotate rotate-90 mob:rotate-0 transition-transform"
+        className="_svg_border_ mob:ticket-small ticket-small-rotate rotate-90 mob:rotate-0 transition-transform reltive"
         viewBox="0 0 240 318"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -23,12 +23,18 @@ const FormTicketSmall = () => {
           fill="black"
         />
       </svg>
-      <div className="grid place-items-center py-m">
-        <p className=" text-step-2">1</p>
-        <button className=" bg-black hover:bg-transparent hover:text-black border border-black  border-l-0 border-r-0 text-white  text-normal py-xs ticket-buy-button text-nowrap relative -left-[1.2px]">
+      <div
+        className="grid place-items-center py-m relative w-[80dvw] mob:w-auto
+    "
+      >
+        <p className=" text-step-2 font-germania-one">1</p>
+        <button className=" bg-black hover:bg-transparent hover:text-black active:bg-lightblue active:text-white border border-black  mob:border-l-0 mob:border-r-0 text-white text-normal py-xs  px-l rounded-full mob:rounded-none mob:px-0 mob:ticket-buy-button text-nowrap  relative -left-[1.2px]  ">
           BUY TICKET
         </button>
-        <p className="text-normal p-2xs">Price</p>
+        <p className="text-normal p-2xs border-t-[1px] text-lightblue font-bold  ">
+          200 kr
+          <em className=" text-black font-light"> + fees </em>
+        </p>
       </div>
     </div>
   );

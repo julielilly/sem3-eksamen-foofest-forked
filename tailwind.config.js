@@ -22,6 +22,7 @@ module.exports = {
         red: "var(--red)",
       },
       fontSize: {
+        "text-xs": "var(--text-xs)",
         normal: "var(--text)",
         "step-1": "var(--step-1)",
         "step-2": "var(--step-2)",

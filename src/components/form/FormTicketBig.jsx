@@ -1,11 +1,11 @@
 const FormTicketBig = () => {
   return (
     <div
-      className="_ticket_borders_ grid [&>*]:col-start-1
-           place-items-center [&>*]:row-start-1  "
+      className="_big_ticket_ grid [&>*]:col-start-1
+            [&>*]:row-start-1  justify-items-center"
     >
       <svg
-        className="_svg_border_  mob:ticket-width rotate-90 md:rotate-0 relative -z-10 transition-transform ticket-big-rotate max-w-fit my-[16dvh] md:my:0 "
+        className="_svg_border_  mob:ticket-width rotate-90 md:rotate-0 relative -z-10 transition-transform ticket-big-rotate  my-[16dvh] md:my:0 "
         viewBox="0 0 407 216"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -28,11 +28,12 @@ const FormTicketBig = () => {
           className="rotate-90 md:rotate-0 transition-transform origin-center opacity-45"
         />
       </svg>
-      <div className="grid place-items-center gap-2xs px-m text-center">
-        <h3 className=" p-2xs text-step-1 font-germania-one">Title</h3>
-        <p className="text-normal px-m">
-          Content Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Optio, repellendus dignissimos. Voluptates quia earum.
+      <div className="_big_ticket_text_ grid grid-rows-[1fr,1fr] h-80  place-self-center place-items-center md:h-auto text-center  ">
+        <h3 className=" p-2xs text-title font-germania-one place-content-center max-w-min md:max-w-max">
+          general admission
+        </h3>
+        <p className="relative py-2xs mob:px-2xs ticket-big-text-rotate-mobile mob:ticket-big-text-rotate md:ticket-big-text place-content-center">
+          Full access to all stages, general camping, and festival activities.
         </p>
       </div>
     </div>
