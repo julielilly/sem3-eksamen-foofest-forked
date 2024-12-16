@@ -16,7 +16,7 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
           height={500}
           width={500}
           className="border-2 border-foreground h-[100%] object-cover"
-        ></Image>
+        />
 
         <div className="flex flex-col-reverse md:flex-col md:gap-2 halfround-right md:border-none md:bg-background  md:text-foreground md:py-0 md:pr-0  md:pl-0 md:rounded-none text-nowrap absolute bottom-2 left-0  md:relative">
           <h6 className="font-bold text-text capitalize md:halfround-right">
