@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+const url = process.env.NEXT_PUBLIC_API_URL; // data bliver inhentet fra .env.local
 
 const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
   return (
@@ -10,11 +11,7 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
           {scene}
         </span>
         <Image
-          src={
-            src.startsWith("https:")
-              ? src
-              : `http://localhost:8080/logos/${src}`
-          }
+          src={src.startsWith("https:") ? src : `${url}/logos/${src}`}
           alt={`image of the band ${artistName}`}
           height={500}
           width={500}
