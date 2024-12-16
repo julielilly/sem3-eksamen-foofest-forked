@@ -12,7 +12,7 @@ export default function Home() {
 
         <ForsideLineUp></ForsideLineUp>
         <ButtonSharpEdge theme={"black"}>
-          <Link href={`/line_up`}>See the whole line up</Link>
+          <Link href={`/lineup`}>See the whole line up</Link>
         </ButtonSharpEdge>
       </div>
     </div>
