@@ -19,7 +19,7 @@ const page = async ({ params }) => {
     <div>
       <section className="relative w-[100%] overflow-hidden col-full">
         <Link
-          href={"/line_up"}
+          href={"/lineup"}
           className=" grid place-content-center bg-background border-2 border-foreground rounded-full w-[40px] h-[40px] hover:w-[50px] hover:h-[50px] transition-all absolute top-1/2 transform -translate-y-1/2 left-5  "
         >
           <FaArrowLeft />
@@ -46,7 +46,7 @@ const page = async ({ params }) => {
           alt={"image of something"}
           height={100}
           width={600}
-          className="absolute bottom-0 left-[-600px]  transform transition animate-[wave_10s_infinite]"
+          className="absolute bottom-0 md:left-[-600px] left-[-50%]  transform transition animate-[wave_10s_infinite]"
         ></Image>
         <Image
           src={waveImage}
@@ -60,7 +60,7 @@ const page = async ({ params }) => {
           alt={"image of something"}
           height={100}
           width={600}
-          className="absolute bottom-0 left-[600px] transition-all animate-[wave_10s_infinite]"
+          className="absolute bottom-0 md:left-[600px] left-[50%] transition-all animate-[wave_10s_infinite]"
         ></Image>
         <Image
           src={waveImage}
