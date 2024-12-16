@@ -8,7 +8,9 @@ export default function Home() {
     <div className="homepage">
       <Hero />
       <div className="relative flex flex-col gap-[50px] items-center justify-between pt-[250px]">
-        <h1 className="text-title halfround-right w-1/2 ">Line Up</h1>
+        <h1 className="text-title halfround-right md:w-1/2 w-[100%] ">
+          Line Up
+        </h1>
 
         <ForsideLineUp></ForsideLineUp>
         <ButtonSharpEdge theme={"black"}>
