@@ -10,7 +10,13 @@ const ButtonSharpEdge = ({ children, theme = "default" }) => {
 
   const themes = themeClasses[theme] || ""; // the "" is a fallback/the default theme if not specified
 
-  return <div className={`sharp ${themes} `}>{children}</div>;
+  return (
+    <div
+      className={`sharp ${themes} transition-all m-2 text-center basis-[100px] flex-auto h-fit max-h-[50px] first-letter:capitalize`}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default ButtonSharpEdge;

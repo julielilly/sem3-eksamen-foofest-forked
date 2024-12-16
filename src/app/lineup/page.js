@@ -3,6 +3,7 @@ import ButtonSharpEdge from "@/components/common/ButtonSharpEdge";
 import Image from "next/image";
 import BoatImg from "../assets/boat.svg";
 import ForsideLineUp from "@/components/ForsideLineUp";
+import Link from "next/link";
 
 import { getBands } from "@/lib/api";
 
@@ -15,14 +16,32 @@ async function page() {
     <div className="overflow-hidden relative">
       <h1 className="halfround-right text-title my-10 md:w-1/2"> Line up</h1>
 
-      <section className="md:flex md:justify-around grid grid-cols-2 last:col-span-2 place-items-center gap-5 bg-[--blue-light] py-10 my-10 px-5">
-        <ButtonSharpEdge theme={"black"}>Monday</ButtonSharpEdge>
-        <ButtonSharpEdge theme={"black"}>Tuesday</ButtonSharpEdge>
-        <ButtonSharpEdge theme={"black"}>wednesday</ButtonSharpEdge>
-        <ButtonSharpEdge theme={"black"}>Thursday</ButtonSharpEdge>
-        <ButtonSharpEdge theme={"black"}>Friday</ButtonSharpEdge>
-        <ButtonSharpEdge theme={"black"}>Sunday</ButtonSharpEdge>
-        <ButtonSharpEdge theme={"black"}>Saturday</ButtonSharpEdge>
+      <section className="col-full  relative bg-[--blue-light] min-h-[200px] py-10 my-10">
+        <div className="col-main row-start-1 flex flex-wrap items-center gap-3">
+          <ButtonSharpEdge theme={"black"}>
+            <Link className="flex-[200px]  " href={`/`}>
+              Monday
+            </Link>
+          </ButtonSharpEdge>
+          <ButtonSharpEdge theme={"black"}>
+            <Link href={`/`}>tuesday</Link>
+          </ButtonSharpEdge>
+          <ButtonSharpEdge theme={"black"}>
+            <Link href={`/`}>wednesday</Link>
+          </ButtonSharpEdge>
+          <ButtonSharpEdge theme={"black"}>
+            <Link href={`/`}>thursday</Link>
+          </ButtonSharpEdge>
+          <ButtonSharpEdge theme={"black"}>
+            <Link href={`/`}>friday</Link>
+          </ButtonSharpEdge>
+          <ButtonSharpEdge theme={"black"}>
+            <Link href={`/`}>saturday</Link>
+          </ButtonSharpEdge>
+          <ButtonSharpEdge theme={"black"}>
+            <Link href={`/`}>sunday</Link>
+          </ButtonSharpEdge>
+        </div>
       </section>
 
       <ul className="grid md:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]  place-content-center md:gap-4 gap-10 ">
