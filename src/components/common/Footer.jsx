@@ -12,13 +12,13 @@ import BoatImg from "@/app/assets/boat.svg";
 const Footer = () => {
   return (
     <footer className="bg-foreground text-background w-full relative font-hind-madurai ">
-      <div className=" absolute top-[-25%] w-[100%]  transform transition animate-[sailTravle_30s_linear_infinite]">
+      <div className=" absolute top-[-15%] md:top-[-25%]  left-[-20%]  aspect-auto w-[50%] md:w-[100%] transition animate-none md:animate-[sailTravle_30s_linear_infinite]">
         <Image
           src={BoatImg}
           alt={"image of something"}
-          height={50}
-          width={50}
-          className="w-fit h-[auto] origin-center transition animate-[sail_5s_linear_infinite] "
+          height={200}
+          width={200}
+          className=" h-[100%] origin-center  transition animate-[sail_5s_linear_infinite] "
         ></Image>
       </div>
 
