@@ -9,6 +9,7 @@ const headerList = {
 // OBS JEG HAR BARE LIGE UDKOMMENTERET, DET JEG IKKE SELV HAR BRUGT, MEN SOM VI EVT SKAL BRUGE ANDRE STEDER
 
 // // GET
+// fetch bands
 export async function getBands() {
   const response = await fetch(`${url}bands`, {
     method: "GET",
@@ -19,6 +20,7 @@ export async function getBands() {
   return data;
 }
 
+// fetch single band by slug
 export async function getSingleBand(slug) {
   const response = await fetch(`${url}bands/${slug}`, {
     method: "GET",

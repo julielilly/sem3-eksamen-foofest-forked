@@ -2,6 +2,7 @@ import "./styles/styles.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { Hind_Madurai, Germania_One, Caesar_Dressing } from "next/font/google";
+import QueryProvider from "./QueryProvider";
 
 const germania_one = Germania_One({
   subsets: ["latin"],
@@ -33,9 +34,11 @@ export default function RootLayout({ children }) {
       className={`${germania_one.variable} ${hind_madurai.variable} ${caesar_dressing.variable}`}
     >
       <body className="overflow-x-hidden">
-        <Header />
-        <main className="pb-[250px] ">{children}</main>
-        <Footer />
+        <QueryProvider>
+          <Header />
+          <main className="pb-[250px] ">{children}</main>
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   );
