@@ -19,7 +19,7 @@ async function page() {
       <section className="col-full  relative bg-[--blue-light] min-h-[200px] py-10 my-10">
         <div className="col-main row-start-1 flex flex-wrap items-center gap-3">
           <ButtonSharpEdge theme={"black"}>
-            <Link className="flex-[200px]  " href={`/`}>
+            <Link className="  " href={`/`}>
               Monday
             </Link>
           </ButtonSharpEdge>
