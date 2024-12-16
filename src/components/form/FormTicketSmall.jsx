@@ -1,15 +1,11 @@
-const FormTicketSmall = ({ quantity, price, theme = "ticket" }) => {
+"use client";
+
+const FormTicketSmall = ({ quantity, price, theme = "ticket", onclickEvent }) => {
   return (
     <div
       className="_small_ticket_ grid [&>*]:col-start-1
-           place-items-center [&>*]:row-start-1  "
-    >
-      <svg
-        className="_svg_border_ mob:ticket-small ticket-small-rotate rotate-90 mob:rotate-0 transition-transform reltive"
-        viewBox="0 0 240 318"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+           place-items-center [&>*]:row-start-1  ">
+      <svg className="_svg_border_ mob:ticket-small ticket-small-rotate rotate-90 mob:rotate-0 transition-transform reltive" viewBox="0 0 240 318" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M2 2H98.2148C98.6049 13.5097 108.058 22.7205 119.663 22.7205C131.267 22.7205 140.721 13.5097 141.111 2H237.326L237.326 15.0738C231.604 15.0738 226.965 19.7122 226.965 25.434C226.965 31.1558 231.604 35.7943 237.326 35.7943V44.4259C231.604 44.4259 226.965 49.0643 226.965 54.7861C226.965 60.5079 231.604 65.1464 237.326 65.1464V73.7809C231.604 73.7809 226.965 78.4193 226.965 84.1411C226.965 89.8629 231.604 94.5014 237.326 94.5014V104.862C231.604 104.862 226.965 109.5 226.965 115.222C226.965 120.944 231.604 125.582 237.326 125.582V134.217C231.604 134.217 226.965 138.855 226.965 144.577C226.965 150.299 231.604 154.937 237.326 154.937V163.569C231.604 163.569 226.965 168.207 226.965 173.929C226.965 179.651 231.604 184.289 237.326 184.289V192.924C231.604 192.924 226.965 197.562 226.965 203.284C226.965 209.006 231.604 213.644 237.326 213.644V224.004C231.604 224.004 226.965 228.643 226.965 234.365C226.965 240.087 231.604 244.725 237.326 244.725V253.359C231.604 253.359 226.965 257.998 226.965 263.72C226.965 269.441 231.604 274.08 237.326 274.08V282.712C231.604 282.712 226.965 287.35 226.965 293.072C226.965 298.794 231.604 303.432 237.326 303.432L237.326 315.768H141.111C141.119 315.522 141.123 315.275 141.123 315.027C141.123 303.175 131.515 293.567 119.663 293.567C107.811 293.567 98.2023 303.175 98.2023 315.027C98.2023 315.275 98.2065 315.522 98.2148 315.768H2V303.677C7.49107 303.553 11.9052 298.963 11.9052 293.319C11.9052 287.675 7.49107 283.085 2 282.961V274.325C7.49107 274.201 11.9052 269.611 11.9052 263.967C11.9052 258.323 7.49107 253.733 2 253.609V244.97C7.49107 244.846 11.9052 240.256 11.9052 234.612C11.9052 228.968 7.49107 224.378 2 224.254V213.889C7.49107 213.765 11.9052 209.175 11.9052 203.531C11.9052 197.887 7.49107 193.297 2 193.174V184.534C7.49107 184.41 11.9052 179.82 11.9052 174.176C11.9052 168.532 7.49107 163.942 2 163.819V155.182C7.49107 155.058 11.9052 150.468 11.9052 144.824C11.9052 139.18 7.49107 134.59 2 134.466V125.827C7.49107 125.703 11.9052 121.113 11.9052 115.469C11.9052 109.825 7.49107 105.235 2 105.111V94.7461C7.49107 94.6223 11.9052 90.0324 11.9052 84.3884C11.9052 78.7444 7.49107 74.1545 2 74.0307V65.3911C7.49107 65.2673 11.9052 60.6774 11.9052 55.0334C11.9052 49.3894 7.49107 44.7995 2 44.6757V36.039C7.49107 35.9152 11.9052 31.3253 11.9052 25.6813C11.9052 20.0373 7.49107 15.4474 2 15.3236V2Z"
           fill="#FFFDF2"
@@ -27,26 +23,24 @@ const FormTicketSmall = ({ quantity, price, theme = "ticket" }) => {
         <div className="grid place-items-center py-m relative w-[80dvw] mob:w-auto">
           <div className="flex place-items-center text-normal font-hind-madurai">
             <p>Admits</p>
-            <em className=" mx-1 text-step-2 font-germania-one not-italic">
-              {(quantity = 2)}
-            </em>
+            <em className=" mx-1 text-step-2 font-germania-one not-italic">{(quantity = 2)}</em>
             <p> {quantity > 1 ? " people" : " person"}</p>
           </div>
         </div>
       ) : theme === "ticket" ? (
         <div
           className="grid place-items-center py-m relative w-[80dvw] mob:w-auto
-    "
-        >
+    ">
           <div className="flex place-items-center text-normal font-hind-madurai">
-            <p>Admits</p>
-            <em className=" mx-1 text-step-2 font-germania-one not-italic">
-              {(quantity = 2)}
-            </em>
-            <p> {quantity > 1 ? " people" : " person"}</p>
+            <p>
+              Admits <em className=" mx-1 text-step-2 font-germania-one not-italic">1</em> person
+            </p>
+            {/* <p>Admits</p>
+            <em className=" mx-1 text-step-2 font-germania-one not-italic">{(quantity = 2)}</em>
+            <p> {quantity > 1 ? " people" : " person"}</p> */}
           </div>
 
-          <button className=" bg-black hover:bg-transparent hover:text-black active:bg-lightblue active:text-white border border-black  mob:border-l-0 mob:border-r-0 text-white text-normal py-xs  px-l rounded-full mob:rounded-none mob:px-0 mob:ticket-buy-button text-nowrap  relative -left-[1.2px]  ">
+          <button className=" bg-black hover:bg-transparent hover:text-black active:bg-lightblue active:text-white border border-black  mob:border-l-0 mob:border-r-0 text-white text-normal py-xs  px-l rounded-full mob:rounded-none mob:px-0 mob:ticket-buy-button text-nowrap  relative -left-[1.2px]  " onClick={onclickEvent}>
             BUY TICKET
           </button>
           <p className="text-normal p-2xs border-t-[1px] text-lightblue font-bold  ">

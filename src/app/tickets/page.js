@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { getAvailableSpots, reserveSpot, fullfullReservation } from "@/lib/api";
 import FormReceipt from "@/components/tickets/FormReceipt";
+import FormStepOne from "@/components/tickets/FormStepOne";
 
 const Page = () => {
   const [step, setStep] = useState(1);
@@ -19,8 +20,7 @@ const Page = () => {
   const [timer, setTimer] = useState(0);
   const [reservationId, setReservationId] = useState(null);
 
-  const numberOfParticipants =
-    ticketData.general_tickets + ticketData.vip_tickets;
+  const numberOfParticipants = ticketData.general_tickets + ticketData.vip_tickets;
 
   // Fetch available camping areas once on component mount
   useEffect(() => {
@@ -50,8 +50,7 @@ const Page = () => {
   }, [timer]);
 
   // Calculate the total number of tents
-  const calculateAmount = () =>
-    ticketData.three_person_tents + ticketData.two_person_tents;
+  const calculateAmount = () => ticketData.three_person_tents + ticketData.two_person_tents;
 
   // Handle reservation logic
   const handleReservation = async () => {
@@ -65,9 +64,7 @@ const Page = () => {
       amount: calculateAmount(),
     };
 
-    const selectedArea = campingAreas.find(
-      (area) => area.area === ticketData.camping_area
-    );
+    const selectedArea = campingAreas.find((area) => area.area === ticketData.camping_area);
 
     if (selectedArea && selectedArea.available < reservationData.amount) {
       alert("Not enough spots available for your reservation.");
@@ -140,10 +137,12 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 ">
+      <div className="flex m-auto items-center md:items-start md:justify-between gap-xs flex-col md:flex-row">
         <div>
           {/* Step 1: Ticket selection */}
-          {step === 1 && (
+          {step === 1 && <FormStepOne ticketData={ticketData} setTicketData={setTicketData} />}
+          {/* Step 1: Ticket selection */}
+          {step === 10 && (
             <div>
               <button
                 className="border"
@@ -152,8 +151,7 @@ const Page = () => {
                     ...ticketData,
                     general_tickets: ticketData.general_tickets + 1,
                   })
-                }
-              >
+                }>
                 Buy General Ticket
               </button>
               <button
@@ -163,15 +161,11 @@ const Page = () => {
                     ...ticketData,
                     vip_tickets: ticketData.vip_tickets + 1,
                   })
-                }
-              >
+                }>
                 Buy VIP Ticket
               </button>
               <div>
-                Total Tickets:{" "}
-                <span>
-                  {ticketData.general_tickets + ticketData.vip_tickets}
-                </span>
+                Total Tickets: <span>{ticketData.general_tickets + ticketData.vip_tickets}</span>
               </div>
             </div>
           )}
@@ -180,12 +174,7 @@ const Page = () => {
           {step === 2 && (
             <div>
               {campingAreas.map((area) => (
-                <button
-                  key={area.area}
-                  onClick={() =>
-                    setTicketData({ ...ticketData, camping_area: area.area })
-                  }
-                >
+                <button key={area.area} onClick={() => setTicketData({ ...ticketData, camping_area: area.area })}>
                   {area.area}
                   <div>Available spots: {area.available}</div>
                 </button>
@@ -197,8 +186,7 @@ const Page = () => {
                     ...ticketData,
                     two_person_tents: ticketData.two_person_tents + 1,
                   })
-                }
-              >
+                }>
                 Add 2-person Tent
               </button>
               <button
@@ -207,8 +195,7 @@ const Page = () => {
                     ...ticketData,
                     three_person_tents: ticketData.three_person_tents + 1,
                   })
-                }
-              >
+                }>
                 Add 3-person Tent
               </button>
               <div>
@@ -226,59 +213,29 @@ const Page = () => {
                 e.preventDefault();
                 setStep(step + 1);
                 console.log(e);
-              }}
-            >
+              }}>
               {Array.from({ length: numberOfParticipants }, (_, index) => (
                 <div key={index}>
-                  <h3>
-                    {index === 0 ? "Buyer Details" : `Guest ${index} Details`}
-                  </h3>
+                  <h3>{index === 0 ? "Buyer Details" : `Guest ${index} Details`}</h3>
                   <label>Name:</label>
-                  <input
-                    value={ticketData.participants[index]?.name || ""}
-                    onChange={(e) =>
-                      handleParticipantChange(index, "name", e.target.value)
-                    }
-                  />
+                  <input value={ticketData.participants[index]?.name || ""} onChange={(e) => handleParticipantChange(index, "name", e.target.value)} />
                   <label>Email:</label>
-                  <input
-                    type="email"
-                    value={ticketData.participants[index]?.email || ""}
-                    onChange={(e) =>
-                      handleParticipantChange(index, "email", e.target.value)
-                    }
-                  />
+                  <input type="email" value={ticketData.participants[index]?.email || ""} onChange={(e) => handleParticipantChange(index, "email", e.target.value)} />
                   <label>Phone Number:</label>
-                  <input
-                    type="number"
-                    value={ticketData.participants[index]?.number || ""}
-                    onChange={(e) =>
-                      handleParticipantChange(index, "number", e.target.value)
-                    }
-                  />
+                  <input type="number" value={ticketData.participants[index]?.number || ""} onChange={(e) => handleParticipantChange(index, "number", e.target.value)} />
                 </div>
               ))}
             </form>
           )}
 
           {/* Step 4: Payment submission */}
-          {step === 4 && (
-            <form id="payment_form" onSubmit={handleSubmitPayment}></form>
-          )}
+          {step === 4 && <form id="payment_form" onSubmit={handleSubmitPayment}></form>}
 
           {/* Step 5: Order confirmation */}
           {step === 5 && <div>Order confirmed!</div>}
         </div>
 
-        {(step === 1 || step === 2 || step === 3 || step === 4) && (
-          <FormReceipt
-            setStep={setStep}
-            step={step}
-            handleReservation={handleReservation}
-            ticketData={ticketData}
-            setTicketData={setTicketData}
-          />
-        )}
+        {(step === 1 || step === 2 || step === 3 || step === 4) && <FormReceipt setStep={setStep} step={step} handleReservation={handleReservation} ticketData={ticketData} setTicketData={setTicketData} />}
       </div>
     </div>
   );
