@@ -47,6 +47,7 @@ async function page() {
       <ul className="grid md:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]  place-content-center md:gap-4 gap-10 ">
         {bands.map((band, i) => (
           <LineUpCardCTA
+            key={band.slug || i}
             id={i}
             artistName={band.name}
             dayOfPlaying={"wednesday"}
