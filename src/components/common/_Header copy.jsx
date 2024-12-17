@@ -34,6 +34,17 @@ const Header = () => {
     };
 
     // Close the menu if click anywhere
+    const handleClickAnywhere = (event) => {
+      // Check if the menu is open and it is not the close icon being clicked
+      console.log("close menu");
+      if (
+        menuOpen &&
+        !buttonRef.current?.contains(event.target) &&
+        !event.target.closest(".LineupDaySelector")
+      ) {
+        setMenuOpen(false); // Close the menu if the click is not on the button (the button closes the menu elsewhere)
+      }
+    };
 
     // Initialize scroll state and check pathname on mount
     handleScroll();
@@ -41,9 +52,11 @@ const Header = () => {
 
     // Listen to scroll and click events
     window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mouseup", handleClickAnywhere);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mouseup", handleClickAnywhere);
     };
   }, [pathname, menuOpen]); // React to pathname changes and menu state
 
