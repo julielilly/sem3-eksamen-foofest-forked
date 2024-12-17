@@ -24,6 +24,21 @@
   }
 }
 
+/* wave animation */
+@keyframes singlewave {
+  0% {
+    transform: translateY(8%);
+  }
+
+  50% {
+    transform: translateY(-8%);
+  }
+
+  100% {
+    transform: translateY(8%);
+  }
+}
+
 /* sail animation */
 @keyframes sail {
   0% {
