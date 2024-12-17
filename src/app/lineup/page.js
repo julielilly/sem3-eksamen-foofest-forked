@@ -1,14 +1,16 @@
-"use client";
-
 import LineUpCardCTA from "@/components/lineup/LineUpCardCTA";
-import ButtonSharpEdge from "@/components/common/ButtonSharpEdge";
+
 import { useBands } from "@/lib/hooks/useBands";
 import { useSchedule } from "@/lib/hooks/useSchedule";
+import LineupDaySelector from "@/components/lineup/LineupDaySelector";
+import { FilterPerDay } from "@/stores/FilterPerDay";
 
 function Page() {
   const { data: bands, isLoading, isError } = useBands();
   const { data: schedule, scheduleIsLoading, scheduleIsError } = useSchedule();
+  const { selectedDay } = FilterPerDay(); // extract selected day from Zustand store
 
+  console.log(selectedDay);
   if (isLoading || scheduleIsLoading) return <div>Loading...</div>;
   if (isError || scheduleIsError) return <div>Sorry, an error occurred</div>;
 
@@ -28,8 +30,12 @@ function Page() {
       )
     : [];
 
+  // filter performances based on the selected day
+  const filteredPerformances = performances.filter(
+    (performance) => performance.day === selectedDay
+  );
   // trying to match performance with the correct band
-  const matchPerformances = performances
+  const matchPerformances = filteredPerformances
     .map((performance) => {
       const band = bands.find((band) => band.name === performance.act);
       return band
@@ -42,11 +48,6 @@ function Page() {
     })
     .filter(Boolean); // remove falsy values, basically all values that are null, from the array, which assures only valid object are in the array.
 
-  // // filter performances based on the selected day
-  // const filteredPerformances = matchPerformances.filter(
-  //   (performance) => performance.day === selectedDay
-  // );
-
   return (
     <div className="overflow-hidden relative">
       <h1 className="halfround-right text-title my-10 md:w-1/2">Lineup</h1>
@@ -54,19 +55,7 @@ function Page() {
       {/* Day buttons layout  */}
       <section className="col-full  relative bg-[--blue-light] min-h-[200px] py-10 my-10">
         <div className="col-main row-start-1 flex flex-wrap items-center gap-3">
-          {[
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-          ].map((day) => (
-            <ButtonSharpEdge theme="black" key={day}>
-              {day}
-            </ButtonSharpEdge>
-          ))}
+          <LineupDaySelector />
         </div>
       </section>
 
