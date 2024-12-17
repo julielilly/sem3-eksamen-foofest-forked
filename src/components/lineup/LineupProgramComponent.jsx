@@ -6,7 +6,8 @@ import { FilterPerDay } from "@/stores/FilterPerDay";
 import LineUpCardCTA from "@/components/lineup/LineUpCardCTA";
 
 const LineupProgramComponent = () => {
-  const { selectedDay } = FilterPerDay();
+  const { selectedDay, setSelectedDay, initToday } = FilterPerDay();
+
   const {
     data: bands,
     isLoading: bandsLoading,
@@ -21,6 +22,8 @@ const LineupProgramComponent = () => {
   if (bandsLoading || scheduleLoading) return <div>Loading...</div>;
   if (bandsError || scheduleError) return <div>Sorry, an error occurred</div>;
 
+  // this will flatten the entire schedule data into an accessible array
+  // i needed to add a way to check if the schedule is valid, which is by checking with the "?", and if it's not valid, it will just return an empty array in the end.
   const performances = schedule
     ? Object.entries(schedule).flatMap(([scene, days]) =>
         Object.entries(days).flatMap(([day, shifts]) =>
@@ -40,12 +43,13 @@ const LineupProgramComponent = () => {
     (performance) => performance.day === selectedDay
   );
 
-  // Match performances with bands
+  // trying to match performance with the correct band
   const matchedPerformances = filteredPerformances
     .map((performance) => {
       const band = bands.find((band) => band.name === performance.act);
       return band
-        ? {
+        ? // if band is found, it will be created into an object that combines the band with the performance.
+          {
             ...performance,
             band,
           }

@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSchedule } from "@/lib/schedule";
-import { FilterPerDay } from "@/stores/FilterPerDay";
 
-export function useSchedule() {
-  const { selectedDay } = FilterPerDay();
+export function useSchedule(selectedDay) {
   return useQuery({
     queryFn: async () => await getSchedule(selectedDay),
     queryKey: ["schedule", selectedDay], // unique key for caching data
