@@ -19,10 +19,26 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
         />
 
         <div className="flex flex-col-reverse md:flex-col md:gap-2 halfround-right md:border-none md:bg-background  md:text-foreground md:py-0 md:pr-0  md:pl-0 md:rounded-none text-nowrap absolute bottom-2 left-0  md:relative">
-          <h6 className="font-bold text-text capitalize md:halfround-right">
+          <h6 className="font-bold text-text capitalize md:halfround-right ">
             {artistName}
           </h6>
-          <p className=" text-text">{dayOfPlaying}</p>
+          <p className=" text-text">
+            {dayOfPlaying == "mon"
+              ? "Monday"
+              : dayOfPlaying == "tue"
+              ? "Tuesday"
+              : dayOfPlaying == "wed"
+              ? "Wednesday"
+              : dayOfPlaying == "thu"
+              ? "Thursday"
+              : dayOfPlaying == "fri"
+              ? "Friday"
+              : dayOfPlaying == "sat"
+              ? "Saturday"
+              : dayOfPlaying == "sun"
+              ? "Sunday"
+              : dayOfPlaying}
+          </p>
         </div>
       </li>
     </Link>
