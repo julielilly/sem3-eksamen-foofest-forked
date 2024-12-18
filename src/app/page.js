@@ -5,16 +5,17 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="homepage">
+    <div className="homepage grid place-items-center gap-xl">
       <Hero />
-      <div className="relative flex flex-col gap-[50px] items-center justify-between pt-[250px]">
-        <h1 className="text-title halfround-right md:w-1/2 w-[100%] ">
+      <div className="relative  grid place-items-center gap-m ">
+        <h1 className="text-title text-center halfround-right md:w-1/2 w-[100%] ">
           Lineup
         </h1>
 
         <ForsideLineUp />
-        <ButtonSharpEdge theme={"black"}>
-          <Link href={`/lineup`}>See the whole line up</Link>
+
+        <ButtonSharpEdge theme={"white"}>
+          <Link href={`/lineup`}>See the whole lineup</Link>
         </ButtonSharpEdge>
       </div>
     </div>

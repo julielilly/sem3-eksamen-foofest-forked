@@ -1,6 +1,5 @@
 import { getBands } from "@/lib/api";
 import { GoDotFill } from "react-icons/go";
-import ButtonSharpEdge from "./common/ButtonSharpEdge";
 import Link from "next/link";
 
 async function ForsideLineUp() {
