@@ -5,9 +5,9 @@ const url = process.env.NEXT_PUBLIC_API_URL; // data bliver inhentet fra .env.lo
 
 const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
   return (
-    <Link key={id} href={`/lineup/${slug}`} className="">
-      <li className="transition-all hover:translate-y-[-10px] hover:translate-x-[-10px] hover:shadow-[15px_15px_0px_-5px_var(--foreground)] flex flex-col justify-between gap-3 h-[100%] min-h-[300px] min-w-10 max-w-[300px] relative w-fit border-2 border-foreground p-5">
-        <span className="absolute top-1 left-0 font-bold text-text backdrop: border-l-0 text-text  bg-background text-foreground w-fit py-1xs pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">
+    <Link key={id} href={`/lineup/${slug}`}>
+      <li className="transition-all hover:z-10 hover:translate-y-[-10px] bg-background hover:translate-x-[-10px] hover:shadow-[15px_15px_0px_-5px_var(--foreground)] flex flex-col justify-between gap-3 h-[100%] min-h-[300px] min-w-10 max-w-[300px] relative w-fit border-2 border-foreground p-5">
+        <span className="absolute top-1.5 left-0 font-bold text-text backdrop: border-l-0 text-text  bg-background text-foreground w-fit py-2 pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">
           {scene}
         </span>
         <Image
