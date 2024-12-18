@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import { getSingleBand } from "@/lib/api";
 import LineUpHeader from "@/components/lineup/LineUpHeader";
+import PageTitle from "@/components/common/PageTitle";
 
 const page = async ({ params }) => {
   const { slug } = params;
@@ -16,7 +17,7 @@ const page = async ({ params }) => {
   console.log(band);
 
   return (
-    <div>
+    <div className="col-full">
       <section className="relative w-[100%] overflow-hidden col-full">
         <Link
           href={"/lineup"}
@@ -71,11 +72,11 @@ const page = async ({ params }) => {
         ></Image>
       </section>
 
-      <section className="mx-[0px] lg:mx-[200px]  [&>*]:my-8 mb-[100px]">
-        <h1 className="halfround-right font-bold text-title capitalize my-10">
-          {band.name}
-        </h1>
+      <div className="col-full">
+        <PageTitle> {band.name}</PageTitle>
+      </div>
 
+      <section className="mx-[0px] lg:mx-[200px] col-main [&>*]:my-8 mb-[100px]">
         <section className="flex flex-wrap gap-4">
           <LineUpHeader
             edge={"right"}
