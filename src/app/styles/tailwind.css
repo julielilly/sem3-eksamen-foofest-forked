@@ -84,6 +84,31 @@
   .card-width {
     width: clamp(19.5rem, 16.8043rem + 13.4783vw, 27.25rem);
   }
+
+  .page-title {
+    position: relative;
+    z-index: 99;
+    grid-column: main;
+    color: white;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+
+      width: 100%; /* Start as full width */
+      grid-column: full; /* Span the entire grid */
+      transform: scaleX(
+        calc((var(--content) / 100%))
+      ); /* Shrink background to match the "main" column */
+      transform-origin: left; /* Anchor shrinking to the left */
+      z-index: 0; /* Position below the title */
+
+      @apply halfround-right py-s;
+    }
+  }
 }
 
 @layer utilities {
