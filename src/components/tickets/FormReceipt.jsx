@@ -100,6 +100,8 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
     // Perform validation for the current step
     const isValid = await validateStep();
 
+    setIsButtonDisabled(true); // set button to be disabled for next step
+
     if (isValid) {
       // Proceed to the next step or handle the form submission
       if (step === 1 || step === 3) {
