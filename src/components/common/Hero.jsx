@@ -14,11 +14,11 @@ const Hero = () => {
         className="row-start-1 col-full h-[100svh] min-h-[500px] object-cover"
       />
 
-      <div className="col-main row-start-1 text-white self-center h-fit justify-items-center">
+      <div className="col-main row-start-1 text-white self-center h-fit justify-items-center grid">
         <h1 className="text-big-title mb-s font-germania-one text-center">
           Ticket sale is open
         </h1>
-        <Link href={"/tickets"}>
+        <Link href={"/tickets"} className="place-self-center">
           <ButtonSharpEdge theme="black">Get your tickets now</ButtonSharpEdge>
         </Link>
       </div>

@@ -9,10 +9,10 @@ export default function Home() {
       <Hero />
       <div className="relative flex flex-col gap-[50px] items-center justify-between pt-[250px]">
         <h1 className="text-title halfround-right md:w-1/2 w-[100%] ">
-          Line Up
+          Lineup
         </h1>
 
-        <ForsideLineUp></ForsideLineUp>
+        <ForsideLineUp />
         <ButtonSharpEdge theme={"black"}>
           <Link href={`/lineup`}>See the whole line up</Link>
         </ButtonSharpEdge>
