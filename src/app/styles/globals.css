@@ -97,3 +97,9 @@ body {
 main > div:not(.homepage) {
   margin-top: 3.35rem;
 }
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}

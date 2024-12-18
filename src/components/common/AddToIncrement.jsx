@@ -6,27 +6,27 @@ const AddToIncrement = ({ count, increment, decrement }) => {
   return isIncrementField ? (
     <div className="flex items-center space-x-2">
       <button
+        type="button"
         className="bg-black text-white py-1 px-2"
         onClick={() => {
           decrement();
           if (count - 1 <= 0) setIsIncrementField(false);
-        }}
-      >
+        }}>
         -
       </button>
       <span className="text-black">{count}</span>
-      <button className="bg-black text-white py-1 px-2" onClick={increment}>
+      <button type="button" className="bg-black text-white py-1 px-2" onClick={increment}>
         +
       </button>
     </div>
   ) : (
     <button
+      type="button"
       className="bg-black text-white py-1 px-2"
       onClick={() => {
         increment();
         setIsIncrementField(true);
-      }}
-    >
+      }}>
       ADD
     </button>
   );
