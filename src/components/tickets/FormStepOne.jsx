@@ -1,19 +1,22 @@
+import { TicketData } from "@/stores/TicketState";
 import FormTicketBig from "../form/FormTicketBig";
 import FormTicketSmall from "../form/FormTicketSmall";
-import { TicketData } from "@/stores/TicketState";
 
+// Handles the first step of the form, allowing users to select general and VIP tickets.
 const FormStepOne = () => {
-  const { general_tickets, vip_tickets, incrGeneral_tickets, incrVIP_tickets } = TicketData();
-  console.log(general_tickets);
+  // Extracting ticket data from global state
+  const { incrGeneral_tickets, incrVIP_tickets } = TicketData();
 
   return (
-    <div className="_Ticket_component_  grid mob:grid-cols-[auto,1fr]  gap-xs py-m  m-auto transition-transform h-fit ">
+    <fieldset className="_Ticket_component_ grid mob:grid-cols-[auto,1fr] gap-xs py-m m-auto transition-transform h-fit" aria-labelledby="form-header">
+      {/* General Ticket Selection */}
       <FormTicketBig theme="general" />
-      <FormTicketSmall quantity={general_tickets + 1} price="799" theme="ticket" onclickEvent={incrGeneral_tickets} />
+      <FormTicketSmall price="799" theme="ticket" onclickEvent={incrGeneral_tickets} />
 
+      {/* VIP Ticket Selection */}
       <FormTicketBig theme="vip" />
-      <FormTicketSmall quantity={vip_tickets + 1} price="1299" theme="ticket" onclickEvent={incrVIP_tickets} />
-    </div>
+      <FormTicketSmall price="1299" theme="ticket" onclickEvent={incrVIP_tickets} />
+    </fieldset>
   );
 };
 

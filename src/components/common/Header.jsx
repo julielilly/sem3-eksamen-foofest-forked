@@ -48,7 +48,7 @@ const Header = () => {
 
     // Listen to scroll and click events
     window.addEventListener("scroll", handleScroll);
-    document.addEventListener("mouseup", handleClickAnywhere);
+    if (menuOpen) document.addEventListener("mouseup", handleClickAnywhere);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);

@@ -71,14 +71,12 @@ export async function reserveSpot(reservationData) {
   if (data.message === "Reserved") {
     return data; // Return the response data with the "Reserved" message
   } else {
-    throw new Error(
-      data.message || "Unknown error occurred during reservation"
-    );
+    throw new Error(data.message || "Unknown error occurred during reservation");
   }
 }
 
 // POST - fullfill the reservation
-export async function fullfullReservation(subdata) {
+export async function fullfillReservation(subdata) {
   const response = await fetch(`${url}fullfill-reservation`, {
     method: "POST",
     headers: headerList,
