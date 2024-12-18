@@ -33,7 +33,7 @@ const LineupDaySelector = ({ theme = "black" }) => {
     short === selectedDay ? themeClasses.white : themeClasses[theme];
 
   return (
-    <div className="col-main flex flex-wrap items-center gap-3">
+    <div className="flex flex-wrap items-center gap-3">
       {daysMap.map(({ short, full }) => (
         <div
           className={`sharp transition-all m-2 text-center basis-[100px] flex-auto h-fit max-h-[50px] first-letter:capitalize ${getThemeClass(
