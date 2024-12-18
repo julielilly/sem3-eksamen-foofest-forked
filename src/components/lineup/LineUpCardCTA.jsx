@@ -6,8 +6,8 @@ const url = process.env.NEXT_PUBLIC_API_URL; // data bliver inhentet fra .env.lo
 const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
   return (
     <Link key={id} href={`/lineup/${slug}`}>
-      <li className="transition-all hover:z-10 hover:translate-y-[-10px] bg-background hover:translate-x-[-10px] hover:shadow-[15px_15px_0px_-5px_var(--foreground)] flex flex-col justify-between gap-3 h-[100%] min-h-[300px] min-w-10 max-w-[300px] relative w-fit border-2 border-foreground p-5">
-        <span className="absolute top-1.5 left-0 font-bold text-text backdrop: border-l-0 text-text  bg-background text-foreground w-fit py-2 pr-s pl-l rounded-r-full  border-2 border-foreground text-nowrap">
+      <li className="transition-all hover:z-10 hover:translate-y-[-10px] bg-background hover:translate-x-[-10px] hover:shadow-[15px_15px_0px_-5px_var(--foreground)] flex flex-col justify-between gap-s h-[100%] min-h-[300px]  max-w-[300px] relative w-fit border-2 border-foreground p-5">
+        <span className="absolute top-1.5 left-0 font-bold text-text backdrop: border-l-0 text-text  bg-background text-foreground w-fit py-2 px-s  rounded-r-full  border-2 border-foreground text-nowrap text-center">
           {scene}
         </span>
         <Image
@@ -18,27 +18,8 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
           className="border-2 border-foreground h-[100%] object-cover"
         />
 
-        <div className="flex flex-col-reverse md:flex-col md:gap-2 halfround-right md:border-none md:bg-background  md:text-foreground md:py-0 md:pr-0  md:pl-0 md:rounded-none text-nowrap absolute bottom-2 left-0  md:relative">
-          <h6 className="font-bold text-text capitalize md:halfround-right ">
-            {artistName}
-          </h6>
-          <p className=" text-text">
-            {dayOfPlaying == "mon"
-              ? "Monday"
-              : dayOfPlaying == "tue"
-              ? "Tuesday"
-              : dayOfPlaying == "wed"
-              ? "Wednesday"
-              : dayOfPlaying == "thu"
-              ? "Thursday"
-              : dayOfPlaying == "fri"
-              ? "Friday"
-              : dayOfPlaying == "sat"
-              ? "Saturday"
-              : dayOfPlaying == "sun"
-              ? "Sunday"
-              : dayOfPlaying}
-          </p>
+        <div className="flex halfround-right text-wrap absolute bottom-2 left-0  md:relative w-fit max-w-[90%]">
+          {artistName}
         </div>
       </li>
     </Link>
