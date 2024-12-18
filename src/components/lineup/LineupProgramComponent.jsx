@@ -4,6 +4,7 @@ import { useBands } from "@/lib/hooks/useBands";
 import { useSchedule } from "@/lib/hooks/useSchedule";
 import { FilterPerDay } from "@/stores/FilterPerDay";
 import LineUpCardCTA from "@/components/lineup/LineUpCardCTA";
+import LoadingScreen from "../common/LodingScreen";
 
 const LineupProgramComponent = () => {
   const { selectedDay, setSelectedDay, initToday } = FilterPerDay();
@@ -19,7 +20,7 @@ const LineupProgramComponent = () => {
     isError: scheduleError,
   } = useSchedule(selectedDay);
 
-  if (bandsLoading || scheduleLoading) return <div>Loading...</div>;
+  if (bandsLoading || scheduleLoading) return <LoadingScreen></LoadingScreen>;
   if (bandsError || scheduleError) return <div>Sorry, an error occurred</div>;
 
   // this will flatten the entire schedule data into an accessible array

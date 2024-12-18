@@ -4,6 +4,7 @@ export const PaymentCardInput = create((set) => ({
   cardNumber: "",
   cardName: "",
   expiryDate: "",
+  cardCvc: "",
   setCardNumber: (value) =>
     set((state) => ({
       cardNumber: value
@@ -23,5 +24,9 @@ export const PaymentCardInput = create((set) => ({
         .replace(/\/$/, "") // remove trailing slash if present
         .replace(/[^0-9/]/g, "") // this allows only numbers and "/"
         .replace(/(\d{2})(\d{2})/, "$1/$2"), // formats the input so it looks like mm/yy. if user writes "1234", this will split it into "12/34".
+    })),
+  setCardCvc: (value) =>
+    set((state) => ({
+      cardCvc: value.replace(/[^0-9]/g, ""), // this allows only numbers
     })),
 }));

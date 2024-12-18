@@ -2,31 +2,23 @@
 
 import ButtonRounded from "@/components/common/ButtonRounded";
 
-const FormReceiptCTA = ({ setStep, step, handleReservation }) => {
+const FormReceiptCTA = ({ loading, isButtonDisabled, handleButtonClick, step }) => {
   return (
-    <ButtonRounded>
-      {(step === 1 || step === 3) && (
-        <button
-          onClick={() => {
-            setStep(step + 1);
-            console.log("click");
-          }}
-        >
-          {step === 1 && `Choose camping`}
-        </button>
-      )}
-      {step === 2 && (
-        <button onClick={() => handleReservation()}>Reserve tickets</button>
-      )}
-      {step === 3 && (
-        <input type="submit" form="details_form" value="Go to payment"></input>
-      )}
+    <ButtonRounded isButtonDisabled={isButtonDisabled}>
+      <button onClick={handleButtonClick} className={`${isButtonDisabled ? "cursor-not-allowed" : "cursor-pointer"}`}>
+        {step === 1 && "Choose camping"}
+        {step === 2 && (loading ? "loading..." : "Reserve tickets")}
+        {step === 3 && "Go to payment"}
+      </button>
+
       {step === 4 && (
         <input
           type="submit"
-          form="payment_form"
-          value="Proceed to checkout"
-        ></input>
+          value={loading ? "loading..." : "Proceed to checkout"}
+          form="reservation-form"
+          className={`${isButtonDisabled ? "cursor-not-allowed" : "cursor-pointer"}`}
+          onClick={handleButtonClick} // Handle validation here
+        />
       )}
     </ButtonRounded>
   );
