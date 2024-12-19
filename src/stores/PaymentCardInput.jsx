@@ -7,6 +7,7 @@ export const PaymentCardInput = create((set) => ({
   cardCvc: "",
   setCardNumber: (value) =>
     set((state) => ({
+      // I used chatGPT to help me with writing these replaced() conditions.
       cardNumber: value
         .replace(/[^0-9]/g, "") // this allows only numbers
         .replace(/(\d{4})/g, "$1 ") // this adds space after every

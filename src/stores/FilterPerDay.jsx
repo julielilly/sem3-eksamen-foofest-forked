@@ -7,6 +7,8 @@ export const FilterPerDay = create((set) => ({
   initToday: () => {
     const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
     const todayIndex = new Date().getDay(); // get today's index (0 = Sunday, 6 = Saturday)
+
+    // ChatGPT gave me the function for adjustedIndex, as I couldn't figure out how to change the order of the days.
     const adjustedIndex = (todayIndex + 6) % 7; // adjust index so Monday = 0
 
     set({ selectedDay: daysOfWeek[adjustedIndex] }); // set the selected day
