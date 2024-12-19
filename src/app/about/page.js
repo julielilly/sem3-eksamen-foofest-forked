@@ -1,11 +1,10 @@
 import AccordienWrapper from "@/components/common/AccordienWrapper";
+import PageTitle from "@/components/common/PageTitle";
 
 const Page = () => {
   return (
     <div>
-      <h1 className=" font-bold halfround-right md:w-1/2 text-title my-5 ">
-        About
-      </h1>
+      <PageTitle>About</PageTitle>
       <div className="mx-auto md:w-[60%] my-5">
         <p>
           Welcome to Foo Fest, where the realms of myth and music collide! Set

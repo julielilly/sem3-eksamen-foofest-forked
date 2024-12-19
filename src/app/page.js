@@ -1,5 +1,5 @@
 import Hero from "@/components/common/Hero";
-import ForsideLineUp from "@/components/ForsideLineUp";
+import ForsideLineUp from "@/components/lineup/ForsideLineUp";
 import ButtonSharpEdge from "@/components/common/ButtonSharpEdge";
 import Link from "next/link";
 

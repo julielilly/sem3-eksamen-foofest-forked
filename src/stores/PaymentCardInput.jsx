@@ -14,7 +14,7 @@ export const PaymentCardInput = create((set) => ({
     })),
   setCardName: (value) =>
     set({
-      cardName: value.replace(/[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF|s-]/g, ""),
+      cardName: value.replace(/[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s-]/g, ""),
     }),
   setExpiryDate: (
     value // yy/mm format of the expiry date field
