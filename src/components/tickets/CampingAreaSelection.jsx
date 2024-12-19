@@ -6,7 +6,18 @@ import { getAvailableSpots } from "@/lib/api";
 import AddToIncrement from "../common/AddToIncrement";
 
 const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
-  const { two_person_tents, three_person_tents, camping_area, selectCampingArea, incrTwoPersonTents, decrTwoPersonTents, incrThreePersonTents, decrThreePersonTents, green_camping, setGreenCamping } = TicketData();
+  const {
+    two_person_tents,
+    three_person_tents,
+    camping_area,
+    selectCampingArea,
+    incrTwoPersonTents,
+    decrTwoPersonTents,
+    incrThreePersonTents,
+    decrThreePersonTents,
+    green_camping,
+    setGreenCamping,
+  } = TicketData();
 
   // Fetch available camping areas once on component mount
   useEffect(() => {
@@ -18,7 +29,10 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
   }, []);
 
   return (
-    <fieldset className="_step_2_select_camping_" aria-labelledby="camping-header">
+    <fieldset
+      className="_step_2_select_camping_"
+      aria-labelledby="camping-header"
+    >
       <h2 className="before:w-1/2" id="camping-header">
         Select camping area
       </h2>
@@ -33,7 +47,11 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
 
             // specific style for the LAST camping area button IF total areas are odd numbered.
             const buttonClasses = `
-    ${isLast && isOdd ? "col-span-2 halfround-right border-r-2 w-[75%] m-auto" : ""}
+    ${
+      isLast && isOdd
+        ? "col-span-2 halfround-right border-r-2 w-[75%] max-w-[80%] m-auto"
+        : ""
+    }
     ${
       !isLast && index % 2 === 0
         ? "halfround-right border-l-0" // styles odd buttons
@@ -46,7 +64,12 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
   `;
 
             return (
-              <div key={area.area} className={`relative ${isLast && isOdd ? "col-span-2 flex justify-center" : ""}`}>
+              <div
+                key={area.area}
+                className={`relative ${
+                  isLast && isOdd ? "col-span-2 flex justify-center" : ""
+                }`}
+              >
                 <input
                   type="radio"
                   id={`camping-area-${index}`}
@@ -58,9 +81,14 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
                   }}
                   className="sr-only peer"
                 />
-                <label htmlFor={`camping-area-${index}`} className={buttonClasses}>
+                <label
+                  htmlFor={`camping-area-${index}`}
+                  className={buttonClasses}
+                >
                   {area.area}
-                  <div className="text-xs font-normal tracking-none mt-1">Available: {area.available}</div>
+                  <div className="text-xs font-normal tracking-none mt-1">
+                    Available: {area.available}
+                  </div>
                 </label>
               </div>
             );
@@ -74,25 +102,52 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
         <div className="_2-3_person_tent_ grid gap-s pb-s">
           <section className="flex justify-between items-center">
             <div>
-              <input className="appearance-none hidden" type="checkbox" id="two-person-tent" checked={two_person_tents > 0} onChange={incrTwoPersonTents} />
-              <label htmlFor="two-person-tent" className="text-normal tracking-wide">
+              <input
+                className="appearance-none hidden"
+                type="checkbox"
+                id="two-person-tent"
+                checked={two_person_tents > 0}
+                onChange={incrTwoPersonTents}
+              />
+              <label
+                htmlFor="two-person-tent"
+                className="text-normal tracking-wide"
+              >
                 2-person tent
               </label>
               <p className="text-lightblue font-light italic">299kr per tent</p>
             </div>
 
-            <AddToIncrement count={two_person_tents} increment={incrTwoPersonTents} decrement={decrTwoPersonTents} />
+            <AddToIncrement
+              count={two_person_tents}
+              increment={incrTwoPersonTents}
+              decrement={decrTwoPersonTents}
+            />
           </section>
           <section className="flex justify-between items-center">
             <div>
-              <input className="appearance-none hidden" type="checkbox" id="three-person-tent" checked={three_person_tents > 0} onChange={incrThreePersonTents} {...register("twoPersonTents")} />
-              <label htmlFor="three-person-tent" className="text-normal tracking-wide">
+              <input
+                className="appearance-none hidden"
+                type="checkbox"
+                id="three-person-tent"
+                checked={three_person_tents > 0}
+                onChange={incrThreePersonTents}
+                {...register("twoPersonTents")}
+              />
+              <label
+                htmlFor="three-person-tent"
+                className="text-normal tracking-wide"
+              >
                 3-person tent
               </label>
               <p className="text-lightblue font-light italic">399kr per tent</p>
             </div>
 
-            <AddToIncrement count={three_person_tents} increment={incrThreePersonTents} decrement={decrThreePersonTents} />
+            <AddToIncrement
+              count={three_person_tents}
+              increment={incrThreePersonTents}
+              decrement={decrThreePersonTents}
+            />
           </section>
         </div>
         <div className="_add_green_camping_ grid place-content-center">
