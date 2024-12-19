@@ -1,18 +1,57 @@
 import { CiCalendar } from "react-icons/ci";
 import { FaArrowLeft } from "react-icons/fa";
+import { getSchedule } from "@/lib/schedule";
+import { getSingleBand } from "@/lib/api";
+
 import Image from "next/image";
 import ButtonSharpEdge from "@/components/common/ButtonSharpEdge";
 import waveImage from "../../assets/wave.svg";
 import Link from "next/link";
+import LoadingScreen from "@/components/common/LodingScreen";
 
-import { getSingleBand } from "@/lib/api";
 import LineUpHeader from "@/components/lineup/LineUpHeader";
 import PageTitle from "@/components/common/PageTitle";
+import { useBands } from "@/lib/hooks/useBands";
+import { useSchedule } from "@/lib/hooks/useSchedule";
+import { FilterPerDay } from "@/stores/FilterPerDay";
 
 const page = async ({ params }) => {
   const { slug } = params;
 
   const band = await getSingleBand(slug);
+  const schedules = await getSchedule();
+
+  if (!band) return <div>Sorry, an error occurred</div>;
+
+  const { selectedDay, setSelectedDay, initToday } = FilterPerDay();
+
+  const {
+    data: schedule,
+    isLoading: scheduleLoading,
+    isError: scheduleError,
+  } = useSchedule(selectedDay);
+
+  if (scheduleLoading) return <LoadingScreen></LoadingScreen>;
+  if (scheduleError) return <div>Sorry, an error occurred</div>;
+
+  const performances = schedule
+    ? Object.entries(schedule).flatMap(([scene, days]) =>
+        Object.entries(days).flatMap(([day, shifts]) =>
+          shifts.map((shift) => ({
+            scene,
+            day,
+            start: shift.start,
+            end: shift.end,
+            act: shift.act,
+          }))
+        )
+      )
+    : [];
+
+  const filteredPerformances = performances.filter(
+    (performance) =>
+      performance.day === selectedDay && performance.act === band.name
+  );
 
   console.log(band);
 
@@ -81,13 +120,13 @@ const page = async ({ params }) => {
           <LineUpHeader
             edge={"right"}
             title={"Scene"}
-            header={"midgard"}
+            header={performance.scene}
           ></LineUpHeader>
 
           <LineUpHeader
             edge={"left"}
             title={"Day of playing"}
-            header={"Wednesday"}
+            header={performance.day}
           >
             <CiCalendar className="text-title" />
           </LineUpHeader>
