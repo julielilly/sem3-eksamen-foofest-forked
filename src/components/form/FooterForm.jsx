@@ -25,7 +25,7 @@ const FooterForm = () => {
   };
 
   return (
-    <form className="text-background flex flex-col gap-3xs max-w-[400px]" aria-labelledby="form-footer-header" onSubmit={handleSubmit(footerFormSubmit)}>
+    <form className="text-background flex flex-col  max-w-[400px]" aria-labelledby="form-footer-header" onSubmit={handleSubmit(footerFormSubmit)}>
       <label htmlFor="name" className="_option_">
         First name*
       </label>
@@ -37,20 +37,24 @@ const FooterForm = () => {
         aria-describedby={errors.name ? "name-error" : undefined} // ties the input to the error message
         className="halfround-right border-background"
       />
-      {errors.name && (
+      {errors.name ? (
         <p id="name-error" className="error-message">
           {errors.name.message}
         </p>
+      ) : (
+        <div className="h-5 w-full"></div>
       )}
 
       <label htmlFor="email" className="_option_">
         E-mail*
       </label>
       <input type="email" id="email" {...register("email")} aria-invalid={errors.name} aria-describedby={errors.email ? "email-error" : undefined} className="halfround-right border-background" />
-      {errors.email && (
+      {errors.email ? (
         <p id="email-error" className="error-message">
           {errors.email.message}
         </p>
+      ) : (
+        <div className="h-5 w-full"></div>
       )}
 
       <button className="halfround-right bg-background text-foreground mt-xs hover:text-background hover:bg-lightblue" type="submit">
