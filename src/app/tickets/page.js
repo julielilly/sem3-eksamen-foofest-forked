@@ -11,11 +11,21 @@ import CampingAreaSelection from "@/components/tickets/CampingAreaSelection";
 import Payment from "@/components/tickets/Payment";
 import PersonalInformation from "@/components/tickets/PersonalInformation";
 import Timer from "@/components/tickets/Timer";
+import PageTitle from "@/components/common/PageTitle";
 
 const Page = () => {
   // Retrieve ticket and step data from state
-  const { general_tickets, vip_tickets, two_person_tents, three_person_tents, camping_area, green_camping, participants } = TicketData();
-  const { step, reservationId, setStep, setReservationId, setTimer } = useTicketStore();
+  const {
+    general_tickets,
+    vip_tickets,
+    two_person_tents,
+    three_person_tents,
+    camping_area,
+    green_camping,
+    participants,
+  } = TicketData();
+  const { step, reservationId, setStep, setReservationId, setTimer } =
+    useTicketStore();
 
   // State hooks for managing UI and data
   const [loading, setLoading] = useState(false); // Loading state for asynchronous actions
@@ -37,7 +47,11 @@ const Page = () => {
   const handleReservation = async () => {
     setLoading(true); // Show loading state
 
-    const result = await handleReservationAction(camping_area, tents, campingAreas);
+    const result = await handleReservationAction(
+      camping_area,
+      tents,
+      campingAreas
+    );
     console.log(result.message); // Log any messages from the server
 
     if (result.success) {
@@ -60,7 +74,17 @@ const Page = () => {
   const handleSubmitPayment = async () => {
     setLoading(true); // Show loading state
 
-    const result = await handleSubmitPaymentAction(reservationId, participants, setStep, general_tickets, vip_tickets, camping_area, three_person_tents, two_person_tents, green_camping);
+    const result = await handleSubmitPaymentAction(
+      reservationId,
+      participants,
+      setStep,
+      general_tickets,
+      vip_tickets,
+      camping_area,
+      three_person_tents,
+      two_person_tents,
+      green_camping
+    );
     console.log(result.message); // Log any messages from the server
 
     if (result.success) {
@@ -73,35 +97,53 @@ const Page = () => {
   };
 
   return (
-    <div>
+    <div className="col-full">
       {/* Header Section */}
-      <div className=" halfround-right w-fit  h-fit mt-xl col-full ">
-        <div className=" justify-start items-center gap-m flex col-main ">
-          {/* Dynamic headline based on the current step */}
-          <h1 className="font-germania-one text-title " id="form-header">
-            {step === 1 && `Tickets`}
-            {step === 2 && `Choose camping`}
-            {step === 3 && `Add personal information`}
-            {step === 4 && `Payment`}
-            {step === 5 && `Confirmation`}
-          </h1>
-
-          {/* Show timer only during specific steps */}
-          {(step === 3 || step === 4) && <Timer formSubmitted={formSubmitted} />}
-        </div>
+      <div className=" col-full grid-rows-1 ">
+        {/* Dynamic headline based on the current step */}
+        <PageTitle id="form-header">
+          {step === 1 && `Tickets`}
+          {step === 2 && `Choose camping`}
+          {step === 3 && `Add personal information`}
+          {step === 4 && `Payment`}
+          {step === 5 && `Confirmation`}
+          <div className="_timer_">
+            {(step === 3 || step === 4) && (
+              <Timer formSubmitted={formSubmitted} />
+            )}
+          </div>
+        </PageTitle>
+        {/* Show timer only during specific steps */}
       </div>
 
       {/* Main Content Section */}
-      <div className="flex m-auto items-center md:items-start md:justify-between gap-xs flex-col md:flex-row">
+      <div className="col-main flex m-auto items-center md:items-start md:justify-between gap-xs flex-col md:flex-row">
         {/* Form section */}
         <form id="reservation-form">
           {step === 1 && <FormStepOne />}
 
           {step !== 1 && step !== 5 && (
             <div className="border-2 border-foreground bg-white  py-m mx-auto my-m">
-              {step === 2 && <CampingAreaSelection campingAreas={campingAreas} setCampingAreas={setCampingAreas} register={register} />}
-              {step === 3 && <PersonalInformation validationErrors={validationErrors} register={register} />}
-              {step === 4 && <Payment register={register} errors={errors} validationErrors={validationErrors} />}
+              {step === 2 && (
+                <CampingAreaSelection
+                  campingAreas={campingAreas}
+                  setCampingAreas={setCampingAreas}
+                  register={register}
+                />
+              )}
+              {step === 3 && (
+                <PersonalInformation
+                  validationErrors={validationErrors}
+                  register={register}
+                />
+              )}
+              {step === 4 && (
+                <Payment
+                  register={register}
+                  errors={errors}
+                  validationErrors={validationErrors}
+                />
+              )}
             </div>
           )}
 
@@ -109,7 +151,20 @@ const Page = () => {
         </form>
 
         {/* Receipt Section */}
-        {step !== 5 && <FormReceipt loading={loading} tents={tents} setStep={setStep} step={step} handleReservation={handleReservation} handleSubmitPayment={handleSubmitPayment} validationErrors={validationErrors} isButtonDisabled={isButtonDisabled} setIsButtonDisabled={setIsButtonDisabled} setValidationErrors={setValidationErrors} />}
+        {step !== 5 && (
+          <FormReceipt
+            loading={loading}
+            tents={tents}
+            setStep={setStep}
+            step={step}
+            handleReservation={handleReservation}
+            handleSubmitPayment={handleSubmitPayment}
+            validationErrors={validationErrors}
+            isButtonDisabled={isButtonDisabled}
+            setIsButtonDisabled={setIsButtonDisabled}
+            setValidationErrors={setValidationErrors}
+          />
+        )}
       </div>
     </div>
   );
