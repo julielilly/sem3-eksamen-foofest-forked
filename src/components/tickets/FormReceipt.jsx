@@ -34,6 +34,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
     setIsButtonDisabled(true); // Disable button until validation passes
 
     if (step === 1) {
+      //returns either error or succes
       const result = validationSchemaStep1.safeParse({
         generalTickets: general_tickets,
         vipTickets: vip_tickets,
