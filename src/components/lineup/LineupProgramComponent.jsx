@@ -58,9 +58,14 @@ const LineupProgramComponent = () => {
     })
     .filter(Boolean); // remove null results
 
+  // sorting matchedPerformances in alphabetic order of the bands name.
+  const sortedPerformances = matchedPerformances.sort((a, b) =>
+    a.band.name.localeCompare(b.band.name)
+  );
+
   return (
     <ul className="grid md:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] place-content-center md:gap-4 gap-10">
-      {matchedPerformances.map((performance) => (
+      {sortedPerformances.map((performance) => (
         <LineUpCardCTA
           key={performance.act}
           id={performance.act}
