@@ -4,7 +4,7 @@ import waveImage from "@/app/assets/single_wave.svg";
 
 const LoadingScreen = () => {
   return (
-    <div className="  h-[100vh] w-[100%] flex flex-col items-center justify-center bg-background z-10 fixed left-0 ">
+    <div className="  h-[100vh] w-[100%] flex flex-col items-center justify-center bg-background z-20 fixed left-0 ">
       <Image
         src={BoatImg}
         alt={"image of something"}

@@ -1,39 +1,50 @@
+"use client";
+
+import { useBands } from "@/lib/hooks/useBands";
+import { useSchedule } from "@/lib/hooks/useSchedule";
+import LoadingScreen from "@/components/common/LodingScreen";
+
 import { CiCalendar } from "react-icons/ci";
 import { FaArrowLeft } from "react-icons/fa";
-import { getSchedule } from "@/lib/schedule";
-import { getSingleBand } from "@/lib/api";
-
 import Image from "next/image";
 import ButtonSharpEdge from "@/components/common/ButtonSharpEdge";
 import waveImage from "../../assets/wave.svg";
 import Link from "next/link";
-import LoadingScreen from "@/components/common/LodingScreen";
 
+import { getSingleBand } from "@/lib/api";
 import LineUpHeader from "@/components/lineup/LineUpHeader";
 import PageTitle from "@/components/common/PageTitle";
-import { useBands } from "@/lib/hooks/useBands";
-import { useSchedule } from "@/lib/hooks/useSchedule";
-import { FilterPerDay } from "@/stores/FilterPerDay";
 
-const page = async ({ params }) => {
-  const { slug } = params;
+import { use } from "react";
 
-  const band = await getSingleBand(slug);
-  const schedules = await getSchedule();
+const page = ({ params }) => {
+  //get the slug from the component new use from react
+  const { slug } = use(params);
 
-  if (!band) return <div>Sorry, an error occurred</div>;
-
-  const { selectedDay, setSelectedDay, initToday } = FilterPerDay();
+  const {
+    data: bands,
+    isLoading: bandsLoading,
+    isError: bandsError,
+  } = useBands();
 
   const {
     data: schedule,
     isLoading: scheduleLoading,
     isError: scheduleError,
-  } = useSchedule(selectedDay);
+  } = useSchedule();
 
-  if (scheduleLoading) return <LoadingScreen></LoadingScreen>;
-  if (scheduleError) return <div>Sorry, an error occurred</div>;
+  if (bandsLoading || scheduleLoading) return <LoadingScreen></LoadingScreen>;
+  if (bandsError || scheduleError)
+    return <div>Sorry, an error has occurred</div>;
 
+  //tjekker om band name er det samme som slug
+  const band = bands.find((band) => band.slug == slug);
+  if (!band) {
+    return <div>sorry, no band</div>;
+  }
+
+  // this will flatten the entire schedule data into an accessible array
+  // i needed to add a way to check if the schedule is valid, which is by checking with the "?", and if it's not valid, it will just return an empty array in the end.
   const performances = schedule
     ? Object.entries(schedule).flatMap(([scene, days]) =>
         Object.entries(days).flatMap(([day, shifts]) =>
@@ -48,10 +59,12 @@ const page = async ({ params }) => {
       )
     : [];
 
-  const filteredPerformances = performances.filter(
-    (performance) =>
-      performance.day === selectedDay && performance.act === band.name
+  // filter performances based on band name
+  const bandPerformances = performances.filter(
+    (performance) => performance.act === band.name
   );
+
+  // const band = await getSingleBand(slug);
 
   console.log(band);
 
@@ -116,21 +129,51 @@ const page = async ({ params }) => {
       </div>
 
       <section className="mx-[0px] lg:mx-[200px] col-main [&>*]:my-8 mb-[100px]">
-        <section className="flex flex-wrap gap-4">
+        {bandPerformances.length > 0 ? (
+          <section>
+            {bandPerformances.map((performance, index) => (
+              <div key={index} className="md:flex grid flex-wrap gap-4">
+                <LineUpHeader
+                  edge={"right"}
+                  title={"Scene"}
+                  header={performance.scene}
+                ></LineUpHeader>
+
+                <LineUpHeader
+                  edge={"left"}
+                  title={"Day of playing"}
+                  header={
+                    performance.day == "mon"
+                      ? "Monday"
+                      : performance.day == "tue"
+                      ? "Tuesday"
+                      : performance.day == "wed"
+                      ? "Wednesday"
+                      : performance.day == "thu"
+                      ? "Thursday"
+                      : performance.day == "fri"
+                      ? "Friday"
+                      : performance.day == "sat"
+                      ? "Saturday"
+                      : performance.day == "sun"
+                      ? "Sunday"
+                      : performance.day
+                  }
+                >
+                  <CiCalendar className="text-title" />
+                </LineUpHeader>
+              </div>
+            ))}
+          </section>
+        ) : (
           <LineUpHeader
             edge={"right"}
-            title={"Scene"}
-            header={performance.scene}
-          ></LineUpHeader>
-
-          <LineUpHeader
-            edge={"left"}
             title={"Day of playing"}
-            header={performance.day}
+            header={"No preformance for this band"}
           >
             <CiCalendar className="text-title" />
           </LineUpHeader>
-        </section>
+        )}
 
         <span className="text-[--blue-light]">
           {band.logoCredits ? `PICTURE BY: ${band.logoCredits}` : " "}
