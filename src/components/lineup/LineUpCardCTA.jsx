@@ -3,6 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 const url = process.env.NEXT_PUBLIC_API_URL; // data bliver inhentet fra .env.local
 
+const normalizeUrl = (path) => {
+  // ensures there are no double slashes
+  return path.replace(/([^:]\/)\/+/g, "$1");
+};
+
 const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
   return (
     <Link key={id} href={`/lineup/${slug}`}>
@@ -11,7 +16,11 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
           {scene}
         </span>
         <Image
-          src={src.startsWith("https://") ? src : `${url}/logos/${src}`}
+          src={
+            src.startsWith("https://")
+              ? src
+              : normalizeUrl(`${url}/logos/${src}`)
+          }
           alt={`image of the band ${artistName}`}
           height={500}
           width={500}
