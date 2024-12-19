@@ -7,7 +7,7 @@ import LineUpCardCTA from "@/components/lineup/LineUpCardCTA";
 import LoadingScreen from "../common/LodingScreen";
 
 const LineupProgramComponent = () => {
-  const { selectedDay, setSelectedDay, initToday } = FilterPerDay();
+  const { selectedDay } = FilterPerDay();
 
   const {
     data: bands,

@@ -11,7 +11,7 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
           {scene}
         </span>
         <Image
-          src={src.startsWith("https:") ? src : `${url}/logos/${src}`}
+          src={src.startsWith("https:") ? src : `${url}logos/${src}`}
           alt={`image of the band ${artistName}`}
           height={500}
           width={500}
