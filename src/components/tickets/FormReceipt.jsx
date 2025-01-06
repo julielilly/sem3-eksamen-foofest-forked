@@ -28,6 +28,12 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
 
   const numberOfParticipants = general_tickets + vip_tickets;
 
+  // function to scroll to the top when step changes
+  const scrollToTop = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  };
+
   // form validation logic
   const validateStep = async () => {
     let errors = null;
@@ -107,10 +113,13 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
       // Proceed to the next step or handle the form submission
       if (step === 1 || step === 3) {
         setStep(step + 1); // Move to the next step
+        scrollToTop(); // scroll to the top
       } else if (step === 2) {
-        handleReservation(); // Handle reservation logic
+        await handleReservation(); // Handle reservation logic
+        scrollToTop(); // then scroll to the top
       } else if (step === 4) {
-        handleSubmitPayment(); // Proceed with form submission
+        await handleSubmitPayment(); // Proceed with form submission
+        scrollToTop();
       }
     } else {
       console.log("Form validation failed, please fix errors.");
