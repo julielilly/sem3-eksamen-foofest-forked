@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react"; // imported useEffect to use with scroll to top of page
 import { useBands } from "@/lib/hooks/useBands";
 import { useSchedule } from "@/lib/hooks/useSchedule";
 import LoadingScreen from "@/components/common/LodingScreen";
@@ -18,6 +19,11 @@ import PageTitle from "@/components/common/PageTitle";
 import { use } from "react";
 
 const page = ({ params }) => {
+  useEffect(() => {
+    // used to scroll to the top of the page on load
+    window.scrollTo(0, 0);
+  }, []);
+
   //get the slug from the component new use from react
   const { slug } = use(params);
 
