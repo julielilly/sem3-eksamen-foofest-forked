@@ -27,7 +27,7 @@ const FooterForm = () => {
   return (
     <form className="text-background flex flex-col  max-w-[400px]" aria-labelledby="form-footer-header" onSubmit={handleSubmit(footerFormSubmit)}>
       <label htmlFor="name" className="_option_">
-        First name*
+        First name
       </label>
       <input
         type="text"
@@ -46,7 +46,7 @@ const FooterForm = () => {
       )}
 
       <label htmlFor="email" className="_option_">
-        E-mail*
+        E-mail
       </label>
       <input type="email" id="email" {...register("email")} aria-invalid={errors.name} aria-describedby={errors.email ? "email-error" : undefined} className="halfround-right border-background" />
       {errors.email ? (

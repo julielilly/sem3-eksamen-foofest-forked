@@ -23,7 +23,7 @@ const PersonalInformation = ({ validationErrors, register }) => {
 
           {/* Full name field */}
           <div>
-            <label htmlFor={`name-${index}`}>Full name*</label>
+            <label htmlFor={`name-${index}`}>Full name</label>
             <input id={`name-${index}`} type="text" {...register(`participants.${index}.name`)} value={participants[index]?.name || ""} onChange={(e) => handleChange(index, "name", e.target.value)} />
 
             {validationErrors?.participants?.[index]?.name && <p className="error-message">{validationErrors?.participants?.[index]?.name?._errors[0]}</p>}
@@ -31,7 +31,7 @@ const PersonalInformation = ({ validationErrors, register }) => {
 
           {/* Email field */}
           <div>
-            <label htmlFor={`email-${index}`}>E-mail*</label>
+            <label htmlFor={`email-${index}`}>E-mail</label>
             <input id={`email-${index}`} type="email" {...register(`participants.${index}.email`)} value={participants[index]?.email || ""} onChange={(e) => handleChange(index, "email", e.target.value)} />
 
             {validationErrors?.participants?.[index]?.email && <p className="error-message">{validationErrors?.participants?.[index]?.email?._errors[0]}</p>}
@@ -39,8 +39,21 @@ const PersonalInformation = ({ validationErrors, register }) => {
 
           {/* Phone number field */}
           <div>
-            <label htmlFor={`number-${index}`}>Phone Number*</label>
-            <input id={`number-${index}`} type="tel" {...register(`participants.${index}.number`)} value={participants[index]?.number || ""} onChange={(e) => handleChange(index, "number", e.target.value)} maxLength={8} />
+            <label htmlFor={`number-${index}`}>Phone Number</label>
+            <input
+              id={`number-${index}`}
+              type="tel"
+              {...register(`participants.${index}.number`)}
+              value={
+                participants[index]?.number
+                  .replace(/[^0-9]/g, "") // this allows only numbers
+                  .replace(/(\d{2})/g, "$1 ") // this adds space after every
+                  .trim() || // remove any spaces before and after1
+                ""
+              }
+              onChange={(e) => handleChange(index, "number", e.target.value)}
+              maxLength={11}
+            />
 
             {validationErrors?.participants?.[index]?.number && <p className="error-message">{validationErrors?.participants?.[index]?.number?._errors[0]}</p>}
           </div>

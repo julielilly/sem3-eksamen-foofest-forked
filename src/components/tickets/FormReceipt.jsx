@@ -15,7 +15,9 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
 
   const generalTicketPrice = 799;
   const totalGeneralTicketPrice = generalTicketPrice * general_tickets;
+  // const vipTicketPrice = 1299;
   const vipTicketPrice = 1299;
+
   const totalVipTicketPrice = vipTicketPrice * vip_tickets;
   const bookingFee = 99;
 
@@ -27,6 +29,16 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
   const greenCampingPrice = 249;
 
   const numberOfParticipants = general_tickets + vip_tickets;
+
+  // function to format price
+  const formatPrice = (price) => {
+    console.log("format price");
+    // adds the short form of the danish currency (kr) to the price aswell as formatting it to danish standards
+    console.log(new Intl.NumberFormat("da-DK", { style: "currency", currency: "DKK", currencyDisplay: "narrowSymbol" }).format(price));
+    const formattedPrice = new Intl.NumberFormat("da-DK", { style: "currency", currency: "DKK", currencyDisplay: "narrowSymbol" }).format(price);
+
+    return formattedPrice;
+  };
 
   // function to scroll to the top when step changes
   const scrollToTop = () => {
@@ -151,7 +163,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
 
             {step === 1 ? (
               <p className="row-start-2">
-                <span>{totalGeneralTicketPrice}</span> kr
+                <span>{formatPrice(totalGeneralTicketPrice)}</span>
               </p>
             ) : (
               <p>x {general_tickets}</p>
@@ -165,7 +177,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
               </div>
             ) : (
               <div className="row-span-full ">
-                <span>{totalGeneralTicketPrice}</span> kr
+                <span>{formatPrice(totalGeneralTicketPrice)}</span>
               </div>
             )}
           </div>
@@ -176,7 +188,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
 
             {step === 1 ? (
               <p className="row-start-2">
-                <span>{totalVipTicketPrice}</span> kr
+                <span>{formatPrice(totalVipTicketPrice)}</span>
               </p>
             ) : (
               <p>x {vip_tickets}</p>
@@ -190,7 +202,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
               </div>
             ) : (
               <div className="row-span-full">
-                <span>{totalVipTicketPrice}</span> kr
+                <span>{formatPrice(totalVipTicketPrice)}</span>
               </div>
             )}
           </div>
@@ -214,7 +226,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
               <p className="row-start-2">
                 x <span>{two_person_tents}</span>
               </p>
-              <p>{totalTwoPersonTentPrice} kr</p>
+              <p>{formatPrice(totalTwoPersonTentPrice)}</p>
             </div>
           )}
 
@@ -224,7 +236,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
               <p className="row-start-2">
                 x <span>{three_person_tents}</span>
               </p>
-              <p>{totalThreePersonTentPrice} kr</p>
+              <p>{formatPrice(totalThreePersonTentPrice)}</p>
             </div>
           )}
         </div>
@@ -240,7 +252,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
                 Tickets x <span>{general_tickets + vip_tickets}</span>
               </p>
               <p>
-                <span>{totalGeneralTicketPrice + totalVipTicketPrice}</span> kr
+                <span>{formatPrice(totalGeneralTicketPrice + totalVipTicketPrice)}</span>
               </p>
             </div>
 
@@ -250,21 +262,21 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
                   Camping tents x <span>{two_person_tents + three_person_tents}</span>
                 </p>
                 <p>
-                  <span>{totalTwoPersonTentPrice + totalThreePersonTentPrice}</span> kr
+                  <span>{formatPrice(totalTwoPersonTentPrice + totalThreePersonTentPrice)}</span>
                 </p>
               </div>
             )}
 
             <div className="flex justify-between">
               <p>Booking free</p>
-              <p>{bookingFee} kr</p>
+              <p>{bookingFee} kr.</p>
             </div>
 
             {green_camping && (
               <div className="flex justify-between text-green">
                 <p>Green camping</p>
                 <p>
-                  <span>{greenCampingPrice}</span> kr
+                  <span>{greenCampingPrice}</span> kr.
                 </p>
               </div>
             )}
@@ -272,7 +284,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
           <div className="_tital_price_ flex justify-between pb-m font-bold text-step-1">
             <p>Total</p>
             <p>
-              <span>{totalGeneralTicketPrice + totalVipTicketPrice + totalTwoPersonTentPrice + totalThreePersonTentPrice + bookingFee + (green_camping ? greenCampingPrice : 0)}</span> kr
+              <span>{formatPrice(totalGeneralTicketPrice + totalVipTicketPrice + totalTwoPersonTentPrice + totalThreePersonTentPrice + bookingFee + (green_camping ? greenCampingPrice : 0))}</span>
             </p>
           </div>
         </div>

@@ -36,9 +36,9 @@ export const validationSchemaStep3 = (numberOfParticipants) =>
           // Ensures that each participant's name is a non-empty string
           name: z.string().min(1, "Full name is required"),
           // Ensures that each participant's email is a valid email
-          email: z.string().min(1, "Email is required").email("Invalid email adress"),
+          email: z.string().min(1, "Email is required").email("Please add a valid email"),
           // Ensures that each participant's phone number is a non-empty string
-          number: z.string().min(1, "Phone number is required"),
+          number: z.string().min(1, "Phone number is required").min(11, "Please add valid phone number (00 00 00 00)"),
         })
       )
       .length(numberOfParticipants, "All participants must be filled out"), // Ensures the number of participants matches the given length
@@ -53,11 +53,11 @@ export const validationSchemaStep4 = z.object({
   // Validates expiry date as a non-empty string and ensures it's at least 5 characters (e.g., MM/YY format)
   expiryDate: z.string().min(1, "Expiry date is required").min(5, "Please add valid date (dd/mm)"),
   // Validates the CVC code as a string with at least 3 characters
-  cardCvc: z.string().min(3, "CVC is required"),
+  cardCvc: z.string().min(1, "CVC is required").min(3, "Please add a valid CVC (***)"),
 });
 
 // validantion for footer form
 export const validationSchemaFooterForm = z.object({
   name: z.string().min(1, "Name is required"),
-  email: z.string().min(1, "Email is required").email("Invalid email address"),
+  email: z.string().min(1, "Email is required").email("Please add a valid email"),
 });

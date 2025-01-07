@@ -15,7 +15,7 @@ const FormStepOne = () => {
 
       {/* VIP Ticket Selection */}
       <FormTicketBig theme="vip" />
-      <FormTicketSmall price="1299" theme="ticket" onclickEvent={incrVIP_tickets} />
+      <FormTicketSmall price="1.299" theme="ticket" onclickEvent={incrVIP_tickets} />
     </fieldset>
   );
 };
