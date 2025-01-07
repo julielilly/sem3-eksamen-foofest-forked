@@ -19,42 +19,90 @@ const AccordienWrapper = () => {
         setIsOpen={setIsOpen}
         item={2}
         question="When and where does Foo Fest take place?"
-        answer="vise en liste af spørgsmål eller overskrifter, en bruger kan klikke på for at udvide og se det tilhørende svar eller indhold. Kun én svar/ indholds sektion må være åben ad gangen, så designet holdes ryddeligt og struktureret."
+        answer="Foo Fest will be held from June 10-16, 2024, in Norhaven, a mystical town that perfectly blends nature and myth, making it the ultimate backdrop for this epic event."
       ></AccordienItem>
       <AccordienItem
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         item={3}
         question="What are the stages?"
-        answer="vise en liste af spørgsmål eller overskrifter, en bruger kan klikke på for at udvide og se det tilhørende svar eller indhold. Kun én svar/ indholds sektion må være åben ad gangen, så designet holdes ryddeligt og struktureret."
+        answer={
+          <ul>
+            <li className="list-item list-disc text-left">
+              Midgard Stage: The heart of the festival featuring major
+              headliners and crowd favorites.
+            </li>
+            <li className="list-item list-disc text-left">
+              Vanaheim Stage: Known for its eclectic blend of indie, folk, and
+              experimental artists.
+            </li>
+            <li className="list-item list-disc text-left">
+              Jotunheim Stage: For those who crave energy, with rock, metal, and
+              electronic performances.
+            </li>
+          </ul>
+        }
       ></AccordienItem>
       <AccordienItem
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         item={4}
         question="What camping options are available?"
-        answer="vise en liste af spørgsmål eller overskrifter, en bruger kan klikke på for at udvide og se det tilhørende svar eller indhold. Kun én svar/ indholds sektion må være åben ad gangen, så designet holdes ryddeligt og struktureret."
+        answer={
+          <ul>
+            <li className="list-item list-disc text-left">
+              Svartheim (<strong>400 spots</strong>): Shaded and secluded,
+              perfect for those seeking quiet retreats.
+            </li>
+            <li className="list-item list-disc text-left">
+              Nilfheim (<strong>300 spots</strong>): Cool and misty, ideal for a
+              mystical vibe.
+            </li>
+            <li className="list-item list-disc text-left">
+              Helheim (<strong>100 spots</strong>): Intense and fiery, close to
+              the action.
+            </li>
+            <li className="list-item list-disc text-left">
+              Muspelheim (<strong>200 spots</strong>): A vibrant, social hotspot
+              for party-goers.{" "}
+            </li>
+
+            <li className="list-item list-disc text-left">
+              Alfheim (<strong>250 spots</strong>): Bright, open spaces with a
+              serene atmosphere.{" "}
+            </li>
+          </ul>
+        }
       ></AccordienItem>
       <AccordienItem
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         item={5}
         question="Can I cancel or modify my reservation?"
-        answer="vise en liste af spørgsmål eller overskrifter, en bruger kan klikke på for at udvide og se det tilhørende svar eller indhold. Kun én svar/ indholds sektion må være åben ad gangen, så designet holdes ryddeligt og struktureret."
+        answer="If your reservation expires before being fulfilled, the spot will reopen to others. Ensure you confirm or modify your booking within the time limit to secure your place.
+"
       ></AccordienItem>
       <AccordienItem
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         item={6}
         question="Are there spontaneous events at Foo Fest?"
-        answer="vise en liste af spørgsmål eller overskrifter, en bruger kan klikke på for at udvide og se det tilhørende svar eller indhold. Kun én svar/ indholds sektion må være åben ad gangen, så designet holdes ryddeligt og struktureret."
+        answer="Absolutely! Expect surprise performances, pop-up activities, and mythical encounters throughout the festival. Keep your eyes open—you never know when the gods will summon something extraordinary.
+"
       ></AccordienItem>
       <AccordienItem
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         item={7}
         question="What should I bring?"
-        answer="vise en liste af spørgsmål eller overskrifter, en bruger kan klikke på for at udvide og se det tilhørende svar eller indhold. Kun én svar/ indholds sektion må være åben ad gangen, så designet holdes ryddeligt og struktureret."
+        answer="Essentials include your ticket, camping gear, comfortable clothing, sunscreen, reusable water bottles, and your best festival spirit. Prepare for both sun and rain!"
+      ></AccordienItem>
+      <AccordienItem
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        item={8}
+        question="Is Foo Fest family-friendly?"
+        answer="Yes! Foo Fest offers a range of activities for all ages, though some areas and performances may be best suited for adult audiences."
       ></AccordienItem>
     </div>
   );
