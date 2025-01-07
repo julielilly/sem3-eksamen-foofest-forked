@@ -8,14 +8,25 @@ const FormStepOne = () => {
   const { incrGeneral_tickets, incrVIP_tickets } = TicketData();
 
   return (
-    <fieldset className="_Ticket_component_ grid mob:grid-cols-[auto,1fr] gap-xs py-m m-auto transition-transform h-fit" aria-labelledby="form-header">
+    <fieldset
+      className="_Ticket_component_ grid mob:grid-cols-[auto,1fr] gap-y-s gap-x-m py-m m-auto transition-transform "
+      aria-labelledby="form-header"
+    >
       {/* General Ticket Selection */}
       <FormTicketBig theme="general" />
-      <FormTicketSmall price="799" theme="ticket" onclickEvent={incrGeneral_tickets} />
+      <FormTicketSmall
+        price="799"
+        theme="ticket"
+        onclickEvent={incrGeneral_tickets}
+      />
 
       {/* VIP Ticket Selection */}
       <FormTicketBig theme="vip" />
-      <FormTicketSmall price="1.299" theme="ticket" onclickEvent={incrVIP_tickets} />
+      <FormTicketSmall
+        price="1.299"
+        theme="ticket"
+        onclickEvent={incrVIP_tickets}
+      />
     </fieldset>
   );
 };
