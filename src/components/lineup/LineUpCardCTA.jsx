@@ -9,7 +9,7 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
       <Link key={id} href={`/lineup/${slug}`}>
         <div className="transition-all hover:z-10 hover:translate-y-[-10px] bg-background hover:translate-x-[-10px] hover:shadow-[15px_15px_0px_-5px_var(--foreground)] flex flex-col justify-between gap-s h-[100%] min-h-[300px]  max-w-[300px] relative w-fit border-2 border-foreground p-5">
           <span className="absolute top-1.5 left-0 font-bold text-text backdrop: border-l-0 text-text  bg-background text-foreground w-fit py-2 px-s  rounded-r-full  border-2 border-foreground text-nowrap text-center">
-            {scene}
+            {`Scene ${scene}`}
           </span>
           <Image
             src={src.startsWith("https") ? src : `${url}logos/${src}`}

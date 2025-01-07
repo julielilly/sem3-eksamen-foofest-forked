@@ -85,21 +85,21 @@ const Header = () => {
           aria-label="Toggle Menu"
         >
           <span
-            className={`absolute h-1 w-full bg-background transition-all duration-250 ${
+            className={`absolute h-1 w-full bg-background transition-all duration-250 rounded-l-full ${
               menuOpen
-                ? "transform rotate-45 top-1/2 -translate-y-1/2"
-                : "top-0"
+                ? "transform rotate-45 top-1/2 -translate-y-1/2 rounded-l-none"
+                : "top-0 "
             }`}
           ></span>
           <span
-            className={`absolute h-1 w-full bg-background transition-opacity duration-250 ${
-              menuOpen ? "opacity-0" : "top-1/2 -translate-y-1/2"
+            className={`absolute h-1 w-full bg-background transition-opacity duration-250 rounded-l-full ${
+              menuOpen ? "opacity-0" : "top-1/2 -translate-y-1/2 "
             }`}
           ></span>
           <span
-            className={`absolute h-1 w-full bg-background transition-all duration-250 ${
+            className={`absolute h-1 w-full bg-background transition-all duration-250 rounded-l-full ${
               menuOpen
-                ? "transform -rotate-45 top-1/2 -translate-y-1/2"
+                ? "transform -rotate-45 top-1/2 -translate-y-1/2 rounded-l-none"
                 : "bottom-0"
             }`}
           ></span>
