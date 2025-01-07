@@ -38,7 +38,7 @@ export const validationSchemaStep3 = (numberOfParticipants) =>
           // Ensures that each participant's email is a valid email
           email: z.string().min(1, "Email is required").email("Please add a valid email"),
           // Ensures that each participant's phone number is a non-empty string
-          number: z.string().min(1, "Phone number is required").min(8, "Please add valid phone number (** ** ** **)"),
+          number: z.string().min(1, "Phone number is required").min(11, "Please add valid phone number (00 00 00 00)"),
         })
       )
       .length(numberOfParticipants, "All participants must be filled out"), // Ensures the number of participants matches the given length
