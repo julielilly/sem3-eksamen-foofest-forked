@@ -5,7 +5,7 @@ const ValidationErrors = ({ validationErrors, step }) => {
       {validationErrors && validationErrors.generalTickets && <p className="error-message">{validationErrors.generalTickets._errors[0]}</p>}
 
       {/* Step 2 Error Handling */}
-      {validationErrors && validationErrors.campingArea && <p className="error-message">{validationErrors.campingArea._errors[0]}</p>}
+      {validationErrors && validationErrors.campingArea && <p className="error-message">Please select camping area</p>}
 
       {validationErrors && !validationErrors.campingArea && validationErrors.tents && <p className="error-message">{validationErrors.tents._errors[0]}</p>}
 
