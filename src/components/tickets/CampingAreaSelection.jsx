@@ -153,18 +153,29 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
         <div className="_add_green_camping_ grid place-content-center">
           <h3 className="underline-border before:top-0  ">ADDITIONAL</h3>
 
-          <div className="flex place-items-center gap-2xs">
+          <div className="flex place-items-center gap-2xs cursor-pointer ">
             <input
               type="checkbox"
               id="green-camp"
-              className="custom-check"
+              className="custom-check "
               {...register("threePersonTents")}
               checked={green_camping} // Bind the checkbox's checked state to the Zustand store
               onChange={() => setGreenCamping()} // Toggle green_camping state on change
             />
-            <label htmlFor="green-camp" className="_option_">
-              Add green camping? (+249)
+            <label htmlFor="green-camp" className="_option_ cursor-pointer">
+              Add green camping?
             </label>
+            <p className="italic text-lightblue">249kr</p>
+            <div className="relative group">
+              <p className="cursor-pointer italic font-serif text-white bg-black hover:bg-lightblue px-2.5 rounded-full ">
+                i
+              </p>
+              <p className="absolute hidden group-hover:block bg-lightblue text-sm text-white rounded-md p-2 shadow-lg w-64 -right-1/2 top-8 z-10 ">
+                Upgrade to Green Camping for a secluded spot in a lush, green
+                area near the festival, offering peace, nature, and a unique
+                camping experience.
+              </p>
+            </div>
           </div>
         </div>
       </div>
