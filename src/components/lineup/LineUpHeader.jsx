@@ -6,7 +6,7 @@ const LineUpHeader = ({ children, edge = "default", title, header }) => {
   const edges = roundEdge[edge] || "";
   return (
     <div
-      className={`${edges} flex flex-[200px] hover:flex-[300px] transition-all justify-between items-center bg-background text-foreground  py-1xs pr-s pl-l   border-2 border-foreground text-nowrap`}
+      className={`${edges} my-2 flex flex-[200px] hover:flex-[300px] transition-all justify-between items-center bg-background text-foreground  py-1xs pr-s pl-l   border-2 border-foreground text-nowrap`}
     >
       <div
         className={

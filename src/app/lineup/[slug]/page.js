@@ -77,15 +77,17 @@ const page = ({ params }) => {
   return (
     <div className="col-full">
       <section className="relative w-[100%] overflow-hidden col-full">
-        <Link
-          href={"/lineup"}
+        <button
+          onClick={() => {
+            history.back();
+          }}
           className=" grid place-content-center bg-background border-2 border-foreground rounded-full w-[40px] h-[40px] hover:w-[50px] hover:h-[50px] transition-all absolute top-1/2 transform -translate-y-1/2 left-5  "
         >
           <FaArrowLeft />
-        </Link>
+        </button>
 
         <h2 className="absolute top-20 font-bold text-title  bg-background text-foreground  py-1xs pr-s pl-l rounded-r-full border-l-0  border-2 border-foreground text-nowrap">
-          {band.genre}
+          {band.name}
         </h2>
 
         <Image
@@ -95,9 +97,9 @@ const page = ({ params }) => {
               : `http://localhost:8080/logos/${band.logo}`
           }
           alt={`image of ${band.name}`}
-          height={300}
+          height={500}
           width={500}
-          className="w-[100%]  object-cover object-center row-start-1 col-full h-[90svh] min-h-[500px]"
+          className="w-[100%]  object-cover object-top row-start-1 col-full h-[70svh] min-h-[400px]"
         ></Image>
 
         <Image
@@ -129,10 +131,6 @@ const page = ({ params }) => {
           className="absolute bottom-0 left-[1200px]  transition-all animate-[wave_10s_infinite]"
         ></Image>
       </section>
-
-      <div className="col-full">
-        <PageTitle> {band.name}</PageTitle>
-      </div>
 
       <section className="mx-[0px] lg:mx-[200px] col-main [&>*]:my-8 mb-[100px]">
         {bandPerformances.length > 0 ? (
@@ -170,6 +168,10 @@ const page = ({ params }) => {
                 </LineUpHeader>
               </div>
             ))}
+            <LineUpHeader
+              edge={"right"}
+              header={`genre: ${band.genre}`}
+            ></LineUpHeader>
           </section>
         ) : (
           <LineUpHeader
@@ -187,14 +189,14 @@ const page = ({ params }) => {
 
         <div className="max-w-[65ch]">
           <p className="text-text font-bold flex gap-2">
-            {band.name} is a band with the memebers:
+            {band.name} is a band with the members:
           </p>
-          {band.members.map((memeber, i) => (
+          {band.members.map((member, i) => (
             <p
               key={i}
               className="after:content-[','] last:after:content-['.'] "
             >
-              {memeber}
+              {member}
             </p>
           ))}
         </div>
