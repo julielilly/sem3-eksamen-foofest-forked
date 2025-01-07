@@ -10,8 +10,12 @@ const Hero = () => {
       <Image
         src={HeroImage}
         alt="festival crowd"
-        width={1600}
         className="row-start-1 col-full h-[100svh] min-h-[500px] object-cover"
+        sizes="100vw"
+        style={{
+          width: "100%",
+          height: "auto",
+        }}
       />
 
       <div className="col-main row-start-1 text-white self-center h-fit justify-items-center grid">
