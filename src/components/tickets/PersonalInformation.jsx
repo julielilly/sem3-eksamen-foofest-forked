@@ -51,7 +51,7 @@ const PersonalInformation = ({ validationErrors, register }) => {
                   .trim() || // remove any spaces before and after1
                 ""
               }
-              onChange={(e) => handleChange(index, "number", e.target.value)}
+              onChange={(e) => handleChange(index, "number", e.target.value.replace(/[^0-9]/g, ""))}
               maxLength={11}
             />
 
