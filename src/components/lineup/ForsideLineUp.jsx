@@ -9,7 +9,10 @@ async function ForsideLineUp() {
   return (
     <ul className="flex  flex-wrap gap-3 justify-center w">
       {bands.slice(0, 40).map((band, i) => (
-        <li key={band.slug || i} className="flex items-center md:gap-2 ">
+        <li
+          key={band.slug || i}
+          className="flex items-center md:gap-2 text-center"
+        >
           <Link
             href={`/lineup/${band.slug}`}
             className={
