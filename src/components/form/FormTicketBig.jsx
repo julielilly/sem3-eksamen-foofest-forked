@@ -35,6 +35,7 @@ const FormTicketBig = ({ theme = "general" }) => {
       description: `A confirmation email has been sent to ${
         email || "your email"
       }.`,
+      fillColor: "#FFFDF2",
     },
   };
   const { title, description, fillColor, strokeColor, secondaryFillColor } =
