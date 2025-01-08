@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TicketData, useTicketStore } from "@/stores/TicketState";
 import { handleReservationAction, handleSubmitPaymentAction } from "@/actions";
 import { useForm } from "react-hook-form";
@@ -15,17 +15,8 @@ import PageTitle from "@/components/common/PageTitle";
 
 const Page = () => {
   // Retrieve ticket and step data from state
-  const {
-    general_tickets,
-    vip_tickets,
-    two_person_tents,
-    three_person_tents,
-    camping_area,
-    green_camping,
-    participants,
-  } = TicketData();
-  const { step, reservationId, setStep, setReservationId, setTimer } =
-    useTicketStore();
+  const { general_tickets, vip_tickets, two_person_tents, three_person_tents, camping_area, green_camping, participants } = TicketData();
+  const { step, reservationId, setStep, setReservationId, setTimer } = useTicketStore();
 
   // State hooks for managing UI and data
   const [loading, setLoading] = useState(false); // Loading state for asynchronous actions
@@ -42,21 +33,47 @@ const Page = () => {
     register, // Register input fields with form
   } = useForm();
 
+  // handles page changes, reload or close events
+  useEffect(() => {
+    // show warning before leaving, reloading or changing the page
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = ""; // Show generic browser warning
+    };
+
+    const currentUrl = window.location.href;
+
+    // Intercepting link clicks to programmatically navigate with a full page reload wich in turn triggers the "beforeunload" eventlistener
+    const handleLinkClicks = (event) => {
+      const anchor = event.target.closest("a");
+      if (anchor && anchor.href !== currentUrl) {
+        event.preventDefault();
+        window.location.href = anchor.href;
+      }
+    };
+
+    document.body.addEventListener("click", handleLinkClicks); // Intercept all link clicks within the app
+
+    // if the reservation is current, check for page reloads
+    if (step === 3 || step === 4) window.addEventListener("beforeunload", handleBeforeUnload); // Listen for reload/close events
+
+    return () => {
+      document.body.removeEventListener("click", handleLinkClicks);
+      if (step === 3 || step === 4) {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+      }
+    };
+  }, [step]);
+
   // Handles the camping area reservation process.
   // This function is triggered during the camping area selection step.
   const handleReservation = async () => {
     setLoading(true); // Show loading state
 
-    const result = await handleReservationAction(
-      camping_area,
-      tents,
-      campingAreas
-    );
-    console.log(result.message); // Log any messages from the server
+    const result = await handleReservationAction(camping_area, tents, campingAreas);
 
     if (result.success) {
       console.log("reservationId", result.reservationId);
-      console.log("timer from api", result.timeout);
 
       setReservationId(result.reservationId);
       setTimer(result.timeout); // Start countdown with timeout value
@@ -74,17 +91,7 @@ const Page = () => {
   const handleSubmitPayment = async () => {
     setLoading(true); // Show loading state
 
-    const result = await handleSubmitPaymentAction(
-      reservationId,
-      participants,
-      setStep,
-      general_tickets,
-      vip_tickets,
-      camping_area,
-      three_person_tents,
-      two_person_tents,
-      green_camping
-    );
+    const result = await handleSubmitPaymentAction(reservationId, participants, setStep, general_tickets, vip_tickets, camping_area, three_person_tents, two_person_tents, green_camping);
     console.log(result.message); // Log any messages from the server
 
     if (result.success) {
@@ -107,13 +114,9 @@ const Page = () => {
           {step === 3 && `Add personal information`}
           {step === 4 && `Payment`}
           {step === 5 && `Confirmation`}
-          <div className="_timer_">
-            {(step === 3 || step === 4) && (
-              <Timer formSubmitted={formSubmitted} />
-            )}
-          </div>
+          {/* Show timer only during specific steps */}
+          <div className="_timer_">{(step === 3 || step === 4) && <Timer formSubmitted={formSubmitted} />}</div>
         </PageTitle>
-        {/* Show timer only during specific steps */}
       </div>
 
       {/* Main Content Section */}
@@ -124,26 +127,9 @@ const Page = () => {
 
           {step !== 1 && step !== 5 && (
             <div className="border-2 border-foreground bg-white  py-m mx-auto my-m">
-              {step === 2 && (
-                <CampingAreaSelection
-                  campingAreas={campingAreas}
-                  setCampingAreas={setCampingAreas}
-                  register={register}
-                />
-              )}
-              {step === 3 && (
-                <PersonalInformation
-                  validationErrors={validationErrors}
-                  register={register}
-                />
-              )}
-              {step === 4 && (
-                <Payment
-                  register={register}
-                  errors={errors}
-                  validationErrors={validationErrors}
-                />
-              )}
+              {step === 2 && <CampingAreaSelection campingAreas={campingAreas} setCampingAreas={setCampingAreas} register={register} />}
+              {step === 3 && <PersonalInformation validationErrors={validationErrors} register={register} />}
+              {step === 4 && <Payment register={register} errors={errors} validationErrors={validationErrors} />}
             </div>
           )}
 
@@ -151,20 +137,7 @@ const Page = () => {
         </form>
 
         {/* Receipt Section */}
-        {step !== 5 && (
-          <FormReceipt
-            loading={loading}
-            tents={tents}
-            setStep={setStep}
-            step={step}
-            handleReservation={handleReservation}
-            handleSubmitPayment={handleSubmitPayment}
-            validationErrors={validationErrors}
-            isButtonDisabled={isButtonDisabled}
-            setIsButtonDisabled={setIsButtonDisabled}
-            setValidationErrors={setValidationErrors}
-          />
-        )}
+        {step !== 5 && <FormReceipt loading={loading} tents={tents} setStep={setStep} step={step} handleReservation={handleReservation} handleSubmitPayment={handleSubmitPayment} validationErrors={validationErrors} isButtonDisabled={isButtonDisabled} setIsButtonDisabled={setIsButtonDisabled} setValidationErrors={setValidationErrors} />}
       </div>
     </div>
   );
