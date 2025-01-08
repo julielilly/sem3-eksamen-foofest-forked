@@ -1,6 +1,6 @@
 const QRConfirmation = () => {
   return (
-    <div className="min-w-m w-[80%] max-w-32 ">
+    <div className="min-w-2xs w-24 max-w-32 ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"

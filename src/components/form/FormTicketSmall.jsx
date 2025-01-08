@@ -30,12 +30,18 @@ const FormTicketSmall = ({ price, theme = "ticket", onclickEvent }) => {
         />
       </svg>
       {theme === "confirmed" ? (
-        <div className="grid place-items-center py-m relative w-[80dvw] mob:w-auto">
+        <div className="grid  place-items-center relative w-[80dvw] mob:w-auto ">
+          <h2 className=" mx-1 text-step-1 font-germania-one not-italic">
+            YOUR TICKET
+          </h2>
           <QRConfirmation />
+          <p className=" text-normal font-hind-madurai not-italic">
+            Admits {quantity}
+          </p>
         </div>
       ) : theme === "ticket" ? (
         <div
-          className="grid place-items-center py-m relative w-[80dvw] mob:w-auto
+          className="grid place-items-center  relative w-[80dvw] mob:w-auto
     "
         >
           <div className="flex place-items-center text-normal font-hind-madurai">
@@ -46,9 +52,6 @@ const FormTicketSmall = ({ price, theme = "ticket", onclickEvent }) => {
               </em>
               person
             </p>
-            {/* <p>Admits</p>
-            <em className=" mx-1 text-step-2 font-germania-one not-italic">{quantity}</em>
-            <p> {quantity > 1 ? " people" : " person"}</p> */}
           </div>
 
           <button

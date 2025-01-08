@@ -1,9 +1,18 @@
+"use client";
 import Image from "next/image";
 import BoatImg from "@/app/assets/boat.svg";
 import SpeakerImg from "@/app/assets/speaker.svg";
 import SpeakerImgRight from "@/app/assets/speakerRight.svg";
+import { TicketData } from "@/stores/TicketState";
 
 const FormTicketBig = ({ theme = "general" }) => {
+  // accessing the TicketData state where name and email is stored
+  const { participants } = TicketData();
+
+  // Extract the first participant's details
+  const firstParticipant = participants?.[0] || {};
+  const { name, email } = firstParticipant;
+
   const themeClasses = {
     general: {
       title: "General Admission",
@@ -16,8 +25,10 @@ const FormTicketBig = ({ theme = "general" }) => {
         "Priority entry, exclusive viewing areas, VIP lounges, and premium amenities.",
     },
     confirmed: {
-      title: "YOUR ORDER IS CONFIRMED",
-      description: "",
+      title: `You're in, ${name}!`,
+      description: `A confirmation email has been sent to ${
+        email || "your email"
+      }.`,
     },
   };
   const { title, description } = themeClasses[theme] || themeClasses.neutral;
@@ -86,26 +97,37 @@ const FormTicketBig = ({ theme = "general" }) => {
           />
         )}
       </svg>
-      <div className="_big_ticket_text_ grid grid-rows-[1fr,1fr] h-80  place-self-center place-items-center md:h-auto text-center  ">
-        <h3 className=" p-2xs text-title font-germania-one place-content-center max-w-min xxl:max-w-max">
-          {title}
-        </h3>
-        {theme !== "confirmed" && (
+
+      {theme !== "confirmed" && (
+        <div className="_big_ticket_text_ grid grid-rows-[1fr,1fr] h-80  place-self-center place-items-center md:h-auto text-center  ">
+          <h3 className=" text-step-2 font-germania-one place-content-center max-w-min xxl:max-w-max">
+            {title}
+          </h3>
+
           <p className="relative py-2xs mob:px-2xs ticket-big-text-rotate-mobile mob:ticket-big-text-rotate xxl:ticket-big-text place-content-center">
             {description}
           </p>
-        )}
-        {/* add something for confirmed theme */}
-        {theme === "confirmed" && (
+        </div>
+      )}
+
+      {theme === "confirmed" && (
+        <div className="_big_ticket_text_ grid grid-rows-[1fr,1fr] h-80  place-self-center place-items-center md:h-auto text-center  ">
+          <h3 className=" text-step-2 font-germania-one place-content-center ticket-big-text-rotate-mobile mob:ticket-big-text-rotate xxl:ticket-big-text">
+            {title}
+          </h3>
           <Image
             src={BoatImg}
             alt={"image of Boat"}
-            height={100}
-            width={100}
-            className="origin-center  transition animate-[sail_5s_linear_infinite]   "
-          ></Image>
-        )}
-      </div>
+            height={80}
+            width={80}
+            className="origin-center  transition animate-[sail_5s_linear_infinite] m-auto  "
+          />
+
+          <p className="relative py-2xs mob:px-2xs ticket-big-text-rotate-mobile mob:ticket-big-text-rotate xxl:ticket-big-text place-content-center">
+            {description}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
