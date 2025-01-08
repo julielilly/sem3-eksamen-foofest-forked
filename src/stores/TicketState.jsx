@@ -32,9 +32,7 @@ export const TicketData = create((set) => ({
       if (state.general_tickets > 0) {
         // Remove the last participant when decreasing general tickets
         const newGeneralTickets = state.general_tickets - 1;
-        const newParticipants = state.participants.filter(
-          (_, index) => index < newGeneralTickets
-        ); // Remove participants over the new general ticket count
+        const newParticipants = state.participants.filter((_, index) => index < newGeneralTickets); // Remove participants over the new general ticket count
         return {
           general_tickets: newGeneralTickets,
           participants: newParticipants,
@@ -64,9 +62,7 @@ export const TicketData = create((set) => ({
       if (state.vip_tickets > 0) {
         // Remove the last participant when decreasing VIP tickets
         const newVIPTickets = state.vip_tickets - 1;
-        const newParticipants = state.participants.filter(
-          (_, index) => index < newVIPTickets
-        ); // Remove participants over the new VIP ticket count
+        const newParticipants = state.participants.filter((_, index) => index < newVIPTickets); // Remove participants over the new VIP ticket count
         return {
           vip_tickets: newVIPTickets,
           participants: newParticipants,
@@ -119,15 +115,10 @@ export const TicketData = create((set) => ({
     set((state) => {
       const updatedParticipants = [...state.participants];
       // Check if the participant exists and is an object
-      if (
-        updatedParticipants[index] &&
-        typeof updatedParticipants[index] === "object"
-      ) {
+      if (updatedParticipants[index] && typeof updatedParticipants[index] === "object") {
         updatedParticipants[index][field] = value;
       } else {
-        console.error(
-          `Participant at index ${index} is not an object or does not exist.`
-        );
+        console.error(`Participant at index ${index} is not an object or does not exist.`);
       }
       return { participants: updatedParticipants };
     });

@@ -26,7 +26,8 @@ const Timer = ({ formSubmitted }) => {
       if (timer <= 0) {
         clearInterval(interval);
         alert("Time is up! Reservation expired.");
-        setStep(1); // Reset to step 1 after expiration
+        setTimer(0);
+        window.location.reload(); // Reload the page to reset everything
       }
     }, 1000);
 
