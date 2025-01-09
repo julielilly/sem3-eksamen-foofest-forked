@@ -50,7 +50,7 @@ const AccordienWrapper = () => {
         question="What camping options are available?"
         answer={
           <ul>
-            <li className="list-item list-disc text-left">
+            <li className="list-item list-disc text-left  ">
               Svartheim (<strong>400 spots</strong>): Shaded and secluded,
               perfect for those seeking quiet retreats.
             </li>
