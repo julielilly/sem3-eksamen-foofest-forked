@@ -9,6 +9,7 @@ const LineUpCardCTA = ({ artistName, scene, id, src, slug, i }) => {
   return (
     <motion.li
       className="bg-background"
+      //animation for when it gets made:
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: 1,
@@ -18,6 +19,7 @@ const LineUpCardCTA = ({ artistName, scene, id, src, slug, i }) => {
           duration: 0.4,
         },
       }}
+      //---stops here---
       whileHover={{
         zIndex: 10,
         translateY: "-10px",
