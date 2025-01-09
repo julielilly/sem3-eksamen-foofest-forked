@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 const LineupDaySelector = ({ theme = "black" }) => {
   const { selectedDay, setSelectedDay, initToday } = FilterPerDay();
-
   useEffect(() => {
     initToday(); // initialize today's day on page load
   }, []);
@@ -29,24 +28,32 @@ const LineupDaySelector = ({ theme = "black" }) => {
   };
 
   const getThemeClass = (short) =>
-    short === selectedDay ? themeClasses.white : themeClasses[theme];
+    short === selectedDay ? themeClasses.white : themeClasses[theme]; // sets the default colour of the selected day button
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
-      {daysMap.map(({ short, full }) => (
-        <div
-          className={`sharp transition-all m-2 text-center basis-[100px] flex-auto h-fit max-h-[50px] first-letter:capitalize ${getThemeClass(
-            short
-          )}`}
-          key={short}
-          theme={getThemeClass(short)}
-          onClick={() => {
-            setSelectedDay(short);
-          }}
-        >
-          {full}
-        </div>
-      ))}
+    <div className=" grid ">
+      <div className="_days_schedule_area_ flex flex-wrap items-center gap-3">
+        {daysMap.map(({ short, full }) => (
+          <div
+            className={`sharp transition-all m-2 text-center basis-[100px] flex-auto h-fit max-h-[50px] first-letter:capitalize ${getThemeClass(
+              short
+            )}`}
+            key={short}
+            theme={getThemeClass(short)}
+            onClick={() => {
+              setSelectedDay(short);
+            }}
+          >
+            {full}
+          </div>
+        ))}
+      </div>
+      <div
+        className="place-self-center pt-s bg-white hover:bg-yellow cursor-pointer"
+        onClick={() => setSelectedDay("")} // clear selectedDay from the one day-selection to show all bands to an empty string
+      >
+        see all bands
+      </div>
     </div>
   );
 };

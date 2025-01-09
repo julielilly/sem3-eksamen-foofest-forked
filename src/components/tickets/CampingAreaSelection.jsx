@@ -1,7 +1,7 @@
 "use client";
 
 import { TicketData } from "@/stores/TicketState";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAvailableSpots } from "@/lib/api";
 import AddToIncrement from "../common/AddToIncrement";
 
@@ -18,6 +18,21 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
     green_camping,
     setGreenCamping,
   } = TicketData();
+
+  const [isVisible, setIsVisible] = useState(false); // used for hover effect on green camping information
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // Detect if the device is a touch device
+  useEffect(() => {
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    setIsTouchDevice(isTouch);
+  }, []);
+
+  const handleToggle = () => {
+    if (isTouchDevice) {
+      setIsVisible(!isVisible);
+    }
+  };
 
   // Fetch available camping areas once on component mount
   useEffect(() => {
@@ -60,13 +75,13 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
     inline-block _option_ w-full text-center text-normal font-bold tracking-wide py-2xs bg-background text-foreground
     hover:bg-lightblue hover:text-white 
     peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 peer-focus:ring-opacity-50
-    peer-checked:bg-foreground peer-checked:text-background
+    peer-checked:bg-foreground peer-checked:text-background  cursor-pointer
   `;
 
             return (
               <div
                 key={area.area}
-                className={`relative ${
+                className={`relative  ${
                   isLast && isOdd ? "col-span-2 flex justify-center" : ""
                 }`}
               >
@@ -166,11 +181,18 @@ const CampingAreaSelection = ({ campingAreas, setCampingAreas, register }) => {
               Add green camping?
             </label>
             <p className="italic text-lightblue">249kr</p>
-            <div className="relative group">
-              <p className="cursor-pointer italic font-serif text-white bg-black hover:bg-lightblue px-2.5 rounded-full ">
+            <div className="_information_green_camping_ relative group">
+              <p
+                className="cursor-pointer italic font-serif text-white bg-black hover:bg-lightblue px-2.5 rounded-full "
+                onClick={handleToggle}
+              >
                 i
               </p>
-              <p className="absolute hidden group-hover:block bg-lightblue text-sm text-white rounded-md p-2 shadow-lg w-64 -right-1/2 top-8 z-10 ">
+              <p
+                className={`absolute ${
+                  isVisible ? "block" : "hidden"
+                }  group-hover:block  bg-lightblue text-sm text-white rounded-md p-2 shadow-lg w-64 -right-1/2 top-8 z-10`}
+              >
                 Upgrade to Green Camping for a secluded spot in a lush, green
                 area near the festival, offering peace, nature, and a unique
                 camping experience.

@@ -18,7 +18,7 @@ const LineupProgramComponent = () => {
     data: schedule,
     isLoading: scheduleLoading,
     isError: scheduleError,
-  } = useSchedule(selectedDay);
+  } = useSchedule(selectedDay); // use selectedDay, whether it's a specific day or empty for "all bands"
 
   if (bandsLoading || scheduleLoading) return <LoadingScreen></LoadingScreen>;
   if (bandsError || scheduleError) return <div>Sorry, an error occurred</div>;
@@ -40,9 +40,10 @@ const LineupProgramComponent = () => {
     : [];
 
   // filter performances based on the selected day
-  const filteredPerformances = performances.filter(
-    (performance) => performance.day === selectedDay
-  );
+  const filteredPerformances =
+    selectedDay === ""
+      ? performances
+      : performances.filter((performance) => performance.day === selectedDay);
 
   // trying to match performance with the correct band
   const matchedPerformances = filteredPerformances
