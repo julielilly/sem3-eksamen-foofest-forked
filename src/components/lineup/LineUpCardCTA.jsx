@@ -2,13 +2,22 @@
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
-import { easeInOut } from "motion";
+
 const url = process.env.NEXT_PUBLIC_API_URL; // data bliver inhentet fra .env.local
 
-const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
+const LineUpCardCTA = ({ artistName, scene, id, src, slug, i }) => {
   return (
     <motion.li
       className="bg-background"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: i * 0.1,
+          duration: 0.4,
+        },
+      }}
       whileHover={{
         zIndex: 10,
         translateY: "-10px",

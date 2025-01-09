@@ -10,7 +10,8 @@ export default async function Page() {
 
   return (
     <div className="col-full ">
-      <PageTitle>Lineup</PageTitle>
+      <PageTitle>Lineup Program</PageTitle>
+
       <section className="col-full relative bg-[--blue-light] min-h-[200px] py-10 my-10">
         <div className="col-main self-center ">
           <LineupDaySelector />

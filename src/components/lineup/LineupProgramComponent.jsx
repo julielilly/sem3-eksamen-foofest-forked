@@ -66,12 +66,12 @@ const LineupProgramComponent = () => {
 
   return (
     <ul className="grid md:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] place-content-center md:gap-4 gap-10">
-      {sortedPerformances.map((performance) => (
+      {sortedPerformances.map((performance, i) => (
         <LineUpCardCTA
+          i={i}
           key={performance.act}
           id={performance.act}
           artistName={performance.band.name}
-          dayOfPlaying={performance.day}
           scene={performance.scene}
           src={performance.band.logo}
           slug={performance.band.slug}
