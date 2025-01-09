@@ -20,15 +20,17 @@ const LineupDaySelector = ({ theme = "black" }) => {
     { short: "sun", full: "Sunday" },
   ];
 
+  // className="transition-all hover:z-10 hover:translate-y-[-10px] hover:translate-x-[-10px] hover:shadow-[15px_15px_0px_-5px_var(--foreground)]"
+
   const themeClasses = {
     white:
-      "bg-white border-2 border-black shadow-[6px_5px_0px_1px_var(--foreground)] hover:bg-darkblue hover:text-white hover:border-white hover:shadow-[6px_5px_0px_1px_background]",
+      "bg-white border-2 border-black cursor-default translate-y-[6px] translate-x-[6px] ",
     black:
-      "bg-foreground text-white border-2 border-white shadow-[6px_5px_0px_1px_background] hover:bg-white hover:text-foreground hover:border-foreground hover:shadow-[6px_5px_0px_1px_var(--foreground)]",
+      "bg-foreground text-white border-2 border-white shadow-[6px_5px_0px_1px_background] hover:bg-white hover:text-foreground hover:border-foreground hover:shadow-none hover:translate-y-[6px] hover:translate-x-[6px] transition-all",
     filterDef:
-      "text-white border-b hover:outline-2 hover:outline hover:italic transition-all py-1.5 px-2",
+      "text-white outline-2 outline hover:italic py-1.5 px-10 transition-all shadow-[6px_5px_0px_1px_background] hover:shadow-none translate-y-[-6px] hover:translate-y-[6px] translate-x-[-6px] hover:translate-x-[6px]",
     filterAct:
-      "text-white hover:bg-lightbluehover outline-2 outline py-1.5 px-2 transition-all",
+      "text-white outline-2 outline py-1.5 px-10 translate-y-[6px] translate-x-[6px]",
   };
 
   const getThemeClass = (short) =>
