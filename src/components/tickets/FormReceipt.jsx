@@ -205,11 +205,11 @@ const FormReceipt = ({
           </div>
         )}
         {general_tickets >= 1 && (
-          <div className="_singular_quantity_ticket_ grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr] gap-xs">
+          <div className="_singular_quantity_ticket_ grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr] gap-x-xs">
             <h3 className="row-start-1 font-bold">General admission</h3>
 
             {step === 1 ? (
-              <p className="row-start-2">
+              <p className="row-start-2 ">
                 <span>{formatPrice(totalGeneralTicketPrice)}</span>
               </p>
             ) : (
