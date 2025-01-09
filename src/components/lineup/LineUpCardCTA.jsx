@@ -1,15 +1,38 @@
 "use client";
+import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
+import { easeInOut } from "motion";
 const url = process.env.NEXT_PUBLIC_API_URL; // data bliver inhentet fra .env.local
 
 const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
   return (
-    <li>
+    <motion.li
+      className="bg-background"
+      whileHover={{
+        zIndex: 10,
+        translateY: "-10px",
+        translateX: "-10px",
+        boxShadow: "15px 15px 0px -5px var(--foreground)",
+        backgroundColor: "var(--white)",
+      }}
+      whileTap={{
+        scale: 0.95,
+        backgroundColor: "var(--white)",
+        boxShadow: "none",
+        translateY: "0",
+        translateX: "0",
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 30,
+      }}
+    >
       <Link
         key={id}
         href={`/lineup/${slug}`}
-        className="transition-all hover:z-10 hover:translate-y-[-10px] bg-background hover:translate-x-[-10px] hover:shadow-[15px_15px_0px_-5px_var(--foreground)] flex flex-col justify-between gap-s h-[100%] min-h-[300px]  max-w-[300px] w-fit relative border-2 border-foreground p-5 hover:bg-white"
+        className="flex flex-col justify-between gap-s h-[100%] min-h-[300px]  max-w-[300px] w-fit relative border-2 border-foreground p-5"
       >
         <span className="absolute top-1.5 left-0 font-bold text-text border-l-0 bg-background text-foreground w-fit py-2 px-s  rounded-r-full  border-2 border-foreground text-nowrap text-center">
           {`Scene ${scene}`}
@@ -26,7 +49,7 @@ const LineUpCardCTA = ({ artistName, scene, dayOfPlaying, id, src, slug }) => {
           {artistName}
         </div>
       </Link>
-    </li>
+    </motion.li>
   );
 };
 
