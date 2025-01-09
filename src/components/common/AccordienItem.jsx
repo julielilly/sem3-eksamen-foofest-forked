@@ -1,5 +1,6 @@
 "use client";
 import Dot from "./Dot";
+import { motion } from "motion/react";
 
 const AccordienItem = ({ answer, question, item, isOpen, setIsOpen }) => {
   //   const [isOpen, setIsOpen] = useState(false);
