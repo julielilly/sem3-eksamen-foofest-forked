@@ -18,6 +18,7 @@ module.exports = {
         white: "var(--white)",
         darkblue: "var(--blue-dark)",
         lightblue: "var(--blue-light)",
+        lightbluehover: "var(--blue-light-hover)",
         green: "var(--green)",
         yellow: "var(--yellow)",
         red: "var(--red)",

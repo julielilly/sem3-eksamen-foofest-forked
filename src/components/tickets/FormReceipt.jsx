@@ -4,13 +4,41 @@ import FormReceiptCTA from "./FormReceiptCTA";
 import Image from "next/image";
 import basketImage from "@/app/assets/basket.png";
 import { useEffect } from "react";
-import { validationSchemaStep1, validationSchemaStep2, validationSchemaStep3, validationSchemaStep4 } from "@/schemas/validationSchema";
+import {
+  validationSchemaStep1,
+  validationSchemaStep2,
+  validationSchemaStep3,
+  validationSchemaStep4,
+} from "@/schemas/validationSchema";
 import { PaymentCardInput } from "@/stores/PaymentCardInput";
 import { TicketData } from "@/stores/TicketState";
 import ValidationErrors from "./ValidationErrors";
 
-const FormReceipt = ({ loading, setStep, step, handleReservation, validationErrors, isButtonDisabled, setIsButtonDisabled, setValidationErrors, tents, handleSubmitPayment }) => {
-  const { participants, general_tickets, vip_tickets, incrGeneral_tickets, incrVIP_tickets, decrGeneral_tickets, decrVIP_tickets, camping_area, three_person_tents, two_person_tents, green_camping } = TicketData();
+const FormReceipt = ({
+  loading,
+  setStep,
+  step,
+  handleReservation,
+  validationErrors,
+  isButtonDisabled,
+  setIsButtonDisabled,
+  setValidationErrors,
+  tents,
+  handleSubmitPayment,
+}) => {
+  const {
+    participants,
+    general_tickets,
+    vip_tickets,
+    incrGeneral_tickets,
+    incrVIP_tickets,
+    decrGeneral_tickets,
+    decrVIP_tickets,
+    camping_area,
+    three_person_tents,
+    two_person_tents,
+    green_camping,
+  } = TicketData();
   const { cardNumber, cardName, expiryDate, cardCvc } = PaymentCardInput();
 
   const generalTicketPrice = 799;
@@ -142,14 +170,31 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
 
   // UseEffect for field validation
   useEffect(() => {
-    if ((step === 1 && (general_tickets > 0 || vip_tickets > 0)) || (step === 2 && camping_area && tents === participants.length) || (step === 3 && participants.length > 0) || (step === 4 && cardNumber && cardName && expiryDate && cardCvc)) {
+    if (
+      (step === 1 && (general_tickets > 0 || vip_tickets > 0)) ||
+      (step === 2 && camping_area && tents === participants.length) ||
+      (step === 3 && participants.length > 0) ||
+      (step === 4 && cardNumber && cardName && expiryDate && cardCvc)
+    ) {
       validateStep();
     }
-  }, [general_tickets, vip_tickets, camping_area, tents, participants, cardNumber, cardName, expiryDate, cardCvc]);
+  }, [
+    general_tickets,
+    vip_tickets,
+    camping_area,
+    tents,
+    participants,
+    cardNumber,
+    cardName,
+    expiryDate,
+    cardCvc,
+  ]);
 
   return (
     <section className="_receipt_component_ bg-white border-2 border-foreground pt-xs pb-m px-m min-w-fit w-[30vw] max-w-96 my-m sticky top-24">
-      <h2 className="_receipt_title_ text-center border-b-2 border-foreground w-[50%] m-auto font-germania-one text-step-2 ">Basket</h2>
+      <h2 className="_receipt_title_ text-center border-b-2 border-foreground w-[50%] m-auto font-germania-one text-step-2 ">
+        Basket
+      </h2>
 
       {/* ticket information */}
       <div className="_quantity_tickets border-b-2 border-foreground border:w-[90%] py-s [&>*]:py-3xs">
@@ -160,7 +205,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
           </div>
         )}
         {general_tickets >= 1 && (
-          <div className="_singular_quantity_ticket_ grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr]">
+          <div className="_singular_quantity_ticket_ grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr] gap-xs">
             <h3 className="row-start-1 font-bold">General admission</h3>
 
             {step === 1 ? (
@@ -172,7 +217,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
             )}
 
             {step === 1 ? (
-              <div className=" row-span-full self-center flex gap-2xs">
+              <div className=" row-span-full self-center flex gap-x-xs">
                 <button onClick={decrGeneral_tickets}>-</button>
                 <span className="w-[2ch] text-center">{general_tickets}</span>
                 <button onClick={incrGeneral_tickets}>+</button>
@@ -185,7 +230,7 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
           </div>
         )}
         {vip_tickets >= 1 && (
-          <div className="_singular_quantity_ticket_ grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr]">
+          <div className="_singular_quantity_ticket_ grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr] gap-x-xs">
             <h3 className="row-start-1 font-bold">VIP</h3>
 
             {step === 1 ? (
@@ -213,36 +258,37 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
 
       {/* camping information */}
 
-      {step >= 2 && (camping_area || two_person_tents > 0 || three_person_tents > 0) && (
-        <div className="border-b-2 border-foreground border:w-[90%] py-s [&>*]:py-3xs">
-          {camping_area && (
-            <div className="flex justify-between ">
-              <h3 className="row-start-1 font-bold">Camping area</h3>
-              <p className="row-start-2">{camping_area}</p>
-            </div>
-          )}
+      {step >= 2 &&
+        (camping_area || two_person_tents > 0 || three_person_tents > 0) && (
+          <div className="border-b-2 border-foreground border:w-[90%] py-s [&>*]:py-3xs">
+            {camping_area && (
+              <div className="flex justify-between ">
+                <h3 className="row-start-1 font-bold">Camping area</h3>
+                <p className="row-start-2">{camping_area}</p>
+              </div>
+            )}
 
-          {two_person_tents > 0 && (
-            <div className="grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr]">
-              <p>Camping tent - 2 person</p>
-              <p className="row-start-2">
-                x <span>{two_person_tents}</span>
-              </p>
-              <p>{formatPrice(totalTwoPersonTentPrice)}</p>
-            </div>
-          )}
+            {two_person_tents > 0 && (
+              <div className="grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr] gap-x-3xs">
+                <p>Camping tent - 2 person</p>
+                <p className="row-start-2">
+                  x <span>{two_person_tents}</span>
+                </p>
+                <p>{formatPrice(totalTwoPersonTentPrice)}</p>
+              </div>
+            )}
 
-          {three_person_tents > 0 && (
-            <div className="grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr]">
-              <p>Camping tent - 3 person</p>
-              <p className="row-start-2">
-                x <span>{three_person_tents}</span>
-              </p>
-              <p>{formatPrice(totalThreePersonTentPrice)}</p>
-            </div>
-          )}
-        </div>
-      )}
+            {three_person_tents > 0 && (
+              <div className="grid grid-cols-[1fr,auto] grid-rows-[1fr,1fr] gap-x-3xs">
+                <p>Camping tent - 3 person</p>
+                <p className="row-start-2">
+                  x <span>{three_person_tents}</span>
+                </p>
+                <p>{formatPrice(totalThreePersonTentPrice)}</p>
+              </div>
+            )}
+          </div>
+        )}
 
       {/* overview information */}
       {general_tickets !== 0 || vip_tickets !== 0 ? (
@@ -254,17 +300,24 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
                 Tickets x <span>{general_tickets + vip_tickets}</span>
               </p>
               <p>
-                <span>{formatPrice(totalGeneralTicketPrice + totalVipTicketPrice)}</span>
+                <span>
+                  {formatPrice(totalGeneralTicketPrice + totalVipTicketPrice)}
+                </span>
               </p>
             </div>
 
             {(two_person_tents > 0 || three_person_tents > 0) && (
               <div className="flex justify-between">
                 <p>
-                  Camping tents x <span>{two_person_tents + three_person_tents}</span>
+                  Camping tents x{" "}
+                  <span>{two_person_tents + three_person_tents}</span>
                 </p>
                 <p>
-                  <span>{formatPrice(totalTwoPersonTentPrice + totalThreePersonTentPrice)}</span>
+                  <span>
+                    {formatPrice(
+                      totalTwoPersonTentPrice + totalThreePersonTentPrice
+                    )}
+                  </span>
                 </p>
               </div>
             )}
@@ -286,7 +339,16 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
           <div className="_tital_price_ flex justify-between pb-m font-bold text-step-1">
             <p>Total</p>
             <p>
-              <span>{formatPrice(totalGeneralTicketPrice + totalVipTicketPrice + totalTwoPersonTentPrice + totalThreePersonTentPrice + bookingFee + (green_camping ? greenCampingPrice : 0))}</span>
+              <span>
+                {formatPrice(
+                  totalGeneralTicketPrice +
+                    totalVipTicketPrice +
+                    totalTwoPersonTentPrice +
+                    totalThreePersonTentPrice +
+                    bookingFee +
+                    (green_camping ? greenCampingPrice : 0)
+                )}
+              </span>
             </p>
           </div>
         </div>
@@ -298,7 +360,12 @@ const FormReceipt = ({ loading, setStep, step, handleReservation, validationErro
       <ValidationErrors validationErrors={validationErrors} step={step} />
 
       {/* form button */}
-      <FormReceiptCTA loading={loading} step={step} isButtonDisabled={isButtonDisabled} handleButtonClick={handleButtonClick} />
+      <FormReceiptCTA
+        loading={loading}
+        step={step}
+        isButtonDisabled={isButtonDisabled}
+        handleButtonClick={handleButtonClick}
+      />
     </section>
   );
 };
