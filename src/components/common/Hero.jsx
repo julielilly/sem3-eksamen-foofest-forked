@@ -10,11 +10,11 @@ const Hero = () => {
       <Image
         src={HeroImage}
         alt="festival crowd"
-        className="row-start-1 col-full h-[100svh] min-h-[500px] object-cover"
+        className="row-start-1 col-full h-[100svh] min-h-[500px] object-cover "
         sizes="100vw"
         style={{
           width: "100%",
-          height: "auto",
+          height: "100svh",
         }}
       />
 
