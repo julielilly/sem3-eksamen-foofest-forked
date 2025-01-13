@@ -26,17 +26,13 @@ const AccordienItem = ({ answer, question, item, isOpen, setIsOpen }) => {
       <AnimatePresence initial={false} mode="popLayout">
         {isOpen === item && (
           <motion.section
-            initial={{ opacity: 0, scale: 0.3 }}
+            initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
-              scale: 1,
-              transition: { duration: 0.5, ease: "easeInOut" },
+
+              transition: { duration: 0.3, ease: "easeInOut" },
             }}
-            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-            // initial={{ opacity: 0, scale: 0 }}
-            // animate={{ opacity: 1, scale: 1 }}
-            // exit={{ opacity: 0, x: 50, transition: { duration: 0.2 } }}
-            // transition={{ duration: 0.65, ease: "easeInOut" }}
+            exit={{ opacity: 0, transition: { duration: 0.1 } }}
             className="w-[100%] px-12 py-2 my-2 mr-2 md:rounded-b-[30px] rounded-b-3xl bg-white border-2 border-foreground text-text text-forground "
           >
             <p className="first-letter:capitalize">{answer}</p>
