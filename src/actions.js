@@ -14,23 +14,18 @@ export async function actionSubmit(participants, reservationData) {
     greenCamping: reservationData.green_camping || false, // Default green camping to false if not selected
   }));
 
-  console.log("Complete Ticket Data:", completeData);
+  // Submit each participant's ticket data to the database
+  const submissionResults = await Promise.all(
+    completeData.map((ticket) => {
+      return addTicketData(ticket); // Return the promise for each ticket submission
+    })
+  );
 
-  try {
-    // Submit each participant's ticket data to the database
-    const submissionResults = await Promise.all(
-      completeData.map((ticket) => {
-        console.log("Submitting ticket data:", ticket);
-        return addTicketData(ticket);
-      })
-    );
-
-    console.log("Submission Results:", submissionResults);
-
-    return { success: true, message: "All tickets registered successfully!" }; // Return success message
-  } catch (error) {
-    console.error("Error submitting ticket data:", error);
-    return { success: false, message: "Failed to register tickets. Please try again." }; // Return failure message
+  // Return success message if all tickets submitted
+  if (submissionResults) {
+    return { success: true, message: "All tickets registered successfully!" };
+  } else {
+    return { success: false, message: "Failed to register tickets. Please try again." };
   }
 }
 
@@ -62,7 +57,6 @@ export const handleReservationAction = async (camping_area, tents, campingAreas)
 // Handle form submission logic
 export const handleSubmitPaymentAction = async (reservationId, participants, setStep, general_tickets, vip_tickets, camping_area, three_person_tents, two_person_tents, green_camping) => {
   if (!reservationId) {
-    console.log("Reservation ID is missing.");
     return { success: false, message: "Reservation ID is missing." };
   }
 
@@ -70,8 +64,6 @@ export const handleSubmitPaymentAction = async (reservationId, participants, set
 
   // Check if reservation is completed successfully
   if (reservationResult && reservationResult.message === "Reservation completed") {
-    console.log("Reservation completed!");
-
     // Call the server action to submit tickets
     const response = await actionSubmit(participants, {
       general_tickets,
@@ -85,11 +77,9 @@ export const handleSubmitPaymentAction = async (reservationId, participants, set
     if (response.success) {
       return { success: true, message: "Reservation and ticket data saved successfully!" };
     } else {
-      console.log("Failed to save ticket data.");
       return { success: false, message: "Failed to save ticket data." };
     }
   } else {
-    console.log("Reservation failed. Please try again.");
     return { success: false, message: "Reservation failed. Please try again." };
   }
 };

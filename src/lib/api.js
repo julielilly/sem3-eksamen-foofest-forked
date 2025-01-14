@@ -6,8 +6,6 @@ const headerList = {
   //   Prefer: "return=representation", // giver fejl på fetch fra local server
 };
 
-// OBS JEG HAR BARE LIGE UDKOMMENTERET, DET JEG IKKE SELV HAR BRUGT, MEN SOM VI EVT SKAL BRUGE ANDRE STEDER
-
 // // GET
 // fetch bands
 export async function getBands() {
@@ -30,17 +28,6 @@ export async function getSingleBand(slug) {
   let data = await response.json();
   return data;
 }
-
-// // GET by ID
-// export async function getSubById(id) {
-//   const response = await fetch(`${url}?id=eq.${id}`, {
-//     method: "GET",
-//     headers: headerList,
-//   });
-
-//   const data = await response.json();
-//   return data;
-// }
 
 // GET available spots
 export async function getAvailableSpots() {
@@ -85,10 +72,7 @@ export async function fullfillReservation(subdata) {
     body: JSON.stringify(subdata),
   });
 
-  console.log(subdata);
-
   const data = await response.json();
 
-  console.log(data);
   return data;
 }

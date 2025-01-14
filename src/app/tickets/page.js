@@ -121,7 +121,6 @@ const Page = () => {
     if (result.success) {
       setStep(5); // Move to confirmation step
       setFormSubmitted(true);
-      console.log("Reservation and ticket data saved successfully!");
     }
 
     setLoading(false); // Hide loading state
