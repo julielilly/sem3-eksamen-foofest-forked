@@ -37,11 +37,7 @@ const Header = () => {
     const handleClickAnywhere = (event) => {
       // Check if the menu is open and it is not the close icon being clicked
       console.log("close menu");
-      if (
-        menuOpen &&
-        !buttonRef.current?.contains(event.target) &&
-        !event.target.closest(".LineupDaySelector")
-      ) {
+      if (menuOpen && !buttonRef.current?.contains(event.target)) {
         setMenuOpen(false); // Close the menu if the click is not on the button (the button closes the menu elsewhere)
       }
     };
@@ -62,47 +58,20 @@ const Header = () => {
 
   return (
     // if we have scrolled or we are not on the homePage set the background
-    <header
-      className={`flex w-full fixed z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage ? "bg-foreground" : "bg-transparent"
-      }`}
-    >
+    <header className={`flex w-full fixed z-50 transition-all duration-300 ${isScrolled || !isHomePage ? "bg-foreground" : "bg-transparent"}`}>
       <div className=" text-background w-[--content] m-auto flex justify-between items-center py-xs ">
         <Link className="flex items-center gap-xs" href={"/"}>
           <Image src={logo} alt="logo" width={50} height={50}></Image>
           <div>
-            <p className="uppercase font-caesar-dressing text-[1.5rem] leading-tight">
-              Foo Fest
-            </p>
+            <p className="uppercase font-caesar-dressing text-[1.5rem] leading-tight">Foo Fest</p>
             <p>June 10 - 16</p>
           </div>
         </Link>
 
-        <button
-          ref={buttonRef}
-          className="relative w-8 h-6 flex items-center justify-center"
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          <span
-            className={`absolute h-1 w-full bg-background transition-all duration-250 rounded-l-full ${
-              menuOpen
-                ? "transform rotate-45 top-1/2 -translate-y-1/2 rounded-l-none"
-                : "top-0 "
-            }`}
-          ></span>
-          <span
-            className={`absolute h-1 w-full bg-background transition-opacity duration-250 rounded-l-full ${
-              menuOpen ? "opacity-0" : "top-1/2 -translate-y-1/2 "
-            }`}
-          ></span>
-          <span
-            className={`absolute h-1 w-full bg-background transition-all duration-250 rounded-l-full ${
-              menuOpen
-                ? "transform -rotate-45 top-1/2 -translate-y-1/2 rounded-l-none"
-                : "bottom-0"
-            }`}
-          ></span>
+        <button ref={buttonRef} className="relative w-8 h-6 flex items-center justify-center" onClick={toggleMenu} aria-label="Toggle Menu">
+          <span className={`absolute h-1 w-full bg-background transition-all duration-250 rounded-l-full ${menuOpen ? "transform rotate-45 top-1/2 -translate-y-1/2 rounded-l-none" : "top-0 "}`}></span>
+          <span className={`absolute h-1 w-full bg-background transition-opacity duration-250 rounded-l-full ${menuOpen ? "opacity-0" : "top-1/2 -translate-y-1/2 "}`}></span>
+          <span className={`absolute h-1 w-full bg-background transition-all duration-250 rounded-l-full ${menuOpen ? "transform -rotate-45 top-1/2 -translate-y-1/2 rounded-l-none" : "bottom-0"}`}></span>
         </button>
       </div>
 
